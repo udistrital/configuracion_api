@@ -1,0 +1,783 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Url http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /aplicacion/:
+    get:
+      tags:
+      - aplicacion
+      description: get Aplicacion
+      operationId: AplicacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/Aplicacion'
+        "403": {}
+    post:
+      tags:
+      - aplicacion
+      description: create Aplicacion
+      operationId: AplicacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Aplicacion content
+        required: true
+        schema:
+          $ref: '#/definitions/Aplicacion'
+      responses:
+        "201":
+          description: '{int} models.Aplicacion'
+        "403":
+          description: body is empty
+  /aplicacion/{id}:
+    get:
+      tags:
+      - aplicacion
+      description: get Aplicacion by id
+      operationId: AplicacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/Aplicacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - aplicacion
+      description: update the Aplicacion
+      operationId: AplicacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Aplicacion content
+        required: true
+        schema:
+          $ref: '#/definitions/Aplicacion'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/Aplicacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - aplicacion
+      description: delete the Aplicacion
+      operationId: AplicacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /menu_opcion/:
+    get:
+      tags:
+      - menu_opcion
+      description: get MenuOpcion
+      operationId: MenuOpcionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/MenuOpcion'
+        "403": {}
+    post:
+      tags:
+      - menu_opcion
+      description: create MenuOpcion
+      operationId: MenuOpcionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for MenuOpcion content
+        required: true
+        schema:
+          $ref: '#/definitions/MenuOpcion'
+      responses:
+        "201":
+          description: '{int} models.MenuOpcion'
+        "403":
+          description: body is empty
+  /menu_opcion/{id}:
+    get:
+      tags:
+      - menu_opcion
+      description: get MenuOpcion by id
+      operationId: MenuOpcionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/MenuOpcion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - menu_opcion
+      description: update the MenuOpcion
+      operationId: MenuOpcionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for MenuOpcion content
+        required: true
+        schema:
+          $ref: '#/definitions/MenuOpcion'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/MenuOpcion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - menu_opcion
+      description: delete the MenuOpcion
+      operationId: MenuOpcionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /menu_opcion_padre/:
+    get:
+      tags:
+      - menu_opcion_padre
+      description: get MenuOpcionPadre
+      operationId: MenuOpcionPadreController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/MenuOpcionPadre'
+        "403": {}
+    post:
+      tags:
+      - menu_opcion_padre
+      description: create MenuOpcionPadre
+      operationId: MenuOpcionPadreController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for MenuOpcionPadre content
+        required: true
+        schema:
+          $ref: '#/definitions/MenuOpcionPadre'
+      responses:
+        "201":
+          description: '{int} models.MenuOpcionPadre'
+        "403":
+          description: body is empty
+  /menu_opcion_padre/{id}:
+    get:
+      tags:
+      - menu_opcion_padre
+      description: get MenuOpcionPadre by id
+      operationId: MenuOpcionPadreController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/MenuOpcionPadre'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - menu_opcion_padre
+      description: update the MenuOpcionPadre
+      operationId: MenuOpcionPadreController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for MenuOpcionPadre content
+        required: true
+        schema:
+          $ref: '#/definitions/MenuOpcionPadre'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/MenuOpcionPadre'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - menu_opcion_padre
+      description: delete the MenuOpcionPadre
+      operationId: MenuOpcionPadreController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /parametro/:
+    get:
+      tags:
+      - parametro
+      description: get Parametro
+      operationId: ParametroController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/Parametro'
+        "403": {}
+    post:
+      tags:
+      - parametro
+      description: create Parametro
+      operationId: ParametroController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Parametro content
+        required: true
+        schema:
+          $ref: '#/definitions/Parametro'
+      responses:
+        "201":
+          description: '{int} models.Parametro'
+        "403":
+          description: body is empty
+  /parametro/{id}:
+    get:
+      tags:
+      - parametro
+      description: get Parametro by id
+      operationId: ParametroController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/Parametro'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - parametro
+      description: update the Parametro
+      operationId: ParametroController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Parametro content
+        required: true
+        schema:
+          $ref: '#/definitions/Parametro'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/Parametro'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - parametro
+      description: delete the Parametro
+      operationId: ParametroController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /perfil/:
+    get:
+      tags:
+      - perfil
+      description: get Perfil
+      operationId: PerfilController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/Perfil'
+        "403": {}
+    post:
+      tags:
+      - perfil
+      description: create Perfil
+      operationId: PerfilController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Perfil content
+        required: true
+        schema:
+          $ref: '#/definitions/Perfil'
+      responses:
+        "201":
+          description: '{int} models.Perfil'
+        "403":
+          description: body is empty
+  /perfil/{id}:
+    get:
+      tags:
+      - perfil
+      description: get Perfil by id
+      operationId: PerfilController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/Perfil'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - perfil
+      description: update the Perfil
+      operationId: PerfilController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Perfil content
+        required: true
+        schema:
+          $ref: '#/definitions/Perfil'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/Perfil'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - perfil
+      description: delete the Perfil
+      operationId: PerfilController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /perfil_x_menu_opcion/:
+    get:
+      tags:
+      - perfil_x_menu_opcion
+      description: get PerfilXMenuOpcion
+      operationId: PerfilXMenuOpcionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/PerfilXMenuOpcion'
+        "403": {}
+    post:
+      tags:
+      - perfil_x_menu_opcion
+      description: create PerfilXMenuOpcion
+      operationId: PerfilXMenuOpcionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for PerfilXMenuOpcion content
+        required: true
+        schema:
+          $ref: '#/definitions/PerfilXMenuOpcion'
+      responses:
+        "201":
+          description: '{int} models.PerfilXMenuOpcion'
+        "403":
+          description: body is empty
+  /perfil_x_menu_opcion/{id}:
+    get:
+      tags:
+      - perfil_x_menu_opcion
+      description: get PerfilXMenuOpcion by id
+      operationId: PerfilXMenuOpcionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/PerfilXMenuOpcion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - perfil_x_menu_opcion
+      description: update the PerfilXMenuOpcion
+      operationId: PerfilXMenuOpcionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for PerfilXMenuOpcion content
+        required: true
+        schema:
+          $ref: '#/definitions/PerfilXMenuOpcion'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/PerfilXMenuOpcion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - perfil_x_menu_opcion
+      description: delete the PerfilXMenuOpcion
+      operationId: PerfilXMenuOpcionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+definitions:
+  Aplicacion:
+    title: Aplicacion
+    type: object
+    properties:
+      Descripcion:
+        type: string
+      Dominio:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Ip:
+        type: string
+      Nombre:
+        type: string
+  MenuOpcion:
+    title: MenuOpcion
+    type: object
+    properties:
+      Aplicacion:
+        $ref: '#/definitions/Aplicacion'
+      Dominio:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Layout:
+        type: string
+      Nombre:
+        type: string
+      Orden:
+        type: integer
+        format: int64
+      Url:
+        type: string
+      Variable:
+        type: string
+  MenuOpcionPadre:
+    title: MenuOpcionPadre
+    type: object
+    properties:
+      Hijo:
+        $ref: '#/definitions/MenuOpcion'
+      Id:
+        type: integer
+        format: int64
+      Padre:
+        $ref: '#/definitions/MenuOpcion'
+  Parametro:
+    title: Parametro
+    type: object
+    properties:
+      Aplicacion:
+        $ref: '#/definitions/Aplicacion'
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      Valor:
+        type: string
+  Perfil:
+    title: Perfil
+    type: object
+    properties:
+      Aplicacion:
+        $ref: '#/definitions/Aplicacion'
+      Dominio:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+  PerfilXMenuOpcion:
+    title: PerfilXMenuOpcion
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      Opcion:
+        $ref: '#/definitions/MenuOpcion'
+      Perfil:
+        $ref: '#/definitions/Perfil'
+tags:
+- name: perfil
+  description: |
+    PerfilController oprations for Perfil
+- name: perfil_x_menu_opcion
+  description: |
+    PerfilXMenuOpcionController oprations for PerfilXMenuOpcion
+- name: menu_opcion
+  description: |
+    MenuOpcionController oprations for MenuOpcion
+- name: menu_opcion_padre
+  description: |
+    MenuOpcionPadreController oprations for MenuOpcionPadre
+- name: parametro
+  description: |
+    ParametroController oprations for Parametro
+- name: aplicacion
+  description: |
+    AplicacionController oprations for Aplicacion
