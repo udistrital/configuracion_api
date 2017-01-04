@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "configuracion_V2/routers"
+	_ "github.com/jsreyes/configuracion_api/routers"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"

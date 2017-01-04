@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"configuracion_V2/models"
+	"github.com/jsreyes/configuracion_api/models"
 	"encoding/json"
 	"errors"
 	"strconv"

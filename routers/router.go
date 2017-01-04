@@ -8,7 +8,7 @@
 package routers
 
 import (
-	"configuracion_V2/controllers"
+	"github.com/jsreyes/configuracion_api/controllers"
 
 	"github.com/astaxie/beego"
 
