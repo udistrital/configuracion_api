@@ -2,7 +2,6 @@ package main
 
 import (
 	_ "github.com/jsreyes/configuracion_api/routers"
-
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
     "github.com/astaxie/beego/plugins/cors"
