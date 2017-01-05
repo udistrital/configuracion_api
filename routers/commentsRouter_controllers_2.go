@@ -7,7 +7,7 @@ import (
 func init() {
 
 
-	beego.GlobalControllerRouter["configuracion_V2/controllers:PerfilXMenuOpcionController"] = append(beego.GlobalControllerRouter["configuracion/controllers:PerfilXMenuOpcionController"],
+	beego.GlobalControllerRouter["github.com/jsreyes/configuracion_api/controllers:PerfilXMenuOpcionController"] = append(beego.GlobalControllerRouter["configuracion/controllers:PerfilXMenuOpcionController"],
 		beego.ControllerComments{
 			Method: "arbolMenus",
 			Router: `/arbolMenus`,
