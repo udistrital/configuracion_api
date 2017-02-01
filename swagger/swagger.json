@@ -1034,12 +1034,12 @@
                 "Dominio": {
                     "type": "string"
                 },
+                "EstadoActivo": {
+                    "type": "boolean"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
-                },
-                "Ip": {
-                    "type": "string"
                 },
                 "Nombre": {
                     "type": "string"
@@ -1053,8 +1053,11 @@
                 "Aplicacion": {
                     "$ref": "#/definitions/Aplicacion"
                 },
-                "Dominio": {
+                "Descripcion": {
                     "type": "string"
+                },
+                "Estado": {
+                    "type": "boolean"
                 },
                 "Id": {
                     "type": "integer",
@@ -1066,14 +1069,7 @@
                 "Nombre": {
                     "type": "string"
                 },
-                "Orden": {
-                    "type": "integer",
-                    "format": "int64"
-                },
                 "Url": {
-                    "type": "string"
-                },
-                "Variable": {
                     "type": "string"
                 }
             }
@@ -1159,20 +1155,20 @@
             "description": "PerfilXMenuOpcionController oprations for PerfilXMenuOpcion\n"
         },
         {
-            "name": "menu_opcion",
-            "description": "MenuOpcionController oprations for MenuOpcion\n"
-        },
-        {
             "name": "menu_opcion_padre",
             "description": "MenuOpcionPadreController oprations for MenuOpcionPadre\n"
         },
         {
-            "name": "parametro",
-            "description": "ParametroController oprations for Parametro\n"
+            "name": "menu_opcion",
+            "description": "MenuOpcionController oprations for MenuOpcion\n"
         },
         {
             "name": "aplicacion",
             "description": "AplicacionController oprations for Aplicacion\n"
+        },
+        {
+            "name": "parametro",
+            "description": "ParametroController oprations for Parametro\n"
         }
     ]
 }

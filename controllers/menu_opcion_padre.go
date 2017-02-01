@@ -1,11 +1,12 @@
 package controllers
 
 import (
-	"github.com/jsreyes/configuracion_api/models"
 	"encoding/json"
 	"errors"
+	"github.com/jsreyes/configuracion_api/models"
 	"strconv"
 	"strings"
+	"fmt"
 	"github.com/astaxie/beego"
 )
 
@@ -21,6 +22,7 @@ func (c *MenuOpcionPadreController) URLMapping() {
 	c.Mapping("GetAll", c.GetAll)
 	c.Mapping("Put", c.Put)
 	c.Mapping("Delete", c.Delete)
+	c.Mapping("ArbolMenus", c.ArbolMenus)
 }
 
 // Post ...
@@ -167,4 +169,21 @@ func (c *MenuOpcionPadreController) Delete() {
 		c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()
+}
+
+//Función para armar los árboles de lo menús
+func (c *MenuOpcionPadreController) ArbolMenus() {
+	fmt.Println(c.Ctx.Input.Param(":perfil"));
+	perfiles := c.Ctx.Input.Param(":perfil")
+	//perfiles := ("Admin_Arka")
+	perfilesR := strings.NewReplacer(",", "','")
+
+	//Construcción Json menus
+	l := models.ConstruirMenuPerfil(perfilesR.Replace(perfiles))
+	fmt.Println("Este es el resultado de la consulta");
+	fmt.Println(l);
+	
+	c.Data["json"] = l
+	//Generera el Json con los datos obtenidos
+	c.ServeJSON()	
 }

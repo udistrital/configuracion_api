@@ -10,14 +10,13 @@ import (
 )
 
 type MenuOpcion struct {
-	Id         int         `orm:"column(id);pk;auto"`
-	Nombre     string      `orm:"column(nombre)"`
-	Variable   string      `orm:"column(variable)"`
-	Url        string      `orm:"column(url)"`
-	Orden      int         `orm:"column(orden)"`
-	Layout     string      `orm:"column(layout)"`
-	Dominio    string      `orm:"column(dominio)"`
-	Aplicacion *Aplicacion `orm:"column(aplicacion);rel(fk)"`
+	Id          int         `orm:"column(id);pk;auto"`
+	Nombre      string      `orm:"column(nombre)"`
+	Descripcion string      `orm:"column(descripcion)"`
+	Url         string      `orm:"column(url)"`
+	Layout      string      `orm:"column(layout);null"`
+	Aplicacion  *Aplicacion `orm:"column(aplicacion);rel(fk)"`
+	Estado      bool        `orm:"column(estado);null"`
 }
 
 func (t *MenuOpcion) TableName() string {
@@ -52,7 +51,7 @@ func GetMenuOpcionById(id int) (v *MenuOpcion, err error) {
 func GetAllMenuOpcion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(MenuOpcion))
+	qs := o.QueryTable(new(MenuOpcion)).RelatedSel();
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

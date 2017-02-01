@@ -2,19 +2,20 @@ package main
 
 import (
 	_ "github.com/jsreyes/configuracion_api/routers"
+
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/plugins/cors"
 	"github.com/astaxie/beego/orm"
-    "github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
 )
 
 func init() {
-	//orm.RegisterDataBase("default", "postgres", "postgres://postgres:postgres@127.0.0.1/postgres?sslmode=disable&search_path=configuracion_v2")
+	//orm.RegisterDataBase("default", "postgres", "postgres://postgres:postgres@127.0.0.1/postgres?sslmode=disable&search_path=configuracion")
 	orm.RegisterDataBase("default", "postgres", "postgres://"+beego.AppConfig.String("PGuser")+":"+beego.AppConfig.String("PGpass")+"@"+beego.AppConfig.String("PGhost")+"/"+beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+beego.AppConfig.String("PGschemas")+"")
-
 }
 
 func main() {
+	orm.Debug = true
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
 	AllowOrigins: []string{"*"},
 	AllowMethods: []string{"PUT", "PATCH", "GET", "POST", "OPTIONS", "DELETE"},
@@ -33,8 +34,4 @@ func main() {
 	}
 	beego.Run()
 }
-
-
-
-
 

@@ -9,10 +9,8 @@ package routers
 
 import (
 	"github.com/jsreyes/configuracion_api/controllers"
-
-	"github.com/astaxie/beego"
-
 	"github.com/astaxie/beego/plugins/cors"
+	"github.com/astaxie/beego"
 )
 
 func init() {
@@ -41,27 +39,27 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/menu_opcion",
-			beego.NSInclude(
-				&controllers.MenuOpcionController{},
-			),
-		),
-
 		beego.NSNamespace("/menu_opcion_padre",
 			beego.NSInclude(
 				&controllers.MenuOpcionPadreController{},
 			),
 		),
 
-		beego.NSNamespace("/parametro",
+		beego.NSNamespace("/menu_opcion",
 			beego.NSInclude(
-				&controllers.ParametroController{},
+				&controllers.MenuOpcionController{},
 			),
 		),
 
 		beego.NSNamespace("/aplicacion",
 			beego.NSInclude(
 				&controllers.AplicacionController{},
+			),
+		),
+
+		beego.NSNamespace("/parametro",
+			beego.NSInclude(
+				&controllers.ParametroController{},
 			),
 		),
 	)

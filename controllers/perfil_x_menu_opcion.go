@@ -1,13 +1,13 @@
 package controllers
 
 import (
-	"github.com/jsreyes/configuracion_api/models"
 	"encoding/json"
 	"errors"
+	"github.com/jsreyes/configuracion_api/models"
 	"strconv"
 	"strings"
-	"github.com/astaxie/beego"
 	"fmt"
+	"github.com/astaxie/beego"
 )
 
 // PerfilXMenuOpcionController oprations for PerfilXMenuOpcion
@@ -22,22 +22,7 @@ func (c *PerfilXMenuOpcionController) URLMapping() {
 	c.Mapping("GetAll", c.GetAll)
 	c.Mapping("Put", c.Put)
 	c.Mapping("Delete", c.Delete)
-	c.Mapping("arbolMenus", c.arbolMenus)
-}
-
-//Función arbolMenus
-func (c *PerfilXMenuOpcionController) arbolMenus() {
-
-	perfiles := ("Admin_Argo")
-	perfilesR := strings.NewReplacer(",", "','")
-
-	//Construcción Json menus
-	l := models.ConstruirMenuPerfil(perfilesR.Replace(perfiles))
-	fmt.Println(l)
-	
-	c.Data["json"] = l
-	//Generera el Json con los datos obtenidos
-	c.ServeJSON()	
+	c.Mapping("MenusPorAplicacion", c.MenusPorAplicacion)
 }
 
 // Post ...
@@ -184,4 +169,25 @@ func (c *PerfilXMenuOpcionController) Delete() {
 		c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()
+}
+
+//Función para menus por app
+func (c *PerfilXMenuOpcionController) MenusPorAplicacion() {
+	
+	//Tomar el valor de la URL
+	idStr := c.Ctx.Input.Param(":id")
+	id, _ := strconv.Atoi(idStr)
+
+	fmt.Println("Este es tu id")
+	fmt.Println(id)
+	//Construcción Json menus
+	l := models.MenusByAplicacion(id)
+
+
+	fmt.Println(l)
+	
+	c.Data["json"] = l
+	//Generera el Json con los datos obtenidos
+	c.ServeJSON()	
+
 }

@@ -685,11 +685,11 @@ definitions:
         type: string
       Dominio:
         type: string
+      EstadoActivo:
+        type: boolean
       Id:
         type: integer
         format: int64
-      Ip:
-        type: string
       Nombre:
         type: string
   MenuOpcion:
@@ -698,8 +698,10 @@ definitions:
     properties:
       Aplicacion:
         $ref: '#/definitions/Aplicacion'
-      Dominio:
+      Descripcion:
         type: string
+      Estado:
+        type: boolean
       Id:
         type: integer
         format: int64
@@ -707,12 +709,7 @@ definitions:
         type: string
       Nombre:
         type: string
-      Orden:
-        type: integer
-        format: int64
       Url:
-        type: string
-      Variable:
         type: string
   MenuOpcionPadre:
     title: MenuOpcionPadre
@@ -769,15 +766,15 @@ tags:
 - name: perfil_x_menu_opcion
   description: |
     PerfilXMenuOpcionController oprations for PerfilXMenuOpcion
-- name: menu_opcion
-  description: |
-    MenuOpcionController oprations for MenuOpcion
 - name: menu_opcion_padre
   description: |
     MenuOpcionPadreController oprations for MenuOpcionPadre
-- name: parametro
+- name: menu_opcion
   description: |
-    ParametroController oprations for Parametro
+    MenuOpcionController oprations for MenuOpcion
 - name: aplicacion
   description: |
     AplicacionController oprations for Aplicacion
+- name: parametro
+  description: |
+    ParametroController oprations for Parametro

@@ -10,9 +10,9 @@ import (
 )
 
 type PerfilXMenuOpcion struct {
-	Id       int         `orm:"column(id);pk;auto"`
-	Perfil   *Perfil     `orm:"column(perfil);rel(fk)"`
-	Opcion   *MenuOpcion `orm:"column(opcion);rel(fk)"`
+	Id     int         `orm:"column(id);pk;auto"`
+	Perfil *Perfil     `orm:"column(perfil);rel(fk)"`
+	Opcion *MenuOpcion `orm:"column(opcion);rel(fk)"`
 }
 
 func (t *PerfilXMenuOpcion) TableName() string {
@@ -47,7 +47,7 @@ func GetPerfilXMenuOpcionById(id int) (v *PerfilXMenuOpcion, err error) {
 func GetAllPerfilXMenuOpcion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(PerfilXMenuOpcion))
+	qs := o.QueryTable(new(PerfilXMenuOpcion)).RelatedSel();
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

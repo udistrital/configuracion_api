@@ -14,8 +14,7 @@ type Aplicacion struct {
 	Nombre       string `orm:"column(nombre)"`
 	Descripcion  string `orm:"column(descripcion)"`
 	Dominio      string `orm:"column(dominio)"`
-	Ip           string `orm:"column(ip)"`
-	//EstadoActivo bool   `orm:"column(estado_activo)"`
+	EstadoActivo bool   `orm:"column(estado_activo)"`
 }
 
 func (t *Aplicacion) TableName() string {
@@ -50,7 +49,7 @@ func GetAplicacionById(id int) (v *Aplicacion, err error) {
 func GetAllAplicacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Aplicacion))
+	qs := o.QueryTable(new(Aplicacion)).RelatedSel();
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
