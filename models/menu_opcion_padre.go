@@ -55,7 +55,7 @@ func GetMenuOpcionPadreById(id int) (v *MenuOpcionPadre, err error) {
 func GetAllMenuOpcionPadre(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(MenuOpcionPadre)).RelatedSel();
+	qs := o.QueryTable(new(MenuOpcionPadre)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

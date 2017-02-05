@@ -40,11 +40,13 @@ func (c *MenuOpcionPadreController) Post() {
 			c.Data["json"] = v
 		} else {
 			c.Data["json"] = err.Error()
+			fmt.Println(err)
 		}
 	} else {
 		c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()
+	fmt.Println(c.Data["json"])
 }
 
 // GetOne ...
