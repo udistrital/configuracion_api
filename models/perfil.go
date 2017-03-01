@@ -12,7 +12,7 @@ import (
 type Perfil struct {
 	Id         int         `orm:"column(id);pk;auto"`
 	Nombre     string      `orm:"column(nombre)"`
-	//Dominio    string      `orm:"column(dominio)"`
+	Permiso    string      `orm:"column(permiso)"`
 	Aplicacion *Aplicacion `orm:"column(aplicacion);rel(fk)"`
 }
 
