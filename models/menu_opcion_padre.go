@@ -177,7 +177,7 @@ func ConstruirMenuPerfil(perfiles string) (menus []Menu){
 		//For para que recorra los Ids en busca de hijos
 			for i := 0; i < len(menusByPerfil); i++ {
 				//Me verifica que los Id tengan hijos
-				ConstruirSubMenusPerfil(&menusByPerfil[i])
+				ConstruirSubMenusPerfil(&menusByPerfil[i], perfiles)
 			}
 		
 		}
@@ -204,7 +204,7 @@ func MenusByAplicacion(app int) (menus []Menu){
 		//For para que recorra los Ids en busca de hijos
 			for i := 0; i < len(menusByApp); i++ {
 				//Me verifica que los Id tengan hijos
-				ConstruirSubMenusPerfil(&menusByApp[i])
+				ConstruirSubMenusPerfilApp(&menusByApp[i])
 			}
 		
 		}
@@ -213,7 +213,44 @@ func MenusByAplicacion(app int) (menus []Menu){
 
 
 //Función que construye los Submenús 
-func ConstruirSubMenusPerfil(Padre *Menu) (menus []Menu){
+func ConstruirSubMenusPerfil(Padre *Menu, perfiles string) (menus []Menu){
+	o := orm.NewOrm()
+	//Conversión de entero a string
+	padre := strconv.Itoa(Padre.Id)
+	
+	//Arreglo 
+	var subMenusByPerfil []Menu
+
+		/*num, err := o.Raw(`SELECT mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo 
+			FROM configuracion.menu_opcion AS mo left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo 
+			where mop.padre = "`+ padre + `" ORDER BY mo.id`).QueryRows(&subMenusByPerfil)*/
+
+		num, err := o.Raw(`SELECT mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo
+			FROM configuracion.perfil_x_menu_opcion AS pmo, configuracion.perfil pe, configuracion.menu_opcion AS mo 
+			left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo 
+			where mop.padre = '`+ padre + `' AND pe.id = pmo.perfil AND mo.id = pmo.opcion AND pe.nombre IN ('`+ perfiles + `')
+			ORDER BY mo.id`).QueryRows(&subMenusByPerfil)
+
+
+		//Condicional si el error es nulo
+		if err == nil {
+			fmt.Println("Menus Hijos encontrados: ", num)
+
+			//Llena el elemento Opciones en la estructura del menú padre
+			Padre.Opciones = &subMenusByPerfil
+
+			//For que recorre el subMenu en busca de hijos (Recursiva)
+			for i := 0; i < len(subMenusByPerfil); i++ {
+
+					//Me verifica que los Id tengan hijos
+					ConstruirSubMenusPerfil(&subMenusByPerfil[i], perfiles)	
+			}  
+		}
+		return subMenusByPerfil
+}
+
+//Función que construye los Submenús 
+func ConstruirSubMenusPerfilApp(Padre *Menu) (menus []Menu){
 	o := orm.NewOrm()
 	//Conversión de entero a string
 	padre := strconv.Itoa(Padre.Id)
@@ -233,7 +270,7 @@ func ConstruirSubMenusPerfil(Padre *Menu) (menus []Menu){
 			for i := 0; i < len(subMenusByPerfil); i++ {
 
 					//Me verifica que los Id tengan hijos
-					ConstruirSubMenusPerfil(&subMenusByPerfil[i])	
+					ConstruirSubMenusPerfilApp(&subMenusByPerfil[i])	
 			}  
 		}
 		return subMenusByPerfil
