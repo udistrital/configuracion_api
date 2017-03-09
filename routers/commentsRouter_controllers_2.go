@@ -7,14 +7,14 @@ import (
 func init() {
 
 
-	beego.GlobalControllerRouter["github.com/jsreyes/configuracion_api/controllers:MenuOpcionPadreController"] = append(beego.GlobalControllerRouter["github.com/jsreyes/configuracion_api/controllers:MenuOpcionPadreController"],
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MenuOpcionPadreController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MenuOpcionPadreController"],
 		beego.ControllerComments{
 			Method: "ArbolMenus",
 			Router: `/ArbolMenus/:perfil`,
 			AllowHTTPMethods: []string{"get"},
 			Params: nil})
 
-	beego.GlobalControllerRouter["github.com/jsreyes/configuracion_api/controllers:PerfilXMenuOpcionController"] = append(beego.GlobalControllerRouter["github.com/jsreyes/configuracion_api/controllers:PerfilXMenuOpcionController"],
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:PerfilXMenuOpcionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:PerfilXMenuOpcionController"],
 		beego.ControllerComments{
 			Method: "MenusPorAplicacion",
 			Router: `/MenusPorAplicacion/:id`,

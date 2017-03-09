@@ -3,7 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/jsreyes/configuracion_api/models"
+	"github.com/udistrital/configuracion_api/models"
 	"strconv"
 	"strings"
 	"fmt"

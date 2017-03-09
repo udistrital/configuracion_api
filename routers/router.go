@@ -8,7 +8,7 @@
 package routers
 
 import (
-	"github.com/jsreyes/configuracion_api/controllers"
+	"github.com/udistrital/configuracion_api/controllers"
 	"github.com/astaxie/beego/plugins/cors"
 	"github.com/astaxie/beego"
 )
@@ -62,6 +62,25 @@ func init() {
 				&controllers.ParametroController{},
 			),
 		),
+		beego.NSNamespace("/notificacion_tipo",
+
+			beego.NSInclude(
+				&controllers.NotificacionTipoController{},
+			),
+		),
+
+		beego.NSNamespace("/notificacion",
+			beego.NSInclude(
+				&controllers.NotificacionController{},
+			),
+		),
+
+		beego.NSNamespace("/notificacion_estado",
+			beego.NSInclude(
+				&controllers.NotificacionEstadoController{},
+			),
+		),
+
 	)
 	beego.AddNamespace(ns)
 }
