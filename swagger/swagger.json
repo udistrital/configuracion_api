@@ -9,7 +9,8 @@
             "email": "astaxie@gmail.com"
         },
         "license": {
-            "name": "Url http://www.apache.org/licenses/LICENSE-2.0.html"
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
     "basePath": "/v1",
@@ -62,7 +63,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Aplicacion"
+                            "$ref": "#/definitions/models.Aplicacion"
                         }
                     },
                     "403": {}
@@ -81,7 +82,7 @@
                         "description": "body for Aplicacion content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/Aplicacion"
+                            "$ref": "#/definitions/models.Aplicacion"
                         }
                     }
                 ],
@@ -114,7 +115,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Aplicacion"
+                            "$ref": "#/definitions/models.Aplicacion"
                         }
                     },
                     "403": {
@@ -142,14 +143,14 @@
                         "description": "body for Aplicacion content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/Aplicacion"
+                            "$ref": "#/definitions/models.Aplicacion"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Aplicacion"
+                            "$ref": "#/definitions/models.Aplicacion"
                         }
                     },
                     "403": {
@@ -230,7 +231,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/MenuOpcion"
+                            "$ref": "#/definitions/models.MenuOpcion"
                         }
                     },
                     "403": {}
@@ -249,7 +250,7 @@
                         "description": "body for MenuOpcion content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/MenuOpcion"
+                            "$ref": "#/definitions/models.MenuOpcion"
                         }
                     }
                 ],
@@ -282,7 +283,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/MenuOpcion"
+                            "$ref": "#/definitions/models.MenuOpcion"
                         }
                     },
                     "403": {
@@ -310,14 +311,14 @@
                         "description": "body for MenuOpcion content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/MenuOpcion"
+                            "$ref": "#/definitions/models.MenuOpcion"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/MenuOpcion"
+                            "$ref": "#/definitions/models.MenuOpcion"
                         }
                     },
                     "403": {
@@ -398,7 +399,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/MenuOpcionPadre"
+                            "$ref": "#/definitions/models.MenuOpcionPadre"
                         }
                     },
                     "403": {}
@@ -417,7 +418,7 @@
                         "description": "body for MenuOpcionPadre content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/MenuOpcionPadre"
+                            "$ref": "#/definitions/models.MenuOpcionPadre"
                         }
                     }
                 ],
@@ -450,7 +451,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/MenuOpcionPadre"
+                            "$ref": "#/definitions/models.MenuOpcionPadre"
                         }
                     },
                     "403": {
@@ -478,14 +479,14 @@
                         "description": "body for MenuOpcionPadre content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/MenuOpcionPadre"
+                            "$ref": "#/definitions/models.MenuOpcionPadre"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/MenuOpcionPadre"
+                            "$ref": "#/definitions/models.MenuOpcionPadre"
                         }
                     },
                     "403": {
@@ -499,6 +500,510 @@
                 ],
                 "description": "delete the MenuOpcionPadre",
                 "operationId": "MenuOpcionPadreController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion/": {
+            "get": {
+                "tags": [
+                    "notificacion"
+                ],
+                "description": "get Notificacion",
+                "operationId": "NotificacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.Notificacion"
+                        }
+                    },
+                    "403": {}
+                }
+            },
+            "post": {
+                "tags": [
+                    "notificacion"
+                ],
+                "description": "create Notificacion",
+                "operationId": "NotificacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Notificacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Notificacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.Notificacion"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion/{id}": {
+            "get": {
+                "tags": [
+                    "notificacion"
+                ],
+                "description": "get Notificacion by id",
+                "operationId": "NotificacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.Notificacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "notificacion"
+                ],
+                "description": "update the Notificacion",
+                "operationId": "NotificacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Notificacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Notificacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.Notificacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "notificacion"
+                ],
+                "description": "delete the Notificacion",
+                "operationId": "NotificacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion_estado/": {
+            "get": {
+                "tags": [
+                    "notificacion_estado"
+                ],
+                "description": "get NotificacionEstado",
+                "operationId": "NotificacionEstadoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionEstado"
+                        }
+                    },
+                    "403": {}
+                }
+            },
+            "post": {
+                "tags": [
+                    "notificacion_estado"
+                ],
+                "description": "create NotificacionEstado",
+                "operationId": "NotificacionEstadoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionEstado content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionEstado"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.NotificacionEstado"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion_estado/{id}": {
+            "get": {
+                "tags": [
+                    "notificacion_estado"
+                ],
+                "description": "get NotificacionEstado by id",
+                "operationId": "NotificacionEstadoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionEstado"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "notificacion_estado"
+                ],
+                "description": "update the NotificacionEstado",
+                "operationId": "NotificacionEstadoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionEstado content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionEstado"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionEstado"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "notificacion_estado"
+                ],
+                "description": "delete the NotificacionEstado",
+                "operationId": "NotificacionEstadoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion_tipo/": {
+            "get": {
+                "tags": [
+                    "notificacion_tipo"
+                ],
+                "description": "get NotificacionTipo",
+                "operationId": "NotificacionTipoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionTipo"
+                        }
+                    },
+                    "403": {}
+                }
+            },
+            "post": {
+                "tags": [
+                    "notificacion_tipo"
+                ],
+                "description": "create NotificacionTipo",
+                "operationId": "NotificacionTipoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionTipo content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionTipo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.NotificacionTipo"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion_tipo/{id}": {
+            "get": {
+                "tags": [
+                    "notificacion_tipo"
+                ],
+                "description": "get NotificacionTipo by id",
+                "operationId": "NotificacionTipoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionTipo"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "notificacion_tipo"
+                ],
+                "description": "update the NotificacionTipo",
+                "operationId": "NotificacionTipoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionTipo content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionTipo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionTipo"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "notificacion_tipo"
+                ],
+                "description": "delete the NotificacionTipo",
+                "operationId": "NotificacionTipoController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -566,7 +1071,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Parametro"
+                            "$ref": "#/definitions/models.Parametro"
                         }
                     },
                     "403": {}
@@ -585,7 +1090,7 @@
                         "description": "body for Parametro content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/Parametro"
+                            "$ref": "#/definitions/models.Parametro"
                         }
                     }
                 ],
@@ -618,7 +1123,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Parametro"
+                            "$ref": "#/definitions/models.Parametro"
                         }
                     },
                     "403": {
@@ -646,14 +1151,14 @@
                         "description": "body for Parametro content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/Parametro"
+                            "$ref": "#/definitions/models.Parametro"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Parametro"
+                            "$ref": "#/definitions/models.Parametro"
                         }
                     },
                     "403": {
@@ -734,7 +1239,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Perfil"
+                            "$ref": "#/definitions/models.Perfil"
                         }
                     },
                     "403": {}
@@ -753,7 +1258,7 @@
                         "description": "body for Perfil content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/Perfil"
+                            "$ref": "#/definitions/models.Perfil"
                         }
                     }
                 ],
@@ -786,7 +1291,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Perfil"
+                            "$ref": "#/definitions/models.Perfil"
                         }
                     },
                     "403": {
@@ -814,14 +1319,14 @@
                         "description": "body for Perfil content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/Perfil"
+                            "$ref": "#/definitions/models.Perfil"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/Perfil"
+                            "$ref": "#/definitions/models.Perfil"
                         }
                     },
                     "403": {
@@ -902,7 +1407,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/PerfilXMenuOpcion"
+                            "$ref": "#/definitions/models.PerfilXMenuOpcion"
                         }
                     },
                     "403": {}
@@ -921,7 +1426,7 @@
                         "description": "body for PerfilXMenuOpcion content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/PerfilXMenuOpcion"
+                            "$ref": "#/definitions/models.PerfilXMenuOpcion"
                         }
                     }
                 ],
@@ -954,7 +1459,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/PerfilXMenuOpcion"
+                            "$ref": "#/definitions/models.PerfilXMenuOpcion"
                         }
                     },
                     "403": {
@@ -982,14 +1487,14 @@
                         "description": "body for PerfilXMenuOpcion content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/PerfilXMenuOpcion"
+                            "$ref": "#/definitions/models.PerfilXMenuOpcion"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/PerfilXMenuOpcion"
+                            "$ref": "#/definitions/models.PerfilXMenuOpcion"
                         }
                     },
                     "403": {
@@ -1024,7 +1529,10 @@
         }
     },
     "definitions": {
-        "Aplicacion": {
+        ".Time": {
+            "type": "object"
+        },
+        "models.Aplicacion": {
             "title": "Aplicacion",
             "type": "object",
             "properties": {
@@ -1046,12 +1554,12 @@
                 }
             }
         },
-        "MenuOpcion": {
+        "models.MenuOpcion": {
             "title": "MenuOpcion",
             "type": "object",
             "properties": {
                 "Aplicacion": {
-                    "$ref": "#/definitions/Aplicacion"
+                    "$ref": "#/definitions/models.Aplicacion"
                 },
                 "Descripcion": {
                     "type": "string"
@@ -1074,28 +1582,87 @@
                 }
             }
         },
-        "MenuOpcionPadre": {
+        "models.MenuOpcionPadre": {
             "title": "MenuOpcionPadre",
             "type": "object",
             "properties": {
                 "Hijo": {
-                    "$ref": "#/definitions/MenuOpcion"
+                    "$ref": "#/definitions/models.MenuOpcion"
                 },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
                 "Padre": {
-                    "$ref": "#/definitions/MenuOpcion"
+                    "$ref": "#/definitions/models.MenuOpcion"
                 }
             }
         },
-        "Parametro": {
+        "models.Notificacion": {
+            "title": "Notificacion",
+            "type": "object",
+            "properties": {
+                "AplicacionOrigen": {
+                    "$ref": "#/definitions/models.Aplicacion"
+                },
+                "CuerpoNotificacion": {
+                    "type": "string"
+                },
+                "EstadoNotificacion": {
+                    "$ref": "#/definitions/models.NotificacionEstado"
+                },
+                "FechaCreacion": {
+                    "$ref": "#/definitions/time.Time"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PerfilDestino": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "TipoNotificacion": {
+                    "$ref": "#/definitions/models.NotificacionTipo"
+                },
+                "UsuarioDestino": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.NotificacionEstado": {
+            "title": "NotificacionEstado",
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.NotificacionTipo": {
+            "title": "NotificacionTipo",
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Parametro": {
             "title": "Parametro",
             "type": "object",
             "properties": {
                 "Aplicacion": {
-                    "$ref": "#/definitions/Aplicacion"
+                    "$ref": "#/definitions/models.Aplicacion"
                 },
                 "Id": {
                     "type": "integer",
@@ -1109,15 +1676,12 @@
                 }
             }
         },
-        "Perfil": {
+        "models.Perfil": {
             "title": "Perfil",
             "type": "object",
             "properties": {
                 "Aplicacion": {
-                    "$ref": "#/definitions/Aplicacion"
-                },
-                "Dominio": {
-                    "type": "string"
+                    "$ref": "#/definitions/models.Aplicacion"
                 },
                 "Id": {
                     "type": "integer",
@@ -1125,10 +1689,13 @@
                 },
                 "Nombre": {
                     "type": "string"
+                },
+                "Permiso": {
+                    "type": "string"
                 }
             }
         },
-        "PerfilXMenuOpcion": {
+        "models.PerfilXMenuOpcion": {
             "title": "PerfilXMenuOpcion",
             "type": "object",
             "properties": {
@@ -1137,10 +1704,10 @@
                     "format": "int64"
                 },
                 "Opcion": {
-                    "$ref": "#/definitions/MenuOpcion"
+                    "$ref": "#/definitions/models.MenuOpcion"
                 },
                 "Perfil": {
-                    "$ref": "#/definitions/Perfil"
+                    "$ref": "#/definitions/models.Perfil"
                 }
             }
         }
@@ -1169,6 +1736,18 @@
         {
             "name": "parametro",
             "description": "ParametroController oprations for Parametro\n"
+        },
+        {
+            "name": "notificacion_tipo",
+            "description": "NotificacionTipoController operations for NotificacionTipo\n"
+        },
+        {
+            "name": "notificacion",
+            "description": "NotificacionController operations for Notificacion\n"
+        },
+        {
+            "name": "notificacion_estado",
+            "description": "NotificacionEstadoController operations for NotificacionEstado\n"
         }
     ]
 }
