@@ -14,7 +14,7 @@ type Aplicacion struct {
 	Nombre       string `orm:"column(nombre)"`
 	Descripcion  string `orm:"column(descripcion)"`
 	Dominio      string `orm:"column(dominio)"`
-	EstadoActivo bool   `orm:"column(estado_activo)"`
+	Estado 		bool   `orm:"column(estado)"`
 }
 
 func (t *Aplicacion) TableName() string {
