@@ -16,7 +16,6 @@ type MenuOpcion struct {
 	Url         string      `orm:"column(url)"`
 	Layout      string      `orm:"column(layout);null"`
 	Aplicacion  *Aplicacion `orm:"column(aplicacion);rel(fk)"`
-	Estado      bool        `orm:"column(estado);null"`
 }
 
 func (t *MenuOpcion) TableName() string {
