@@ -15,7 +15,7 @@ type Notificacion struct {
 	UsuarioDestino     int64               `orm:"column(usuario_destino);null"`
 	PerfilDestino      int64               `orm:"column(perfil_destino);null"`
 	AplicacionOrigen   *Aplicacion         `orm:"column(aplicacion_origen);rel(fk)"`
-	FechaCreacion      time.Time           `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaCreacion      time.Time           `orm:"column(fecha_creacion);auto_now_add;type(timestamp with time zone)"`
 	EstadoNotificacion *NotificacionEstado `orm:"column(estado_notificacion);rel(fk)"`
 	CuerpoNotificacion string              `orm:"column(cuerpo_notificacion);type(json);null"`
 	TipoNotificacion   *NotificacionTipo   `orm:"column(tipo_notificacion);rel(fk)"`
