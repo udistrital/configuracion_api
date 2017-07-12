@@ -4,8 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
-	"strings"
 	"strconv"
+	"strings"
+
 	"github.com/astaxie/beego/orm"
 )
 
@@ -17,10 +18,11 @@ type MenuOpcionPadre struct {
 
 //Estructura para construir los menus
 type Menu struct {
-	Id int
-    Nombre string
-    Url string
-    Opciones *[]Menu
+	Id         int
+	Nombre     string
+	Url        string
+	TipoOpcion string
+	Opciones   *[]Menu
 }
 
 func (t *MenuOpcionPadre) TableName() string {
@@ -154,124 +156,120 @@ func DeleteMenuOpcionPadre(id int) (err error) {
 	return
 }
 
-//Función que construye los menús 
-func ConstruirMenuPerfil(perfiles string) (menus []Menu){
-	o := orm.NewOrm()		
-	//Arreglo 
-	var menusByPerfil []Menu		
-	num, err := o.Raw(`Select mo.id AS id, mo.nombre AS nombre, mo.url AS URL, mop.padre AS padre
+//Función que construye los menús
+func ConstruirMenuPerfil(perfiles string) (menus []Menu) {
+	o := orm.NewOrm()
+	//Arreglo
+	var menusByPerfil []Menu
+	num, err := o.Raw(`Select mo.id AS id, mo.nombre AS nombre, mo.url AS URL, mop.padre AS padre, mo.tipo_opcion
 						FROM configuracion.perfil pe, configuracion.perfil_x_menu_opcion pmo,
-						configuracion.aplicacion app, configuracion.menu_opcion 
-						AS mo left join configuracion.menu_opcion_padre 
-						AS mop ON mo.id = mop.hijo 
+						configuracion.aplicacion app, configuracion.menu_opcion
+						AS mo left join configuracion.menu_opcion_padre
+						AS mop ON mo.id = mop.hijo
 						WHERE app.id = mo.aplicacion
 						AND pe.id = pmo.perfil AND mo.id = pmo.opcion
-						AND pe.nombre IN ('`+ perfiles + `') AND padre IS NULL ORDER BY mo.id`).QueryRows(&menusByPerfil)
+						AND pe.nombre IN ('` + perfiles + `') AND padre IS NULL ORDER BY mo.id`).QueryRows(&menusByPerfil)
 
+	//num, err := o.Raw("Select Distinct mo. id, mo.nombre, mo.url FROM configuracion.menu_opcion AS mo, configuracion.menu_opcion_padre AS mop, configuracion.perfil_x_menu_opcion AS pmo, configuracion.perfil pe, configuracion.aplicacion app where pe.nombre = '" + perfiles + "'AND mo.id = mop.padre AND pmo.opcion = mo.id AND pmo.perfil = pe.id AND app.id = mo.aplicacion AND mop.padre NOT IN (Select mop2.hijo FROM configuracion.menu_opcion_padre mop2) ORDER BY mo.id").QueryRows(&menusByPerfil)
 
-		//num, err := o.Raw("Select Distinct mo. id, mo.nombre, mo.url FROM configuracion.menu_opcion AS mo, configuracion.menu_opcion_padre AS mop, configuracion.perfil_x_menu_opcion AS pmo, configuracion.perfil pe, configuracion.aplicacion app where pe.nombre = '" + perfiles + "'AND mo.id = mop.padre AND pmo.opcion = mo.id AND pmo.perfil = pe.id AND app.id = mo.aplicacion AND mop.padre NOT IN (Select mop2.hijo FROM configuracion.menu_opcion_padre mop2) ORDER BY mo.id").QueryRows(&menusByPerfil)
-
-
-		if err == nil {
-	    fmt.Println("Menus padre encontrados: ", num)
+	if err == nil {
+		fmt.Println("Menus padre encontrados: ", num)
 		//For para que recorra los Ids en busca de hijos
-			for i := 0; i < len(menusByPerfil); i++ {
-				//Me verifica que los Id tengan hijos
-				ConstruirSubMenusPerfil(&menusByPerfil[i], perfiles)
-			}
-		
+		for i := 0; i < len(menusByPerfil); i++ {
+			//Me verifica que los Id tengan hijos
+			ConstruirSubMenusPerfil(&menusByPerfil[i], perfiles)
 		}
-		return menusByPerfil
+
+	}
+	return menusByPerfil
 }
 
-//Función que obtiene los menús padre de acuerdo al Id de la aplicación 
-func MenusByAplicacion(app int) (menus []Menu){
+//Función que obtiene los menús padre de acuerdo al Id de la aplicación
+func MenusByAplicacion(app int) (menus []Menu) {
 	o := orm.NewOrm()
 
 	//Conversión de entero a string
 	aplicacion := strconv.Itoa(app)
-	//Arreglo 
-	var menusByApp []Menu		
-		num, err := o.Raw(`Select Distinct mo.id AS id, mo.nombre AS nombre, mo.url AS URL, mop.padre AS padre
-							FROM configuracion.aplicacion app, configuracion.menu_opcion 
-							AS mo left join configuracion.menu_opcion_padre 
-							AS mop ON mo.id = mop.hijo 
-							WHERE `+ aplicacion + ` = mo.aplicacion
+	//Arreglo
+	var menusByApp []Menu
+	num, err := o.Raw(`Select Distinct mo.id AS id, mo.nombre AS nombre, mo.url AS URL, mop.padre AS padre, mo.tipo_opcion
+							FROM configuracion.aplicacion app, configuracion.menu_opcion
+							AS mo left join configuracion.menu_opcion_padre
+							AS mop ON mo.id = mop.hijo
+							WHERE ` + aplicacion + ` = mo.aplicacion
 							AND padre IS NULL ORDER BY mo.id`).QueryRows(&menusByApp)
 
-		if err == nil {
-	    fmt.Println("Menus padre encontrados: ", num)
+	if err == nil {
+		fmt.Println("Menus padre encontrados: ", num)
 		//For para que recorra los Ids en busca de hijos
-			for i := 0; i < len(menusByApp); i++ {
-				//Me verifica que los Id tengan hijos
-				ConstruirSubMenusPerfilApp(&menusByApp[i])
-			}
-		
+		for i := 0; i < len(menusByApp); i++ {
+			//Me verifica que los Id tengan hijos
+			ConstruirSubMenusPerfilApp(&menusByApp[i])
 		}
-		return menusByApp
+
+	}
+	return menusByApp
 }
 
-
-//Función que construye los Submenús 
-func ConstruirSubMenusPerfil(Padre *Menu, perfiles string) (menus []Menu){
+//Función que construye los Submenús
+func ConstruirSubMenusPerfil(Padre *Menu, perfiles string) (menus []Menu) {
 	o := orm.NewOrm()
 	//Conversión de entero a string
 	padre := strconv.Itoa(Padre.Id)
-	
-	//Arreglo 
+
+	//Arreglo
 	var subMenusByPerfil []Menu
 
-		/*num, err := o.Raw(`SELECT mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo 
-			FROM configuracion.menu_opcion AS mo left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo 
-			where mop.padre = "`+ padre + `" ORDER BY mo.id`).QueryRows(&subMenusByPerfil)*/
+	/*num, err := o.Raw(`SELECT mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo
+	FROM configuracion.menu_opcion AS mo left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo
+	where mop.padre = "`+ padre + `" ORDER BY mo.id`).QueryRows(&subMenusByPerfil)*/
 
-		num, err := o.Raw(`SELECT mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo
-			FROM configuracion.perfil_x_menu_opcion AS pmo, configuracion.perfil pe, configuracion.menu_opcion AS mo 
-			left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo 
-			where mop.padre = '`+ padre + `' AND pe.id = pmo.perfil AND mo.id = pmo.opcion AND pe.nombre IN ('`+ perfiles + `')
+	num, err := o.Raw(`SELECT mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo, mo.tipo_opcion
+			FROM configuracion.perfil_x_menu_opcion AS pmo, configuracion.perfil pe, configuracion.menu_opcion AS mo
+			left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo
+			where mop.padre = '` + padre + `' AND pe.id = pmo.perfil AND mo.id = pmo.opcion AND pe.nombre IN ('` + perfiles + `')
 			ORDER BY mo.id`).QueryRows(&subMenusByPerfil)
 
+	//Condicional si el error es nulo
+	if err == nil {
+		fmt.Println("Menus Hijos encontrados: ", num)
 
-		//Condicional si el error es nulo
-		if err == nil {
-			fmt.Println("Menus Hijos encontrados: ", num)
+		//Llena el elemento Opciones en la estructura del menú padre
+		Padre.Opciones = &subMenusByPerfil
 
-			//Llena el elemento Opciones en la estructura del menú padre
-			Padre.Opciones = &subMenusByPerfil
+		//For que recorre el subMenu en busca de hijos (Recursiva)
+		for i := 0; i < len(subMenusByPerfil); i++ {
 
-			//For que recorre el subMenu en busca de hijos (Recursiva)
-			for i := 0; i < len(subMenusByPerfil); i++ {
-
-					//Me verifica que los Id tengan hijos
-					ConstruirSubMenusPerfil(&subMenusByPerfil[i], perfiles)	
-			}  
+			//Me verifica que los Id tengan hijos
+			ConstruirSubMenusPerfil(&subMenusByPerfil[i], perfiles)
 		}
-		return subMenusByPerfil
+	}
+	return subMenusByPerfil
 }
 
-//Función que construye los Submenús 
-func ConstruirSubMenusPerfilApp(Padre *Menu) (menus []Menu){
+//Función que construye los Submenús
+func ConstruirSubMenusPerfilApp(Padre *Menu) (menus []Menu) {
 	o := orm.NewOrm()
 	//Conversión de entero a string
 	padre := strconv.Itoa(Padre.Id)
-	
-	//Arreglo 
+
+	//Arreglo
 	var subMenusByPerfil []Menu
 
-		num, err := o.Raw("SELECT mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo FROM configuracion.menu_opcion AS mo left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo where mop.padre = '"+ padre + "' ORDER BY mo.id").QueryRows(&subMenusByPerfil)
-		//Condicional si el error es nulo
-		if err == nil {
-			fmt.Println("Menus Hijos encontrados: ", num)
+	num, err := o.Raw("SELECT mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo, mo.tipo_opcion FROM configuracion.menu_opcion AS mo left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo where mop.padre = '" + padre + "' ORDER BY mo.id").QueryRows(&subMenusByPerfil)
+	//Condicional si el error es nulo
+	if err == nil {
+		fmt.Println("Menus Hijos encontrados: ", num)
 
-			//Llena el elemento Opciones en la estructura del menú padre
-			Padre.Opciones = &subMenusByPerfil
+		//Llena el elemento Opciones en la estructura del menú padre
+		Padre.Opciones = &subMenusByPerfil
 
-			//For que recorre el subMenu en busca de hijos (Recursiva)
-			for i := 0; i < len(subMenusByPerfil); i++ {
+		//For que recorre el subMenu en busca de hijos (Recursiva)
+		for i := 0; i < len(subMenusByPerfil); i++ {
 
-					//Me verifica que los Id tengan hijos
-					ConstruirSubMenusPerfilApp(&subMenusByPerfil[i])	
-			}  
+			//Me verifica que los Id tengan hijos
+			ConstruirSubMenusPerfilApp(&subMenusByPerfil[i])
 		}
-		return subMenusByPerfil
+	}
+	return subMenusByPerfil
 }
