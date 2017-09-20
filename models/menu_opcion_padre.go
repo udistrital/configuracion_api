@@ -161,7 +161,7 @@ func ConstruirMenuPerfil(perfiles string) (menus []Menu) {
 	o := orm.NewOrm()
 	//Arreglo
 	var menusByPerfil []Menu
-	num, err := o.Raw(`Select mo.id AS id, mo.nombre AS nombre, mo.url AS URL, mop.padre AS padre, mo.tipo_opcion
+	num, err := o.Raw(`Select Distinct mo.id AS id, mo.nombre AS nombre, mo.url AS URL, mop.padre AS padre, mo.tipo_opcion
 						FROM configuracion.perfil pe, configuracion.perfil_x_menu_opcion pmo,
 						configuracion.aplicacion app, configuracion.menu_opcion
 						AS mo left join configuracion.menu_opcion_padre
@@ -224,7 +224,7 @@ func ConstruirSubMenusPerfil(Padre *Menu, perfiles string) (menus []Menu) {
 	FROM configuracion.menu_opcion AS mo left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo
 	where mop.padre = "`+ padre + `" ORDER BY mo.id`).QueryRows(&subMenusByPerfil)*/
 
-	num, err := o.Raw(`SELECT mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo, mo.tipo_opcion
+	num, err := o.Raw(`SELECT Distinct mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo, mo.tipo_opcion
 			FROM configuracion.perfil_x_menu_opcion AS pmo, configuracion.perfil pe, configuracion.menu_opcion AS mo
 			left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo
 			where mop.padre = '` + padre + `' AND pe.id = pmo.perfil AND mo.id = pmo.opcion AND pe.nombre IN ('` + perfiles + `')
@@ -256,7 +256,7 @@ func ConstruirSubMenusPerfilApp(Padre *Menu) (menus []Menu) {
 	//Arreglo
 	var subMenusByPerfil []Menu
 
-	num, err := o.Raw("SELECT mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo, mo.tipo_opcion FROM configuracion.menu_opcion AS mo left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo where mop.padre = '" + padre + "' ORDER BY mo.id").QueryRows(&subMenusByPerfil)
+	num, err := o.Raw("SELECT Distinct mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo, mo.tipo_opcion FROM configuracion.menu_opcion AS mo left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo where mop.padre = '" + padre + "' ORDER BY mo.id").QueryRows(&subMenusByPerfil)
 	//Condicional si el error es nulo
 	if err == nil {
 		fmt.Println("Menus Hijos encontrados: ", num)
