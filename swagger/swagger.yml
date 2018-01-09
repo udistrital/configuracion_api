@@ -356,7 +356,7 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
-  /menu_opcion_padre/menu_opcion_padre/ArbolMenus/{roles}/{app}:
+  /menu_opcion_padre/ArbolMenus/{roles}/{app}:
     get:
       tags:
       - menu_opcion_padre

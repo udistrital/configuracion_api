@@ -182,7 +182,7 @@ func (c *MenuOpcionPadreController) Delete() {
 // @Success 200 {object} models.MenuOpcionPadre
 // @Failure 403 :roles is empty
 // @Failure 403 :app is empty
-// @router /menu_opcion_padre/ArbolMenus/:roles/:app [get]
+// @router /ArbolMenus/:roles/:app [get]
 func (c *MenuOpcionPadreController) ArbolMenus() {
 	fmt.Println(c.Ctx.Input.Param(":roles"))
 	roles := c.Ctx.Input.Param(":roles")
