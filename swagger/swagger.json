@@ -62,11 +62,14 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Aplicacion"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
@@ -114,6 +117,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Aplicacion"
                         }
@@ -149,6 +153,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Aplicacion"
                         }
@@ -230,11 +235,14 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.MenuOpcion"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
@@ -282,6 +290,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.MenuOpcion"
                         }
@@ -317,6 +326,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.MenuOpcion"
                         }
@@ -398,11 +408,14 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.MenuOpcionPadre"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
@@ -432,6 +445,42 @@
                 }
             }
         },
+        "/menu_opcion_padre/menu_opcion_padre/ArbolMenus/{roles}/{app}": {
+            "get": {
+                "tags": [
+                    "menu_opcion_padre"
+                ],
+                "description": "Genera árbol de menus de acuerdo a roles y app",
+                "operationId": "MenuOpcionPadreController.ArbolMenus",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "roles",
+                        "description": "Los roles a los que se necesita que se desplieguen las opciones",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "app",
+                        "description": "Aplicación a la cual pertenecen las opciones",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MenuOpcionPadre"
+                        }
+                    },
+                    "403": {
+                        "description": ":app is empty"
+                    }
+                }
+            }
+        },
         "/menu_opcion_padre/{id}": {
             "get": {
                 "tags": [
@@ -450,6 +499,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.MenuOpcionPadre"
                         }
@@ -485,6 +535,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.MenuOpcionPadre"
                         }
@@ -566,11 +617,14 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Notificacion"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
@@ -618,6 +672,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Notificacion"
                         }
@@ -653,6 +708,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Notificacion"
                         }
@@ -734,11 +790,14 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.NotificacionEstado"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
@@ -786,6 +845,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.NotificacionEstado"
                         }
@@ -821,6 +881,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.NotificacionEstado"
                         }
@@ -902,11 +963,14 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.NotificacionTipo"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
@@ -954,6 +1018,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.NotificacionTipo"
                         }
@@ -989,6 +1054,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.NotificacionTipo"
                         }
@@ -1070,11 +1136,14 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Parametro"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
@@ -1122,6 +1191,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Parametro"
                         }
@@ -1157,6 +1227,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Parametro"
                         }
@@ -1238,11 +1309,14 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Perfil"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
@@ -1290,6 +1364,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Perfil"
                         }
@@ -1325,6 +1400,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.Perfil"
                         }
@@ -1406,11 +1482,14 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.PerfilXMenuOpcion"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
@@ -1458,6 +1537,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.PerfilXMenuOpcion"
                         }
@@ -1493,6 +1573,7 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.PerfilXMenuOpcion"
                         }
@@ -1529,9 +1610,6 @@
         }
     },
     "definitions": {
-        ".Time": {
-            "type": "object"
-        },
         "models.Aplicacion": {
             "title": "Aplicacion",
             "type": "object",
@@ -1542,7 +1620,7 @@
                 "Dominio": {
                     "type": "string"
                 },
-                "EstadoActivo": {
+                "Estado": {
                     "type": "boolean"
                 },
                 "Id": {
@@ -1564,9 +1642,6 @@
                 "Descripcion": {
                     "type": "string"
                 },
-                "Estado": {
-                    "type": "boolean"
-                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -1575,6 +1650,9 @@
                     "type": "string"
                 },
                 "Nombre": {
+                    "type": "string"
+                },
+                "TipoOpcion": {
                     "type": "string"
                 },
                 "Url": {
@@ -1612,7 +1690,8 @@
                     "$ref": "#/definitions/models.NotificacionEstado"
                 },
                 "FechaCreacion": {
-                    "$ref": "#/definitions/time.Time"
+                    "type": "string",
+                    "format": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -1688,9 +1767,6 @@
                     "format": "int64"
                 },
                 "Nombre": {
-                    "type": "string"
-                },
-                "Permiso": {
                     "type": "string"
                 }
             }
