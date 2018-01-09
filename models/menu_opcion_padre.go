@@ -157,20 +157,19 @@ func DeleteMenuOpcionPadre(id int) (err error) {
 }
 
 //Función que construye los menús
-func ConstruirMenuPerfil(perfiles string) (menus []Menu) {
+func ConstruirMenuPerfil(perfiles string, app string) (menus []Menu) {
 	o := orm.NewOrm()
 	//Arreglo
 	var menusByPerfil []Menu
 	num, err := o.Raw(`Select Distinct mo.id AS id, mo.nombre AS nombre, mo.url AS URL, mop.padre AS padre, mo.tipo_opcion
-						FROM configuracion.perfil pe, configuracion.perfil_x_menu_opcion pmo,
-						configuracion.aplicacion app, configuracion.menu_opcion
-						AS mo left join configuracion.menu_opcion_padre
-						AS mop ON mo.id = mop.hijo
-						WHERE app.id = mo.aplicacion
-						AND pe.id = pmo.perfil AND mo.id = pmo.opcion
-						AND pe.nombre IN ('` + perfiles + `') AND padre IS NULL ORDER BY mo.id`).QueryRows(&menusByPerfil)
-
-	//num, err := o.Raw("Select Distinct mo. id, mo.nombre, mo.url FROM configuracion.menu_opcion AS mo, configuracion.menu_opcion_padre AS mop, configuracion.perfil_x_menu_opcion AS pmo, configuracion.perfil pe, configuracion.aplicacion app where pe.nombre = '" + perfiles + "'AND mo.id = mop.padre AND pmo.opcion = mo.id AND pmo.perfil = pe.id AND app.id = mo.aplicacion AND mop.padre NOT IN (Select mop2.hijo FROM configuracion.menu_opcion_padre mop2) ORDER BY mo.id").QueryRows(&menusByPerfil)
+				FROM configuracion.perfil pe, configuracion.perfil_x_menu_opcion pmo,
+				configuracion.aplicacion app, configuracion.menu_opcion
+				AS mo left join configuracion.menu_opcion_padre
+				AS mop ON mo.id = mop.hijo
+				WHERE app.id = mo.aplicacion
+				AND pe.id = pmo.perfil AND mo.id = pmo.opcion
+				AND app.nombre = ('`+ app +`')
+				AND pe.nombre IN ('` + perfiles + `') AND padre IS NULL ORDER BY mo.id`).QueryRows(&menusByPerfil)
 
 	if err == nil {
 		fmt.Println("Menus padre encontrados: ", num)
@@ -193,11 +192,11 @@ func MenusByAplicacion(app int) (menus []Menu) {
 	//Arreglo
 	var menusByApp []Menu
 	num, err := o.Raw(`Select Distinct mo.id AS id, mo.nombre AS nombre, mo.url AS URL, mop.padre AS padre, mo.tipo_opcion
-							FROM configuracion.aplicacion app, configuracion.menu_opcion
-							AS mo left join configuracion.menu_opcion_padre
-							AS mop ON mo.id = mop.hijo
-							WHERE ` + aplicacion + ` = mo.aplicacion
-							AND padre IS NULL ORDER BY mo.id`).QueryRows(&menusByApp)
+				FROM configuracion.aplicacion app, configuracion.menu_opcion
+				AS mo left join configuracion.menu_opcion_padre
+				AS mop ON mo.id = mop.hijo
+				WHERE ` + aplicacion + ` = mo.aplicacion
+				AND padre IS NULL ORDER BY mo.id`).QueryRows(&menusByApp)
 
 	if err == nil {
 		fmt.Println("Menus padre encontrados: ", num)
@@ -256,7 +255,12 @@ func ConstruirSubMenusPerfilApp(Padre *Menu) (menus []Menu) {
 	//Arreglo
 	var subMenusByPerfil []Menu
 
-	num, err := o.Raw("SELECT Distinct mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo, mo.tipo_opcion FROM configuracion.menu_opcion AS mo left join configuracion.menu_opcion_padre AS mop ON mo.id = mop.hijo where mop.padre = '" + padre + "' ORDER BY mo.id").QueryRows(&subMenusByPerfil)
+	
+	
+	num, err := o.Raw(`SELECT Distinct mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo, mo.tipo_opcion 
+			  FROM configuracion.menu_opcion 
+			  AS mo left join configuracion.menu_opcion_padre 
+			  AS mop ON mo.id = mop.hijo where mop.padre = '" + padre + "' ORDER BY mo.id`).QueryRows(&subMenusByPerfil)
 	//Condicional si el error es nulo
 	if err == nil {
 		fmt.Println("Menus Hijos encontrados: ", num)
