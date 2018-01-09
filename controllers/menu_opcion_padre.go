@@ -3,11 +3,12 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/configuracion_api/models"
+	"fmt"
 	"strconv"
 	"strings"
-	"fmt"
+
 	"github.com/astaxie/beego"
+	"github.com/udistrital/configuracion_api/models"
 )
 
 // MenuOpcionPadreController oprations for MenuOpcionPadre
@@ -173,19 +174,27 @@ func (c *MenuOpcionPadreController) Delete() {
 	c.ServeJSON()
 }
 
-//Función para armar los árboles de lo menús
+// ArbolMenus ...
+// @Title ArbolMenus
+// @Description Genera árbol de menus de acuerdo a roles y app
+// @Param	roles		path 	string	true		"Los roles a los que se necesita que se desplieguen las opciones"
+// @Param	app		path 	string	true		"Aplicación a la cual pertenecen las opciones"
+// @Success 200 {object} models.MenuOpcionPadre
+// @Failure 403 :roles is empty
+// @Failure 403 :app is empty
+// @router /menu_opcion_padre/ArbolMenus/:roles/:app [get]
 func (c *MenuOpcionPadreController) ArbolMenus() {
-	fmt.Println(c.Ctx.Input.Param(":perfil"));
-	perfiles := c.Ctx.Input.Param(":perfil")
-	//perfiles := ("Admin_Arka")
+	fmt.Println(c.Ctx.Input.Param(":roles"))
+	roles := c.Ctx.Input.Param(":roles")
+	app := c.Ctx.Input.Param(":app")
 	perfilesR := strings.NewReplacer(",", "','")
 
 	//Construcción Json menus
-	l := models.ConstruirMenuPerfil(perfilesR.Replace(perfiles))
-	fmt.Println("Este es el resultado de la consulta");
-	fmt.Println(l);
-	
+	l := models.ConstruirMenuPerfil(perfilesR.Replace(roles), app)
+	fmt.Println("Este es el resultado de la consulta")
+	fmt.Println(l)
+
 	c.Data["json"] = l
 	//Generera el Json con los datos obtenidos
-	c.ServeJSON()	
+	c.ServeJSON()
 }

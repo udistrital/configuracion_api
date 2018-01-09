@@ -168,7 +168,7 @@ func ConstruirMenuPerfil(perfiles string, app string) (menus []Menu) {
 				AS mop ON mo.id = mop.hijo
 				WHERE app.id = mo.aplicacion
 				AND pe.id = pmo.perfil AND mo.id = pmo.opcion
-				AND app.nombre = ('`+ app +`')
+				AND app.nombre = ('` + app + `')
 				AND pe.nombre IN ('` + perfiles + `') AND padre IS NULL ORDER BY mo.id`).QueryRows(&menusByPerfil)
 
 	if err == nil {
@@ -255,12 +255,10 @@ func ConstruirSubMenusPerfilApp(Padre *Menu) (menus []Menu) {
 	//Arreglo
 	var subMenusByPerfil []Menu
 
-	
-	
-	num, err := o.Raw(`SELECT Distinct mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo, mo.tipo_opcion 
-			  FROM configuracion.menu_opcion 
-			  AS mo left join configuracion.menu_opcion_padre 
-			  AS mop ON mo.id = mop.hijo where mop.padre = '" + padre + "' ORDER BY mo.id`).QueryRows(&subMenusByPerfil)
+	num, err := o.Raw(`SELECT Distinct mo.id, mo.nombre, mo.URL, mop.padre, mop.hijo, mo.tipo_opcion
+			  FROM configuracion.menu_opcion
+			  AS mo left join configuracion.menu_opcion_padre
+			  AS mop ON mo.id = mop.hijo where mop.padre = '` + padre + `' ORDER BY mo.id`).QueryRows(&subMenusByPerfil)
 	//Condicional si el error es nulo
 	if err == nil {
 		fmt.Println("Menus Hijos encontrados: ", num)
