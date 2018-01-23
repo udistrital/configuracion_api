@@ -8,22 +8,26 @@
 package routers
 
 import (
-	"github.com/udistrital/configuracion_api/controllers"
-	"github.com/astaxie/beego/plugins/cors"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/plugins/cors"
+	"github.com/udistrital/configuracion_api/controllers"
+	//Librería auditoría
+	"github.com/udistrital/auditoria"
 )
 
 func init() {
+	//Iniciando middlware
+	auditoria.InitMiddleware()
 
 	//Incluyendo el CORS
-	 beego.Debug("Filters init...")
-    beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
-        AllowAllOrigins:  true,
-        AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-        AllowHeaders:     []string{"Origin", "Authorization", "Access-Control-Allow-Origin", "Content-Type"},
-        ExposeHeaders:    []string{"Content-Length", "Access-Control-Allow-Origin"},
-        AllowCredentials: true,
-    }))
+	beego.Debug("Filters init...")
+	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
+		AllowAllOrigins:  true,
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Authorization", "Access-Control-Allow-Origin", "Content-Type"},
+		ExposeHeaders:    []string{"Content-Length", "Access-Control-Allow-Origin"},
+		AllowCredentials: true,
+	}))
 
 	ns := beego.NewNamespace("/v1",
 
@@ -80,7 +84,6 @@ func init() {
 				&controllers.NotificacionEstadoController{},
 			),
 		),
-
 	)
 	beego.AddNamespace(ns)
 }
