@@ -12,12 +12,12 @@ import (
 	"github.com/astaxie/beego/plugins/cors"
 	"github.com/udistrital/configuracion_api/controllers"
 	//Librería auditoría
-	"github.com/udistrital/auditoria"
+	//"github.com/udistrital/auditoria"
 )
 
 func init() {
 	//Iniciando middlware
-	auditoria.InitMiddleware()
+	//auditoria.InitMiddleware()
 
 	//Incluyendo el CORS
 	beego.Debug("Filters init...")
