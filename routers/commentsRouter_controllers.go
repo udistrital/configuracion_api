@@ -135,6 +135,126 @@ func init() {
 			MethodParams: param.Make(),
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MetodoHttpController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MetodoHttpController"],
+		beego.ControllerComments{
+			Method: "Post",
+			Router: `/`,
+			AllowHTTPMethods: []string{"post"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MetodoHttpController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MetodoHttpController"],
+		beego.ControllerComments{
+			Method: "GetAll",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MetodoHttpController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MetodoHttpController"],
+		beego.ControllerComments{
+			Method: "GetOne",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MetodoHttpController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MetodoHttpController"],
+		beego.ControllerComments{
+			Method: "Put",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"put"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MetodoHttpController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MetodoHttpController"],
+		beego.ControllerComments{
+			Method: "Delete",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"delete"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionController"],
+		beego.ControllerComments{
+			Method: "Post",
+			Router: `/`,
+			AllowHTTPMethods: []string{"post"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionController"],
+		beego.ControllerComments{
+			Method: "GetAll",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionController"],
+		beego.ControllerComments{
+			Method: "GetOne",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionController"],
+		beego.ControllerComments{
+			Method: "Put",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"put"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionController"],
+		beego.ControllerComments{
+			Method: "Delete",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"delete"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionPerfilController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionPerfilController"],
+		beego.ControllerComments{
+			Method: "Post",
+			Router: `/`,
+			AllowHTTPMethods: []string{"post"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionPerfilController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionPerfilController"],
+		beego.ControllerComments{
+			Method: "GetAll",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionPerfilController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionPerfilController"],
+		beego.ControllerComments{
+			Method: "GetOne",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionPerfilController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionPerfilController"],
+		beego.ControllerComments{
+			Method: "Put",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"put"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionPerfilController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionConfiguracionPerfilController"],
+		beego.ControllerComments{
+			Method: "Delete",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"delete"},
+			MethodParams: param.Make(),
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionController"],
 		beego.ControllerComments{
 			Method: "Post",

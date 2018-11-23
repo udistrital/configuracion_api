@@ -5,66 +5,55 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
 
-type Notificacion struct {
-	Id                        int                        `orm:"column(id);pk;auto"`
-	FechaCreacion             time.Time                  `orm:"column(fecha_creacion);type(timestamp with time zone);auto_now_add"`
-	EstadoNotificacion        *NotificacionEstado        `orm:"column(estado_notificacion);rel(fk)"`
-	CuerpoNotificacion        string                     `orm:"column(cuerpo_notificacion);type(json);null"`
-	NotificacionConfiguracion *NotificacionConfiguracion `orm:"column(notificacion_configuracion);rel(fk)"`
+type MetodoHttp struct {
+	Id          int    `orm:"column(id);pk"`
+	Nombre      string `orm:"column(nombre)"`
+	Descripcion string `orm:"column(descripcion)"`
 }
 
-func (t *Notificacion) TableName() string {
-	return "notificacion"
+func (t *MetodoHttp) TableName() string {
+	return "metodo_http"
 }
 
 func init() {
-	orm.RegisterModel(new(Notificacion))
+	orm.RegisterModel(new(MetodoHttp))
 }
 
-// AddNotificacion insert a new Notificacion into database and returns
+// AddMetodoHttp insert a new MetodoHttp into database and returns
 // last inserted Id on success.
-func AddNotificacion(m *Notificacion) (id int64, err error) {
+func AddMetodoHttp(m *MetodoHttp) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetNotificacionById retrieves Notificacion by Id. Returns error if
+// GetMetodoHttpById retrieves MetodoHttp by Id. Returns error if
 // Id doesn't exist
-func GetNotificacionById(id int) (v *Notificacion, err error) {
+func GetMetodoHttpById(id int) (v *MetodoHttp, err error) {
 	o := orm.NewOrm()
-	v = &Notificacion{Id: id}
+	v = &MetodoHttp{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllNotificacion retrieves all Notificacion matches certain condition. Returns empty list if
+// GetAllMetodoHttp retrieves all MetodoHttp matches certain condition. Returns empty list if
 // no records exist
-func GetAllNotificacion(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllMetodoHttp(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Notificacion))
+	qs := o.QueryTable(new(MetodoHttp))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
-		} else if strings.Contains(k, "__in") {
-			arr := strings.Split(v, "|")
-			qs = qs.Filter(k, arr)
-		} else if strings.Contains(k, "__not_in") {
-			beego.Info(k)
-			k = strings.Replace(k, "__not_in", "", -1)
-			qs = qs.Exclude(k, v)
 		} else {
 			qs = qs.Filter(k, v)
 		}
@@ -108,14 +97,11 @@ func GetAllNotificacion(query map[string]string, fields []string, sortby []strin
 		}
 	}
 
-	var l []Notificacion
-	qs = qs.OrderBy(sortFields...).RelatedSel(5)
+	var l []MetodoHttp
+	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
 			for _, v := range l {
-
-				o.LoadRelated(v.NotificacionConfiguracion, "NotificacionConfiguracionPerfil", 5, 1, 0, "-Id")
-
 				ml = append(ml, v)
 			}
 		} else {
@@ -134,11 +120,11 @@ func GetAllNotificacion(query map[string]string, fields []string, sortby []strin
 	return nil, err
 }
 
-// UpdateNotificacion updates Notificacion by Id and returns error if
+// UpdateMetodoHttp updates MetodoHttp by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateNotificacionById(m *Notificacion) (err error) {
+func UpdateMetodoHttpById(m *MetodoHttp) (err error) {
 	o := orm.NewOrm()
-	v := Notificacion{Id: m.Id}
+	v := MetodoHttp{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -149,15 +135,15 @@ func UpdateNotificacionById(m *Notificacion) (err error) {
 	return
 }
 
-// DeleteNotificacion deletes Notificacion by Id and returns error if
+// DeleteMetodoHttp deletes MetodoHttp by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteNotificacion(id int) (err error) {
+func DeleteMetodoHttp(id int) (err error) {
 	o := orm.NewOrm()
-	v := Notificacion{Id: id}
+	v := MetodoHttp{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Notificacion{Id: id}); err == nil {
+		if num, err = o.Delete(&MetodoHttp{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
