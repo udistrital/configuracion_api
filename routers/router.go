@@ -9,12 +9,22 @@ package routers
 
 import (
 	"github.com/udistrital/configuracion_api/controllers"
+<<<<<<< HEAD
 
 	"github.com/astaxie/beego"
 )
 
 func init() {
 	ns := beego.NewNamespace("/v1",
+=======
+	//Librería auditoría
+	//"github.com/udistrital/auditoria"
+)
+
+func init() {
+	//Iniciando middlware
+	//auditoria.InitMiddleware()
+>>>>>>> ef292d0ea84d141e3c7f9b4a7922b56a9a2f8e82
 
 		beego.NSNamespace("/notificacion",
 			beego.NSInclude(
