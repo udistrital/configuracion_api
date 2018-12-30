@@ -86,6 +86,11 @@ func init() {
 				&controllers.NotificacionEstadoController{},
 			),
 		),
+		beego.NSNamespace("/perfil",
+			beego.NSInclude(
+				&controllers.PerfilController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }

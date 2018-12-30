@@ -1185,6 +1185,121 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
+  /perfil/:
+    get:
+      tags:
+      - perfil
+      description: get Perfil
+      operationId: PerfilController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Perfil'
+        "403":
+          description: ""
+    post:
+      tags:
+      - perfil
+      description: create Perfil
+      operationId: PerfilController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Perfil content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Perfil'
+      responses:
+        "201":
+          description: '{int} models.Perfil'
+        "403":
+          description: body is empty
+  /perfil/{id}:
+    get:
+      tags:
+      - perfil
+      description: get Perfil by id
+      operationId: PerfilController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Perfil'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - perfil
+      description: update the Perfil
+      operationId: PerfilController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Perfil content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Perfil'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Perfil'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - perfil
+      description: delete the Perfil
+      operationId: PerfilController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
   /perfil_x_menu_opcion/:
     get:
       tags:
@@ -1497,3 +1612,6 @@ tags:
 - name: notificacion_estado
   description: |
     NotificacionEstadoController operations for NotificacionEstado
+- name: perfil
+  description: |
+    PerfilController oprations for Perfil
