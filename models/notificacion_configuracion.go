@@ -5,67 +5,59 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
 
-type Notificacion struct {
-	Id                        int                        `orm:"column(id);pk;auto"`
-	FechaCreacion             time.Time                  `orm:"column(fecha_creacion);type(timestamp with time zone);auto_now_add"`
-	EstadoNotificacion        *NotificacionEstado        `orm:"column(estado_notificacion);rel(fk)"`
-	CuerpoNotificacion        string                     `orm:"column(cuerpo_notificacion);type(json);null"`
-	NotificacionConfiguracion *NotificacionConfiguracion `orm:"column(notificacion_configuracion);rel(fk)"`
-	Usuario                   string                     `orm:"column(usuario);`
+type NotificacionConfiguracion struct {
+	Id                              int                                `orm:"column(id);pk;auto"`
+	EndPoint                        string                             `orm:"column(end_point)"`
+	MetodoHttp                      *MetodoHttp                        `orm:"column(metodo_http);rel(fk)"`
+	Tipo                            *NotificacionTipo                  `orm:"column(tipo);rel(fk)"`
+	CuerpoNotificacion              string                             `orm:"column(cuerpo_notificacion);type(json)"`
+	Aplicacion                      *Aplicacion                        `orm:"column(aplicacion);rel(fk)"`
+	NotificacionConfiguracionPerfil []*NotificacionConfiguracionPerfil `orm:"reverse(many)"`
 }
 
-func (t *Notificacion) TableName() string {
-	return "notificacion"
+func (t *NotificacionConfiguracion) TableName() string {
+	return "notificacion_configuracion"
 }
 
 func init() {
-	orm.RegisterModel(new(Notificacion))
+	orm.RegisterModel(new(NotificacionConfiguracion))
 }
 
-// AddNotificacion insert a new Notificacion into database and returns
+// AddNotificacionConfiguracion insert a new NotificacionConfiguracion into database and returns
 // last inserted Id on success.
-func AddNotificacion(m *Notificacion) (id int64, err error) {
+func AddNotificacionConfiguracion(m *NotificacionConfiguracion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetNotificacionById retrieves Notificacion by Id. Returns error if
+// GetNotificacionConfiguracionById retrieves NotificacionConfiguracion by Id. Returns error if
 // Id doesn't exist
-func GetNotificacionById(id int) (v *Notificacion, err error) {
+func GetNotificacionConfiguracionById(id int) (v *NotificacionConfiguracion, err error) {
 	o := orm.NewOrm()
-	v = &Notificacion{Id: id}
+	v = &NotificacionConfiguracion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllNotificacion retrieves all Notificacion matches certain condition. Returns empty list if
+// GetAllNotificacionConfiguracion retrieves all NotificacionConfiguracion matches certain condition. Returns empty list if
 // no records exist
-func GetAllNotificacion(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllNotificacionConfiguracion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Notificacion))
+	qs := o.QueryTable(new(NotificacionConfiguracion))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
-		} else if strings.Contains(k, "__in") {
-			arr := strings.Split(v, "|")
-			qs = qs.Filter(k, arr)
-		} else if strings.Contains(k, "__not_in") {
-			beego.Info(k)
-			k = strings.Replace(k, "__not_in", "", -1)
-			qs = qs.Exclude(k, v)
 		} else {
 			qs = qs.Filter(k, v)
 		}
@@ -109,14 +101,12 @@ func GetAllNotificacion(query map[string]string, fields []string, sortby []strin
 		}
 	}
 
-	var l []Notificacion
+	var l []NotificacionConfiguracion
 	qs = qs.OrderBy(sortFields...).RelatedSel(5)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
 			for _, v := range l {
-
-				o.LoadRelated(v.NotificacionConfiguracion, "NotificacionConfiguracionPerfil", 5, 1, 0, "-Id")
-
+				o.LoadRelated(&v, "NotificacionConfiguracionPerfil", 5, 1, 0, "-Id")
 				ml = append(ml, v)
 			}
 		} else {
@@ -135,11 +125,11 @@ func GetAllNotificacion(query map[string]string, fields []string, sortby []strin
 	return nil, err
 }
 
-// UpdateNotificacion updates Notificacion by Id and returns error if
+// UpdateNotificacionConfiguracion updates NotificacionConfiguracion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateNotificacionById(m *Notificacion) (err error) {
+func UpdateNotificacionConfiguracionById(m *NotificacionConfiguracion) (err error) {
 	o := orm.NewOrm()
-	v := Notificacion{Id: m.Id}
+	v := NotificacionConfiguracion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -150,15 +140,15 @@ func UpdateNotificacionById(m *Notificacion) (err error) {
 	return
 }
 
-// DeleteNotificacion deletes Notificacion by Id and returns error if
+// DeleteNotificacionConfiguracion deletes NotificacionConfiguracion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteNotificacion(id int) (err error) {
+func DeleteNotificacionConfiguracion(id int) (err error) {
 	o := orm.NewOrm()
-	v := Notificacion{Id: id}
+	v := NotificacionConfiguracion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Notificacion{Id: id}); err == nil {
+		if num, err = o.Delete(&NotificacionConfiguracion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
