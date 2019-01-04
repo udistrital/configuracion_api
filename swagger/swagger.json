@@ -570,6 +570,179 @@
                 }
             }
         },
+        "/metodo_http/": {
+            "get": {
+                "tags": [
+                    "metodo_http"
+                ],
+                "description": "get MetodoHttp",
+                "operationId": "MetodoHttpController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MetodoHttp"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "metodo_http"
+                ],
+                "description": "create MetodoHttp",
+                "operationId": "MetodoHttpController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for MetodoHttp content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.MetodoHttp"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.MetodoHttp"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/metodo_http/{id}": {
+            "get": {
+                "tags": [
+                    "metodo_http"
+                ],
+                "description": "get MetodoHttp by id",
+                "operationId": "MetodoHttpController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MetodoHttp"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "metodo_http"
+                ],
+                "description": "update the MetodoHttp",
+                "operationId": "MetodoHttpController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for MetodoHttp content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.MetodoHttp"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MetodoHttp"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "metodo_http"
+                ],
+                "description": "delete the MetodoHttp",
+                "operationId": "MetodoHttpController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
         "/notificacion/": {
             "get": {
                 "tags": [
@@ -724,6 +897,352 @@
                 ],
                 "description": "delete the Notificacion",
                 "operationId": "NotificacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion_configuracion/": {
+            "get": {
+                "tags": [
+                    "notificacion_configuracion"
+                ],
+                "description": "get NotificacionConfiguracion",
+                "operationId": "NotificacionConfiguracionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionConfiguracion"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "notificacion_configuracion"
+                ],
+                "description": "create NotificacionConfiguracion",
+                "operationId": "NotificacionConfiguracionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionConfiguracion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionConfiguracion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.NotificacionConfiguracion"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion_configuracion/{id}": {
+            "get": {
+                "tags": [
+                    "notificacion_configuracion"
+                ],
+                "description": "get NotificacionConfiguracion by id",
+                "operationId": "NotificacionConfiguracionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionConfiguracion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "notificacion_configuracion"
+                ],
+                "description": "update the NotificacionConfiguracion",
+                "operationId": "NotificacionConfiguracionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionConfiguracion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionConfiguracion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionConfiguracion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "notificacion_configuracion"
+                ],
+                "description": "delete the NotificacionConfiguracion",
+                "operationId": "NotificacionConfiguracionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion_configuracion_perfil/": {
+            "get": {
+                "tags": [
+                    "notificacion_configuracion_perfil"
+                ],
+                "description": "get NotificacionConfiguracionPerfil",
+                "operationId": "NotificacionConfiguracionPerfilController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "notificacion_configuracion_perfil"
+                ],
+                "description": "create NotificacionConfiguracionPerfil",
+                "operationId": "NotificacionConfiguracionPerfilController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionConfiguracionPerfil content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.NotificacionConfiguracionPerfil"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion_configuracion_perfil/{id}": {
+            "get": {
+                "tags": [
+                    "notificacion_configuracion_perfil"
+                ],
+                "description": "get NotificacionConfiguracionPerfil by id",
+                "operationId": "NotificacionConfiguracionPerfilController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "notificacion_configuracion_perfil"
+                ],
+                "description": "update the NotificacionConfiguracionPerfil",
+                "operationId": "NotificacionConfiguracionPerfilController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionConfiguracionPerfil content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "notificacion_configuracion_perfil"
+                ],
+                "description": "delete the NotificacionConfiguracionPerfil",
+                "operationId": "NotificacionConfiguracionPerfilController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -1676,13 +2195,26 @@
                 }
             }
         },
+        "models.MetodoHttp": {
+            "title": "MetodoHttp",
+            "type": "object",
+            "properties": {
+                "Descripcion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                }
+            }
+        },
         "models.Notificacion": {
             "title": "Notificacion",
             "type": "object",
             "properties": {
-                "AplicacionOrigen": {
-                    "$ref": "#/definitions/models.Aplicacion"
-                },
                 "CuerpoNotificacion": {
                     "type": "string"
                 },
@@ -1691,22 +2223,64 @@
                 },
                 "FechaCreacion": {
                     "type": "string",
-                    "format": "string"
+                    "format": "datetime"
                 },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "PerfilDestino": {
+                "NotificacionConfiguracion": {
+                    "$ref": "#/definitions/models.NotificacionConfiguracion"
+                },
+                "Usuario": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.NotificacionConfiguracion": {
+            "title": "NotificacionConfiguracion",
+            "type": "object",
+            "properties": {
+                "Aplicacion": {
+                    "$ref": "#/definitions/models.Aplicacion"
+                },
+                "CuerpoNotificacion": {
+                    "type": "string"
+                },
+                "EndPoint": {
+                    "type": "string"
+                },
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "TipoNotificacion": {
+                "MetodoHttp": {
+                    "$ref": "#/definitions/models.MetodoHttp"
+                },
+                "NotificacionConfiguracionPerfil": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
+                    }
+                },
+                "Tipo": {
                     "$ref": "#/definitions/models.NotificacionTipo"
-                },
-                "UsuarioDestino": {
+                }
+            }
+        },
+        "models.NotificacionConfiguracionPerfil": {
+            "title": "NotificacionConfiguracionPerfil",
+            "type": "object",
+            "properties": {
+                "Id": {
                     "type": "integer",
                     "format": "int64"
+                },
+                "NotificacionConfiguracion": {
+                    "$ref": "#/definitions/models.NotificacionConfiguracion"
+                },
+                "Perfil": {
+                    "$ref": "#/definitions/models.Perfil"
                 }
             }
         },
@@ -1790,8 +2364,20 @@
     },
     "tags": [
         {
-            "name": "perfil",
-            "description": "PerfilController oprations for Perfil\n"
+            "name": "notificacion",
+            "description": "NotificacionController operations for Notificacion\n"
+        },
+        {
+            "name": "notificacion_configuracion",
+            "description": "NotificacionConfiguracionController operations for NotificacionConfiguracion\n"
+        },
+        {
+            "name": "notificacion_configuracion_perfil",
+            "description": "NotificacionConfiguracionPerfilController operations for NotificacionConfiguracionPerfil\n"
+        },
+        {
+            "name": "metodo_http",
+            "description": "MetodoHttpController operations for MetodoHttp\n"
         },
         {
             "name": "perfil_x_menu_opcion",
@@ -1824,6 +2410,10 @@
         {
             "name": "notificacion_estado",
             "description": "NotificacionEstadoController operations for NotificacionEstado\n"
+        },
+        {
+            "name": "perfil",
+            "description": "PerfilController oprations for Perfil\n"
         }
     ]
 }

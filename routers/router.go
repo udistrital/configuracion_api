@@ -16,6 +16,9 @@ import (
 func init() {
 	ns := beego.NewNamespace("/v1",
 
+		//Librería auditoría
+		//"github.com/udistrital/auditoria"
+
 		beego.NSNamespace("/notificacion",
 			beego.NSInclude(
 				&controllers.NotificacionController{},
