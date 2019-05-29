@@ -14,7 +14,7 @@ type NotificacionConfiguracion struct {
 	EndPoint                        string                             `orm:"column(end_point)"`
 	MetodoHttp                      *MetodoHttp                        `orm:"column(metodo_http);rel(fk)"`
 	Tipo                            *NotificacionTipo                  `orm:"column(tipo);rel(fk)"`
-	CuerpoNotificacion              string                             `orm:"column(cuerpo_notificacion);type(json)"`
+	CuerpoNotificacion              string                               `orm:"column(cuerpo_notificacion);type(string)"`
 	Aplicacion                      *Aplicacion                        `orm:"column(aplicacion);rel(fk)"`
 	NotificacionConfiguracionPerfil []*NotificacionConfiguracionPerfil `orm:"reverse(many)"`
 }

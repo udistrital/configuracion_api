@@ -10,7 +10,7 @@ import (
 )
 
 type NotificacionConfiguracionPerfil struct {
-	Id                        int                        `orm:"column(id);pk"`
+	Id                        int                        `orm:"column(id);pk;auto"`
 	NotificacionConfiguracion *NotificacionConfiguracion `orm:"column(notificacion_configuracion);rel(fk)"`
 	Perfil                    *Perfil                    `orm:"column(perfil);rel(fk)"`
 }
