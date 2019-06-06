@@ -8,6 +8,7 @@ import (
 	"github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
 	notificacionlib "github.com/udistrital/notificaciones_lib"
+	"github.com/udistrital/auditoria"
 	"github.com/udistrital/utils_oas/apiStatusLib"
 )
 
@@ -34,6 +35,7 @@ func main() {
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
 	apistatus.Init()
+	auditoria.InitMiddleware()
 	notificacionlib.InitMiddleware()
 	beego.Run()
 }
