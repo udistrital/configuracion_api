@@ -38,4 +38,5 @@ func main() {
 	auditoria.InitMiddleware()
 	notificacionlib.InitMiddleware()
 	beego.Run()
+	
 }
