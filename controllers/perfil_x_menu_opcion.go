@@ -3,11 +3,12 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/configuracion_api/models"
+	"fmt"
 	"strconv"
 	"strings"
-	"fmt"
+
 	"github.com/astaxie/beego"
+	"github.com/udistrital/configuracion_api/models"
 )
 
 // PerfilXMenuOpcionController oprations for PerfilXMenuOpcion
@@ -171,23 +172,23 @@ func (c *PerfilXMenuOpcionController) Delete() {
 	c.ServeJSON()
 }
 
-//Función para menus por app
+// ArbolMenus ...
+// @Title MenusPorAplicacion
+// @Description getMenuPorAplicacion
+// @Param	id		path 	string	true		"id de la aplicación a la cual pertenecen las opciones"
+// @Success 200 {object} models.PerfilXMenuOpcion
+// @Failure 403 :id is empty
+// @router /MenusPorAplicacion/:id [get]
 func (c *PerfilXMenuOpcionController) MenusPorAplicacion() {
-	
 	//Tomar el valor de la URL
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-
-	fmt.Println("Este es tu id")
 	fmt.Println(id)
 	//Construcción Json menus
 	l := models.MenusByAplicacion(id)
-
-
 	fmt.Println(l)
-	
 	c.Data["json"] = l
 	//Generera el Json con los datos obtenidos
-	c.ServeJSON()	
+	c.ServeJSON()
 
 }

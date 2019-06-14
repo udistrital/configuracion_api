@@ -10,8 +10,12 @@ import (
 )
 
 type NotificacionEstado struct {
-	Id     int    `orm:"column(id);pk;auto"`
-	Nombre string `orm:"column(nombre);null"`
+	Id                int     `orm:"column(id);pk"`
+	Nombre            string  `orm:"column(nombre);null"`
+	Activo            bool    `orm:"column(activo)"`
+	Descripcion       string  `orm:"column(descripcion);null"`
+	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
+	NumeroOrden       float64 `orm:"column(numero_orden);null"`
 }
 
 func (t *NotificacionEstado) TableName() string {

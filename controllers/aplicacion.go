@@ -10,7 +10,7 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// AplicacionController oprations for Aplicacion
+// AplicacionController operations for Aplicacion
 type AplicacionController struct {
 	beego.Controller
 }
