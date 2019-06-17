@@ -11,7 +11,7 @@ import (
 )
 
 type NotificacionEstadoUsuario struct {
-	Id                 int                 `orm:"column(id);pk"`
+	Id                 int                 `orm:"column(id);pk;auto"`
 	Notificacion       *Notificacion       `orm:"column(notificacion);rel(fk)"`
 	NotificacionEstado *NotificacionEstado `orm:"column(notificacion_estado);rel(fk)"`
 	Fecha              time.Time           `orm:"column(fecha);type(timestamp without time zone)"`
