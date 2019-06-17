@@ -10,7 +10,7 @@ import (
 )
 
 type NotificacionEstado struct {
-	Id                int     `orm:"column(id);pk"`
+	Id                int     `orm:"column(id);pk;auto"`
 	Nombre            string  `orm:"column(nombre);null"`
 	Activo            bool    `orm:"column(activo)"`
 	Descripcion       string  `orm:"column(descripcion);null"`
