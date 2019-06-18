@@ -3,11 +3,13 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/configuracion_api/models"
 	"strconv"
 	"strings"
 
+	"github.com/udistrital/configuracion_api/models"
+
 	"github.com/astaxie/beego"
+	notimanager "github.com/udistrital/configuracion_api/managers/notificacionManager"
 )
 
 // NotificacionEstadoUsuarioController operations for NotificacionEstadoUsuario
@@ -168,4 +170,17 @@ func (c *NotificacionEstadoUsuarioController) Delete() {
 		c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()
+}
+
+// getOldNotification ...
+// @Title getOldNotification
+// @Description get all old notification
+// @Param	profile		path 	string	true		"The profile you want to consult"
+// @Success 200 {string} get success!
+// @Failure 403 profile is empty
+// @router /getOldNotification/:profile [get]
+func (c *NotificacionEstadoUsuarioController) GetOldNotification() {
+	profileStr := c.Ctx.Input.Param(":profile")
+	notimanager.GetOldNotification(profileStr)
+	c.Data["json"] = notimanager.GetOldNotification(profileStr)
 }
