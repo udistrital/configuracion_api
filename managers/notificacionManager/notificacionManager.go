@@ -43,10 +43,11 @@ func GetOldNotification(profile string) []models.Notificacion {
 func PushNotificationUser(N *models.NotificacionUsarioMasiva) error {
 	o := orm.NewOrm()
 	o.Begin()
-	idN, err := o.Insert(&N.Notificacion)
+	N.Notificacion.FechaCreacion = time.Now().Local()
+	idN, err := o.Insert(N.Notificacion)
 	if err != nil {
 		o.Rollback()
-		panic("Error al insertar las notificaciones 1")
+		panic(err)
 	}
 	for _, idx := range N.Usuarios {
 		relation := models.NotificacionEstadoUsuario{}
@@ -57,15 +58,16 @@ func PushNotificationUser(N *models.NotificacionUsarioMasiva) error {
 		relation.Usuario = idx
 		_, err = o.Insert(&relation)
 		if err != nil {
-			fmt.Println("Error al insertar las notificaciones 2")
 			o.Rollback()
+			panic("Error al insertar las notificaciones 2")
 		}
 	}
 
 	if err != nil {
-		fmt.Println("Error 2 ", err)
 		o.Rollback()
 		panic("Error al insertar las notificaciones 3")
+	} else {
+		o.Commit()
 	}
 	return err
 }
