@@ -2,6 +2,7 @@ package notimanager
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -37,4 +38,34 @@ func GetOldNotification(profile string) []models.Notificacion {
 
 	}
 	return notificaciones
+}
+
+func PushNotificationUser(N *models.NotificacionUsarioMasiva) error {
+	o := orm.NewOrm()
+	o.Begin()
+	idN, err := o.Insert(&N.Notificacion)
+	if err != nil {
+		o.Rollback()
+		panic("Error al insertar las notificaciones 1")
+	}
+	for _, idx := range N.Usuarios {
+		relation := models.NotificacionEstadoUsuario{}
+		relation.Activo = true
+		relation.Fecha = time.Now().Local()
+		relation.Notificacion = &models.Notificacion{Id: int(idN)}
+		relation.NotificacionEstado = &models.NotificacionEstado{Id: 1}
+		relation.Usuario = idx
+		_, err = o.Insert(&relation)
+		if err != nil {
+			fmt.Println("Error al insertar las notificaciones 2")
+			o.Rollback()
+		}
+	}
+
+	if err != nil {
+		fmt.Println("Error 2 ", err)
+		o.Rollback()
+		panic("Error al insertar las notificaciones 3")
+	}
+	return err
 }

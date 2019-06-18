@@ -1545,6 +1545,34 @@
                 }
             }
         },
+        "/notificacion_estado_usuario/pushNotificationUser": {
+            "post": {
+                "tags": [
+                    "notificacion_estado_usuario"
+                ],
+                "description": "create pushNotificationUser",
+                "operationId": "NotificacionEstadoUsuarioController.pushNotificationUser",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionEstadoUsuario content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionUsarioMasiva"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.NotificacionEstadoUsuario"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
         "/notificacion_estado_usuario/{id}": {
             "get": {
                 "tags": [
@@ -2580,6 +2608,21 @@
                 },
                 "Nombre": {
                     "type": "string"
+                }
+            }
+        },
+        "models.NotificacionUsarioMasiva": {
+            "title": "NotificacionUsarioMasiva",
+            "type": "object",
+            "properties": {
+                "Notificacion": {
+                    "$ref": "#/definitions/models.Notificacion"
+                },
+                "Usuarios": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             }
         },

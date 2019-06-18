@@ -184,3 +184,24 @@ func (c *NotificacionEstadoUsuarioController) GetOldNotification() {
 	notimanager.GetOldNotification(profileStr)
 	c.Data["json"] = notimanager.GetOldNotification(profileStr)
 }
+
+// pushNotificationUser ...
+// @Title pushNotificationUser
+// @Description create pushNotificationUser
+// @Param	body		body 	models.NotificacionUsarioMasiva	true		"body for NotificacionEstadoUsuario content"
+// @Success 201 {int} models.NotificacionEstadoUsuario
+// @Failure 403 body is empty
+// @router /pushNotificationUser [post]
+func (c *NotificacionEstadoUsuarioController) PushNotificationUser() {
+	var v models.NotificacionUsarioMasiva
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		if err := notimanager.PushNotificationUser(&v); err == nil {
+			c.Ctx.Output.SetStatus(201)
+			c.Data["json"] = v
+		} else {
+			c.Data["json"] = err.Error()
+		}
+	} else {
+		c.Data["json"] = err.Error()
+	}
+}

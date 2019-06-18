@@ -430,6 +430,15 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionEstadoUsuarioController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionEstadoUsuarioController"],
+        beego.ControllerComments{
+            Method: "PushNotificationUser",
+            Router: `/pushNotificationUser`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionTipoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionTipoController"],
         beego.ControllerComments{
             Method: "Post",
