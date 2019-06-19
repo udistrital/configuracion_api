@@ -1519,7 +1519,7 @@
                 }
             }
         },
-        "/notificacion_estado_usuario/getOldNotification/{profile}": {
+        "/notificacion_estado_usuario/getOldNotification/{roles}/{usuario}": {
             "get": {
                 "tags": [
                     "notificacion_estado_usuario"
@@ -1529,8 +1529,15 @@
                 "parameters": [
                     {
                         "in": "path",
-                        "name": "profile",
+                        "name": "roles",
                         "description": "The profile you want to consult",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "usuario",
+                        "description": "The user you want to consult",
                         "required": true,
                         "type": "string"
                     }
@@ -2613,18 +2620,7 @@
         },
         "models.NotificacionUsarioMasiva": {
             "title": "NotificacionUsarioMasiva",
-            "type": "object",
-            "properties": {
-                "Notificacion": {
-                    "$ref": "#/definitions/models.Notificacion"
-                },
-                "Usuarios": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            }
+            "type": "object"
         },
         "models.Parametro": {
             "title": "Parametro",

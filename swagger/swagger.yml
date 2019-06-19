@@ -1070,7 +1070,7 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
-  /notificacion_estado_usuario/getOldNotification/{profile}:
+  /notificacion_estado_usuario/getOldNotification/{roles}/{usuario}:
     get:
       tags:
       - notificacion_estado_usuario
@@ -1078,8 +1078,13 @@ paths:
       operationId: NotificacionEstadoUsuarioController.getOldNotification
       parameters:
       - in: path
-        name: profile
+        name: roles
         description: The profile you want to consult
+        required: true
+        type: string
+      - in: path
+        name: usuario
+        description: The user you want to consult
         required: true
         type: string
       responses:
@@ -1743,13 +1748,6 @@ definitions:
   models.NotificacionUsarioMasiva:
     title: NotificacionUsarioMasiva
     type: object
-    properties:
-      Notificacion:
-        $ref: '#/definitions/models.Notificacion'
-      Usuarios:
-        type: array
-        items:
-          type: string
   models.Parametro:
     title: Parametro
     type: object

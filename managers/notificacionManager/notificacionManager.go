@@ -9,7 +9,7 @@ import (
 	"github.com/udistrital/configuracion_api/models"
 )
 
-func GetOldNotification(profile string) []models.Notificacion {
+func GetOldNotification(profile string, user string) []models.Notificacion {
 	o := orm.NewOrm()
 	o.Begin()
 	var notificaciones []models.Notificacion
@@ -36,11 +36,33 @@ func GetOldNotification(profile string) []models.Notificacion {
 	if len(notificaciones) == 0 || notificaciones == nil {
 		fmt.Println("No existen notificaciones creadas")
 
+	} else {
+		for _, idx := range notificaciones {
+			relation := models.NotificacionEstadoUsuario{}
+			relation.Activo = true
+			relation.Fecha = time.Now().Local()
+			relation.Notificacion = &models.Notificacion{Id: int(idx.Id)}
+			relation.NotificacionEstado = &models.NotificacionEstado{Id: 1}
+			relation.Usuario = user
+			_, err = o.Insert(&relation)
+			if err != nil {
+				o.Rollback()
+				panic("Error al insertar las notificaciones 2")
+			}
+		}
+		if err != nil {
+			o.Rollback()
+			fmt.Println("Error al insertar las notificaciones antiguas")
+		} else {
+			o.Commit()
+		}
+
 	}
+
 	return notificaciones
 }
 
-func PushNotificationUser(N *models.NotificacionUsarioMasiva) error {
+func PushNotificationUser(N *models.NotificacionUsuarioMasiva) error {
 	o := orm.NewOrm()
 	o.Begin()
 	N.Notificacion.FechaCreacion = time.Now().Local()

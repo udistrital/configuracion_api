@@ -424,7 +424,7 @@ func init() {
     beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionEstadoUsuarioController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionEstadoUsuarioController"],
         beego.ControllerComments{
             Method: "GetOldNotification",
-            Router: `/getOldNotification/:profile`,
+            Router: `/getOldNotification/:roles/:usuario`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,

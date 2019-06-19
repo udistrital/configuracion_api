@@ -1,6 +1,6 @@
 package models
 
-type NotificacionUsarioMasiva struct {
+type NotificacionUsuarioMasiva struct {
 	Notificacion *Notificacion
 	Usuarios     []string
 }

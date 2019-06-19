@@ -175,14 +175,15 @@ func (c *NotificacionEstadoUsuarioController) Delete() {
 // getOldNotification ...
 // @Title getOldNotification
 // @Description get all old notification
-// @Param	profile		path 	string	true		"The profile you want to consult"
+// @Param	roles		path 	string	true		"The profile you want to consult"
+// @Param	usuario		path 	string	true		"The user you want to consult"
 // @Success 200 {string} get success!
 // @Failure 403 profile is empty
-// @router /getOldNotification/:profile [get]
+// @router /getOldNotification/:roles/:usuario [get]
 func (c *NotificacionEstadoUsuarioController) GetOldNotification() {
-	profileStr := c.Ctx.Input.Param(":profile")
-	notimanager.GetOldNotification(profileStr)
-	c.Data["json"] = notimanager.GetOldNotification(profileStr)
+	rolesStr := c.Ctx.Input.Param(":roles")
+	userStr := c.Ctx.Input.Param(":usuario")
+	c.Data["json"] = notimanager.GetOldNotification(rolesStr, userStr)
 }
 
 // pushNotificationUser ...
@@ -193,7 +194,7 @@ func (c *NotificacionEstadoUsuarioController) GetOldNotification() {
 // @Failure 403 body is empty
 // @router /pushNotificationUser [post]
 func (c *NotificacionEstadoUsuarioController) PushNotificationUser() {
-	var v models.NotificacionUsarioMasiva
+	var v models.NotificacionUsuarioMasiva
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := notimanager.PushNotificationUser(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
