@@ -3,40 +3,40 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"strconv"
 	"strings"
 
-	"github.com/astaxie/beego"
 	"github.com/udistrital/configuracion_api/models"
+
+	"github.com/astaxie/beego"
+	notimanager "github.com/udistrital/configuracion_api/managers/notificacionManager"
 )
 
-// PerfilXMenuOpcionController oprations for PerfilXMenuOpcion
-type PerfilXMenuOpcionController struct {
+// NotificacionEstadoUsuarioController operations for NotificacionEstadoUsuario
+type NotificacionEstadoUsuarioController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *PerfilXMenuOpcionController) URLMapping() {
+func (c *NotificacionEstadoUsuarioController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
 	c.Mapping("Put", c.Put)
 	c.Mapping("Delete", c.Delete)
-	c.Mapping("MenusPorAplicacion", c.MenusPorAplicacion)
 }
 
 // Post ...
 // @Title Post
-// @Description create PerfilXMenuOpcion
-// @Param	body		body 	models.PerfilXMenuOpcion	true		"body for PerfilXMenuOpcion content"
-// @Success 201 {int} models.PerfilXMenuOpcion
+// @Description create NotificacionEstadoUsuario
+// @Param	body		body 	models.NotificacionEstadoUsuario	true		"body for NotificacionEstadoUsuario content"
+// @Success 201 {int} models.NotificacionEstadoUsuario
 // @Failure 403 body is empty
 // @router / [post]
-func (c *PerfilXMenuOpcionController) Post() {
-	var v models.PerfilXMenuOpcion
+func (c *NotificacionEstadoUsuarioController) Post() {
+	var v models.NotificacionEstadoUsuario
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddPerfilXMenuOpcion(&v); err == nil {
+		if _, err := models.AddNotificacionEstadoUsuario(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -50,15 +50,15 @@ func (c *PerfilXMenuOpcionController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get PerfilXMenuOpcion by id
+// @Description get NotificacionEstadoUsuario by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.PerfilXMenuOpcion
+// @Success 200 {object} models.NotificacionEstadoUsuario
 // @Failure 403 :id is empty
 // @router /:id [get]
-func (c *PerfilXMenuOpcionController) GetOne() {
+func (c *NotificacionEstadoUsuarioController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetPerfilXMenuOpcionById(id)
+	v, err := models.GetNotificacionEstadoUsuarioById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -69,17 +69,17 @@ func (c *PerfilXMenuOpcionController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get PerfilXMenuOpcion
+// @Description get NotificacionEstadoUsuario
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.PerfilXMenuOpcion
+// @Success 200 {object} models.NotificacionEstadoUsuario
 // @Failure 403
 // @router / [get]
-func (c *PerfilXMenuOpcionController) GetAll() {
+func (c *NotificacionEstadoUsuarioController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -121,7 +121,7 @@ func (c *PerfilXMenuOpcionController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllPerfilXMenuOpcion(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllNotificacionEstadoUsuario(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -132,18 +132,18 @@ func (c *PerfilXMenuOpcionController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the PerfilXMenuOpcion
+// @Description update the NotificacionEstadoUsuario
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.PerfilXMenuOpcion	true		"body for PerfilXMenuOpcion content"
-// @Success 200 {object} models.PerfilXMenuOpcion
+// @Param	body		body 	models.NotificacionEstadoUsuario	true		"body for NotificacionEstadoUsuario content"
+// @Success 200 {object} models.NotificacionEstadoUsuario
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *PerfilXMenuOpcionController) Put() {
+func (c *NotificacionEstadoUsuarioController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.PerfilXMenuOpcion{Id: id}
+	v := models.NotificacionEstadoUsuario{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdatePerfilXMenuOpcionById(&v); err == nil {
+		if err := models.UpdateNotificacionEstadoUsuarioById(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -156,15 +156,15 @@ func (c *PerfilXMenuOpcionController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the PerfilXMenuOpcion
+// @Description delete the NotificacionEstadoUsuario
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *PerfilXMenuOpcionController) Delete() {
+func (c *NotificacionEstadoUsuarioController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeletePerfilXMenuOpcion(id); err == nil {
+	if err := models.DeleteNotificacionEstadoUsuario(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()
@@ -172,23 +172,37 @@ func (c *PerfilXMenuOpcionController) Delete() {
 	c.ServeJSON()
 }
 
-// ArbolMenus ...
-// @Title MenusPorAplicacion
-// @Description getMenuPorAplicacion
-// @Param	id		path 	string	true		"id de la aplicación a la cual pertenecen las opciones"
-// @Success 200 {object} models.PerfilXMenuOpcion
-// @Failure 403 :id is empty
-// @router /MenusPorAplicacion/:id [get]
-func (c *PerfilXMenuOpcionController) MenusPorAplicacion() {
-	//Tomar el valor de la URL
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	fmt.Println(id)
-	//Construcción Json menus
-	l := models.MenusByAplicacion(id)
-	fmt.Println(l)
-	c.Data["json"] = l
-	//Generera el Json con los datos obtenidos
-	c.ServeJSON()
+// getOldNotification ...
+// @Title getOldNotification
+// @Description get all old notification
+// @Param	roles		path 	string	true		"The profile you want to consult"
+// @Param	usuario		path 	string	true		"The user you want to consult"
+// @Success 200 {string} get success!
+// @Failure 403 profile is empty
+// @router /getOldNotification/:roles/:usuario [get]
+func (c *NotificacionEstadoUsuarioController) GetOldNotification() {
+	rolesStr := c.Ctx.Input.Param(":roles")
+	userStr := c.Ctx.Input.Param(":usuario")
+	c.Data["json"] = notimanager.GetOldNotification(rolesStr, userStr)
+}
 
+// pushNotificationUser ...
+// @Title pushNotificationUser
+// @Description create pushNotificationUser
+// @Param	body		body 	models.NotificacionUsarioMasiva	true		"body for NotificacionEstadoUsuario content"
+// @Success 201 {int} models.NotificacionEstadoUsuario
+// @Failure 403 body is empty
+// @router /pushNotificationUser [post]
+func (c *NotificacionEstadoUsuarioController) PushNotificationUser() {
+	var v models.NotificacionUsuarioMasiva
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		if err := notimanager.PushNotificationUser(&v); err == nil {
+			c.Ctx.Output.SetStatus(201)
+			c.Data["json"] = &v
+		} else {
+			c.Data["json"] = err.Error()
+		}
+	} else {
+		c.Data["json"] = err.Error()
+	}
 }

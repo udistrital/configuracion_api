@@ -10,6 +10,8 @@ import (
 	notificacionlib "github.com/udistrital/notificaciones_lib"
 	"github.com/udistrital/auditoria"
 	"github.com/udistrital/utils_oas/apiStatusLib"
+	"github.com/udistrital/utils_oas/responseformat"
+
 )
 
 func init() {
@@ -18,6 +20,7 @@ func init() {
 
 func main() {
 	orm.Debug = true
+	beego.BConfig.RecoverFunc = responseformat.GlobalResponseHandler
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
 		AllowOrigins: []string{"*"},
 		AllowMethods: []string{"PUT", "PATCH", "GET", "POST", "OPTIONS", "DELETE"},

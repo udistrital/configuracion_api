@@ -955,6 +955,161 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
+  /notificacion_estado_usuario/:
+    get:
+      tags:
+      - notificacion_estado_usuario
+      description: get NotificacionEstadoUsuario
+      operationId: NotificacionEstadoUsuarioController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NotificacionEstadoUsuario'
+        "403":
+          description: ""
+    post:
+      tags:
+      - notificacion_estado_usuario
+      description: create NotificacionEstadoUsuario
+      operationId: NotificacionEstadoUsuarioController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for NotificacionEstadoUsuario content
+        required: true
+        schema:
+          $ref: '#/definitions/models.NotificacionEstadoUsuario'
+      responses:
+        "201":
+          description: '{int} models.NotificacionEstadoUsuario'
+        "403":
+          description: body is empty
+  /notificacion_estado_usuario/{id}:
+    get:
+      tags:
+      - notificacion_estado_usuario
+      description: get NotificacionEstadoUsuario by id
+      operationId: NotificacionEstadoUsuarioController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NotificacionEstadoUsuario'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - notificacion_estado_usuario
+      description: update the NotificacionEstadoUsuario
+      operationId: NotificacionEstadoUsuarioController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for NotificacionEstadoUsuario content
+        required: true
+        schema:
+          $ref: '#/definitions/models.NotificacionEstadoUsuario'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NotificacionEstadoUsuario'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - notificacion_estado_usuario
+      description: delete the NotificacionEstadoUsuario
+      operationId: NotificacionEstadoUsuarioController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /notificacion_estado_usuario/getOldNotification/{roles}/{usuario}:
+    get:
+      tags:
+      - notificacion_estado_usuario
+      description: get all old notification
+      operationId: NotificacionEstadoUsuarioController.getOldNotification
+      parameters:
+      - in: path
+        name: roles
+        description: The profile you want to consult
+        required: true
+        type: string
+      - in: path
+        name: usuario
+        description: The user you want to consult
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} get success!'
+        "403":
+          description: profile is empty
+  /notificacion_estado_usuario/pushNotificationUser:
+    post:
+      tags:
+      - notificacion_estado_usuario
+      description: create pushNotificationUser
+      operationId: NotificacionEstadoUsuarioController.pushNotificationUser
+      parameters:
+      - in: body
+        name: body
+        description: body for NotificacionEstadoUsuario content
+        required: true
+        schema:
+          $ref: '#/definitions/models.NotificacionUsarioMasiva'
+      responses:
+        "201":
+          description: '{int} models.NotificacionEstadoUsuario'
+        "403":
+          description: body is empty
   /notificacion_tipo/:
     get:
       tags:
@@ -1415,17 +1570,40 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
+  /perfil_x_menu_opcion/MenusPorAplicacion/{id}:
+    get:
+      tags:
+      - perfil_x_menu_opcion
+      description: getMenuPorAplicacion
+      operationId: PerfilXMenuOpcionController.MenusPorAplicacion
+      parameters:
+      - in: path
+        name: id
+        description: id de la aplicación a la cual pertenecen las opciones
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PerfilXMenuOpcion'
+        "403":
+          description: :id is empty
 definitions:
   models.Aplicacion:
     title: Aplicacion
     type: object
     properties:
+      Alias:
+        type: string
       Descripcion:
         type: string
       Dominio:
         type: string
       Estado:
         type: boolean
+      EstiloIcono:
+        type: string
       Id:
         type: integer
         format: int64
@@ -1526,10 +1704,37 @@ definitions:
     title: NotificacionEstado
     type: object
     properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
       Id:
         type: integer
         format: int64
       Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.NotificacionEstadoUsuario:
+    title: NotificacionEstadoUsuario
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Fecha:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Notificacion:
+        $ref: '#/definitions/models.Notificacion'
+      NotificacionEstado:
+        $ref: '#/definitions/models.NotificacionEstado'
+      Usuario:
         type: string
   models.NotificacionTipo:
     title: NotificacionTipo
@@ -1540,6 +1745,9 @@ definitions:
         format: int64
       Nombre:
         type: string
+  models.NotificacionUsarioMasiva:
+    title: NotificacionUsarioMasiva
+    type: object
   models.Parametro:
     title: Parametro
     type: object
@@ -1576,6 +1784,9 @@ definitions:
       Perfil:
         $ref: '#/definitions/models.Perfil'
 tags:
+- name: notificacion_estado_usuario
+  description: |
+    NotificacionEstadoUsuarioController operations for NotificacionEstadoUsuario
 - name: notificacion
   description: |
     NotificacionController operations for Notificacion
@@ -1599,7 +1810,7 @@ tags:
     MenuOpcionController oprations for MenuOpcion
 - name: aplicacion
   description: |
-    AplicacionController oprations for Aplicacion
+    AplicacionController operations for Aplicacion
 - name: parametro
   description: |
     ParametroController oprations for Parametro
