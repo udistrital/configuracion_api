@@ -14,20 +14,23 @@ func GetOldNotification(profile string, user string) []models.Notificacion {
 	o.Begin()
 	var notificaciones []models.Notificacion
 
-	_, err := o.Raw(`SELECT A.*
-		FROM (select N.*
-			from 	` + beego.AppConfig.String("PGschemas") + `.notificacion as N,
-					` + beego.AppConfig.String("PGschemas") + `.notificacion_configuracion as NC,
-					` + beego.AppConfig.String("PGschemas") + `.notificacion_configuracion_perfil as NCP,
-					` + beego.AppConfig.String("PGschemas") + `.perfil as p
+	_, err := o.Raw(
+		`select N.* from ` + beego.AppConfig.String("PGschemas") + `notificacion as N, (select N.id
+			from 	` + beego.AppConfig.String("PGschemas") + `notificacion as N,
+					` + beego.AppConfig.String("PGschemas") + `notificacion_configuracion as NC,
+					` + beego.AppConfig.String("PGschemas") + `notificacion_configuracion_perfil as NCP,
+					` + beego.AppConfig.String("PGschemas") + `perfil as p
 			where
 			NC.id = N.notificacion_configuracion and
 			NCP.notificacion_configuracion = NC.id and
 			NCP.perfil = p.id and
 			p.nombre IN ('` + profile + `')
-			) as A
-		left join ` + beego.AppConfig.String("PGschemas") + `.notificacion_estado_usuario as B on 
-		A.id = B.notificacion where B.id is null`).QueryRows(&notificaciones)
+		except 
+		select N.id from 
+		` + beego.AppConfig.String("PGschemas") + `notificacion as N, 
+		` + beego.AppConfig.String("PGschemas") + `notificacion_estado_usuario as NEU 
+		where N.id = NEU.notificacion and NEU.usuario = '` + user + `') as IDS
+		where IDS.id = N.id`).QueryRows(&notificaciones)
 	beego.Info(notificaciones)
 	if err != nil {
 		fmt.Println("Error al consultar las notificaciones antiguas")
