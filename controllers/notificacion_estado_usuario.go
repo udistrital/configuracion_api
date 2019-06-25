@@ -206,3 +206,15 @@ func (c *NotificacionEstadoUsuarioController) PushNotificationUser() {
 		c.Data["json"] = err.Error()
 	}
 }
+
+// changeStateNoView ...
+// @Title changeStateNoView
+// @Description change state of notifications
+// @Param	usuario		path 	string	true		"The user you want to update"
+// @Success 200 {string} get success!
+// @Failure 403 body is empty
+// @router /changeStateNoView/:usuario [put]
+func (c *NotificacionEstadoUsuarioController) ChangeStateNoView() {
+	userStr := c.Ctx.Input.Param(":usuario")
+	c.Data["json"] = notimanager.ChangeStateNoView(userStr)
+}

@@ -423,6 +423,15 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionEstadoUsuarioController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionEstadoUsuarioController"],
         beego.ControllerComments{
+            Method: "ChangeStateNoView",
+            Router: `/changeStateNoView/:usuario`,
+            AllowHTTPMethods: []string{"put"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionEstadoUsuarioController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:NotificacionEstadoUsuarioController"],
+        beego.ControllerComments{
             Method: "GetOldNotification",
             Router: `/getOldNotification/:roles/:usuario`,
             AllowHTTPMethods: []string{"get"},

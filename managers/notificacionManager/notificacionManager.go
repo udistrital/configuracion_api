@@ -14,8 +14,8 @@ func GetOldNotification(profile string, user string) []models.Notificacion {
 	o.Begin()
 	var notificaciones []models.Notificacion
 
-	_, err := o.Raw(`SELECT A.*
-		FROM (select N.*
+	_, err := o.Raw(
+		`select N.* from ` + beego.AppConfig.String("PGschemas") + `.notificacion as N, (select N.id
 			from 	` + beego.AppConfig.String("PGschemas") + `.notificacion as N,
 					` + beego.AppConfig.String("PGschemas") + `.notificacion_configuracion as NC,
 					` + beego.AppConfig.String("PGschemas") + `.notificacion_configuracion_perfil as NCP,
@@ -25,9 +25,12 @@ func GetOldNotification(profile string, user string) []models.Notificacion {
 			NCP.notificacion_configuracion = NC.id and
 			NCP.perfil = p.id and
 			p.nombre IN ('` + profile + `')
-			) as A
-		left join ` + beego.AppConfig.String("PGschemas") + `.notificacion_estado_usuario as B on 
-		A.id = B.notificacion where B.id is null`).QueryRows(&notificaciones)
+		except 
+		select N.id from 
+		` + beego.AppConfig.String("PGschemas") + `.notificacion as N, 
+		` + beego.AppConfig.String("PGschemas") + `.notificacion_estado_usuario as NEU 
+		where N.id = NEU.notificacion and NEU.usuario = '` + user + `') as IDS
+		where IDS.id = N.id`).QueryRows(&notificaciones)
 	beego.Info(notificaciones)
 	if err != nil {
 		fmt.Println("Error al consultar las notificaciones antiguas")
@@ -38,6 +41,7 @@ func GetOldNotification(profile string, user string) []models.Notificacion {
 
 	} else {
 		for _, idx := range notificaciones {
+			beego.Info("Entro por old notifications")
 			relation := models.NotificacionEstadoUsuario{}
 			relation.Activo = true
 			relation.Fecha = time.Now().Local()
@@ -92,4 +96,56 @@ func PushNotificationUser(N *models.NotificacionUsuarioMasiva) error {
 		o.Commit()
 	}
 	return err
+}
+
+func ChangeStateNoView(user string) []models.NotificacionEstadoUsuario {
+	o := orm.NewOrm()
+	o.Begin()
+	var notificaciones []models.NotificacionEstadoUsuario
+	_, err := o.Raw(
+		`select NEU.* from 
+		` + beego.AppConfig.String("PGschemas") + `.notificacion_estado_usuario as NEU 
+		where NEU.usuario = '` + user + `' and
+		activo = true and
+		notificacion_estado = 1`).QueryRows(&notificaciones)
+	beego.Info(notificaciones)
+	if err != nil {
+		fmt.Println("Error al actualizar las notificaciones antiguas")
+	}
+
+	if len(notificaciones) == 0 || notificaciones == nil {
+		fmt.Println("No existen notificaciones_estado_usuario creadas")
+
+	} else {
+		for _, n := range notificaciones {
+			notification := n
+			if err = o.Read(&notification); err == nil {
+				notification.Activo = false
+				var num int64
+				if num, err = o.Update(&notification); err == nil {
+					fmt.Println("Number of records updated in database:", num)
+				}
+			}
+
+			new_notification := models.NotificacionEstadoUsuario{}
+			new_notification.Activo = true
+			new_notification.Fecha = time.Now().Local()
+			new_notification.Notificacion = n.Notificacion
+			new_notification.NotificacionEstado = &models.NotificacionEstado{Id: 2}
+			new_notification.Usuario = n.Usuario
+			id, err := o.Insert(&new_notification)
+			if err == nil {
+				fmt.Println(id)
+			}
+		}
+	}
+
+	if err != nil {
+		o.Rollback()
+		panic("Error al actualizar las notificaciones ")
+	} else {
+		o.Commit()
+	}
+
+	return notificaciones
 }

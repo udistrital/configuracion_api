@@ -1070,6 +1070,23 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
+  /notificacion_estado_usuario/changeStateNoView/{usuario}:
+    put:
+      tags:
+      - notificacion_estado_usuario
+      description: change state of notifications
+      operationId: NotificacionEstadoUsuarioController.changeStateNoView
+      parameters:
+      - in: path
+        name: usuario
+        description: The user you want to update
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} get success!'
+        "403":
+          description: body is empty
   /notificacion_estado_usuario/getOldNotification/{roles}/{usuario}:
     get:
       tags:
@@ -1656,8 +1673,6 @@ definitions:
     properties:
       CuerpoNotificacion:
         type: string
-      EstadoNotificacion:
-        $ref: '#/definitions/models.NotificacionEstado'
       FechaCreacion:
         type: string
         format: datetime
@@ -1666,8 +1681,6 @@ definitions:
         format: int64
       NotificacionConfiguracion:
         $ref: '#/definitions/models.NotificacionConfiguracion'
-      Usuario:
-        type: string
   models.NotificacionConfiguracion:
     title: NotificacionConfiguracion
     type: object
