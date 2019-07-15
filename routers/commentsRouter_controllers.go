@@ -425,7 +425,7 @@ func init() {
         beego.ControllerComments{
             Method: "ChangeStateNoView",
             Router: `/changeStateNoView/:usuario`,
-            AllowHTTPMethods: []string{"put"},
+            AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
