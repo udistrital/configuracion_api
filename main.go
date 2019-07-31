@@ -8,14 +8,14 @@ import (
 	"github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
 	notificacionlib "github.com/udistrital/notificaciones_lib"
-	"github.com/udistrital/auditoria"
-	"github.com/udistrital/utils_oas/apiStatusLib"
+	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
 	"github.com/udistrital/utils_oas/responseformat"
-
 )
 
 func init() {
-	orm.RegisterDataBase("default", "postgres", "postgres://"+beego.AppConfig.String("PGuser")+":"+beego.AppConfig.String("PGpass")+"@"+beego.AppConfig.String("PGurls")+"/"+beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+beego.AppConfig.String("PGschemas")+"")
+	maxIdle := 60
+	maxConn := 60
+	orm.RegisterDataBase("default", "postgres", "postgres://"+beego.AppConfig.String("PGuser")+":"+beego.AppConfig.String("PGpass")+"@"+beego.AppConfig.String("PGurls")+"/"+beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+beego.AppConfig.String("PGschemas")+"", maxIdle, maxConn)
 }
 
 func main() {
@@ -39,8 +39,8 @@ func main() {
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
 	apistatus.Init()
-	auditoria.InitMiddleware()
+	// auditoria.InitMiddleware()
 	notificacionlib.InitMiddleware()
 	beego.Run()
-	
+
 }

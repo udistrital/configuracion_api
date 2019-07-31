@@ -60,9 +60,7 @@ func GetOldNotification(profile string, user string) []models.Notificacion {
 		} else {
 			o.Commit()
 		}
-
 	}
-
 	return notificaciones
 }
 
