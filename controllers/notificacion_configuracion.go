@@ -88,7 +88,7 @@ func (c *NotificacionConfiguracionController) GetConfiguracion() {
 	var v models.ShowConfiguration
 	// fields: col1,col2,entity.col3
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-			c.Data["json"] = notimanager.GetConfiguracion(v.EndPoint, v.MetodoHttp,v.Tipo,v.Aplicacion,v.AppName)
+			c.Data["json"] = notimanager.GetConfiguracion(v.EndPoint, v.MetodoHttp,v.Tipo,v.Aplicacion)
 		} else {
 			logs.Error(err)
 			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}

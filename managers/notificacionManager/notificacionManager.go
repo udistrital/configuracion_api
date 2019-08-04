@@ -9,18 +9,18 @@ import (
 	"github.com/udistrital/configuracion_api/models"
 )
 
-func GetConfiguracion(endpoint, metodohttp,tipo,aplicacion,appname string) []models.NotificacionConfiguracion{
+func GetConfiguracion(endpoint, metodohttp,tipo,aplicacion string) []models.NotificacionConfiguracion{
 	o := orm.NewOrm()
 	o.Begin()
 	var configuracion []models.NotificacionConfiguracion
 	beego.Info(endpoint)
 	_, err := o.Raw(
 		`SELECT T0.*, T0.*, T1.*, T2.*, T3.* FROM 
-		configuracion.notificacion_configuracion T0 INNER JOIN 
-		configuracion.metodo_http T1 ON T1.id = T0.metodo_http INNER JOIN 
-		configuracion.notificacion_tipo T2 ON T2.id = T0.tipo INNER JOIN
-		configuracion.aplicacion T3 ON T3.id = T0.aplicacion 
-		WHERE T0.end_point LIKE '%notificacion_tipo%' AND T1.nombre = 'POST' AND T2.nombre = 'success' AND T3.nombre = 'configuracion_api' LIMIT 10;`).QueryRows(&configuracion)
+		` + beego.AppConfig.String("PGschemas") + `.notificacion_configuracion T0 INNER JOIN 
+		` + beego.AppConfig.String("PGschemas") + `.metodo_http T1 ON T1.id = T0.metodo_http INNER JOIN 
+		` + beego.AppConfig.String("PGschemas") + `.notificacion_tipo T2 ON T2.id = T0.tipo INNER JOIN
+		` + beego.AppConfig.String("PGschemas") + `.aplicacion T3 ON T3.id = T0.aplicacion 
+		WHERE T0.end_point LIKE '` + endpoint + `' AND T1.nombre = '` + metodohttp + `' AND T2.nombre = '` + tipo + `' AND T3.nombre = '` + aplicacion + `' LIMIT 10;`).QueryRows(&configuracion)
 	beego.Info(configuracion)
 	if err != nil {
 		fmt.Println("Error al consultar la configuracion")

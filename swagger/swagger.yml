@@ -1820,8 +1820,6 @@ definitions:
     properties:
       Aplicacion:
         type: string
-      AppName:
-        type: string
       EndPoint:
         type: string
       MetodoHttp:
