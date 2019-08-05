@@ -85,19 +85,22 @@ func (c *NotificacionConfiguracionController) GetOne() {
 // @Failure 403 profile is empty
 // @router /getConfiguracion/ [post]
 func (c *NotificacionConfiguracionController) GetConfiguracion() {
-	var v models.ShowConfiguration
+	var v map[string]interface{}
 	// fields: col1,col2,entity.col3
+	beego.Info(c.Ctx.Input.RequestBody)
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-			c.Data["json"] = notimanager.GetConfiguracion(v.EndPoint, v.MetodoHttp,v.Tipo,v.Aplicacion)
-		} else {
-			logs.Error(err)
-			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-			c.Data["system"] = err
-			c.Abort("400")
-		}
-	
-}
 
+		c.Data["json"] = notimanager.GetConfiguracion(v["EndPoint"].(string), v["MetodoHttp"].(string), v["Tipo"].(string), v["Aplicacion"].(string))
+		beego.Info(c.Data["json"])
+	} else {
+		beego.Error(err)
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
+	}
+	c.ServeJSON()
+}
 
 // GetAll ...
 // @Title Get All

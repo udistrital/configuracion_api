@@ -17,11 +17,9 @@ func GetConfiguracion(endpoint, metodohttp, tipo, aplicacion string) []models.No
 	var fin = regexp.MustCompile(`\/*$`)
 	s := inicio.ReplaceAllString(endpoint, ``)
 	endpointFinal := fin.ReplaceAllString(s, ``)
-	beego.Info(endpointFinal)
 
 	_, err := o.Raw(
-		`SELECT T0.*, T0.*, T1.*, T2.*, T3.* FROM 
-		` + beego.AppConfig.String("PGschemas") + `.notificacion_configuracion T0 INNER JOIN 
+		`SELECT T0.* FROM ` + beego.AppConfig.String("PGschemas") + `.notificacion_configuracion T0 INNER JOIN 
 		` + beego.AppConfig.String("PGschemas") + `.metodo_http T1 ON T1.id = T0.metodo_http INNER JOIN 
 		` + beego.AppConfig.String("PGschemas") + `.notificacion_tipo T2 ON T2.id = T0.tipo INNER JOIN
 		` + beego.AppConfig.String("PGschemas") + `.aplicacion T3 ON T3.id = T0.aplicacion 
@@ -33,8 +31,6 @@ func GetConfiguracion(endpoint, metodohttp, tipo, aplicacion string) []models.No
 
 	if len(configuracion) == 0 || configuracion == nil {
 		fmt.Println("No existen las configuraciones")
-
-	} else {
 
 	}
 	return configuracion
