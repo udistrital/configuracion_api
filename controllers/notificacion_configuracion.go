@@ -10,6 +10,7 @@ import (
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
+	notimanager "github.com/udistrital/configuracion_api/managers/notificacionManager"
 )
 
 // NotificacionConfiguracionController operations for NotificacionConfiguracion
@@ -72,6 +73,31 @@ func (c *NotificacionConfiguracionController) GetOne() {
 		c.Abort("404")
 	} else {
 		c.Data["json"] = v
+	}
+	c.ServeJSON()
+}
+
+// GetConfiguracion ...
+// @Title getConfiguracion
+// @Description get a configuration
+// @Param	body		body 	models.ShowConfiguration	true		"body for ShowConfiguration content"
+// @Success 200 {string} get success!
+// @Failure 403 profile is empty
+// @router /getConfiguracion/ [post]
+func (c *NotificacionConfiguracionController) GetConfiguracion() {
+	var v map[string]interface{}
+	// fields: col1,col2,entity.col3
+	beego.Info(c.Ctx.Input.RequestBody)
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+
+		c.Data["json"] = notimanager.GetConfiguracion(v["EndPoint"].(string), v["MetodoHttp"].(string), v["Tipo"].(string), v["Aplicacion"].(string))
+		beego.Info(c.Data["json"])
+	} else {
+		beego.Error(err)
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }

@@ -48,8 +48,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Aplicacion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - aplicacion
@@ -65,8 +65,8 @@ paths:
       responses:
         "201":
           description: '{int} models.Aplicacion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /aplicacion/{id}:
     get:
       tags:
@@ -84,8 +84,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Aplicacion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - aplicacion
@@ -108,8 +108,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Aplicacion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - aplicacion
@@ -124,8 +124,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /menu_opcion/:
     get:
       tags:
@@ -163,8 +163,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.MenuOpcion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - menu_opcion
@@ -180,8 +180,8 @@ paths:
       responses:
         "201":
           description: '{int} models.MenuOpcion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /menu_opcion/{id}:
     get:
       tags:
@@ -199,8 +199,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.MenuOpcion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - menu_opcion
@@ -223,8 +223,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.MenuOpcion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - menu_opcion
@@ -239,8 +239,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /menu_opcion_padre/:
     get:
       tags:
@@ -278,8 +278,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.MenuOpcionPadre'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - menu_opcion_padre
@@ -295,8 +295,8 @@ paths:
       responses:
         "201":
           description: '{int} models.MenuOpcionPadre'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /menu_opcion_padre/{id}:
     get:
       tags:
@@ -314,8 +314,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.MenuOpcionPadre'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - menu_opcion_padre
@@ -338,8 +338,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.MenuOpcionPadre'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - menu_opcion_padre
@@ -354,8 +354,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /menu_opcion_padre/ArbolMenus/{roles}/{app}:
     get:
       tags:
@@ -417,8 +417,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.MetodoHttp'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - metodo_http
@@ -434,8 +434,8 @@ paths:
       responses:
         "201":
           description: '{int} models.MetodoHttp'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /metodo_http/{id}:
     get:
       tags:
@@ -453,8 +453,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.MetodoHttp'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - metodo_http
@@ -477,8 +477,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.MetodoHttp'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - metodo_http
@@ -493,8 +493,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /notificacion/:
     get:
       tags:
@@ -532,8 +532,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Notificacion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - notificacion
@@ -549,8 +549,8 @@ paths:
       responses:
         "201":
           description: '{int} models.Notificacion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /notificacion/{id}:
     get:
       tags:
@@ -568,8 +568,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Notificacion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - notificacion
@@ -592,8 +592,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Notificacion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - notificacion
@@ -608,8 +608,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /notificacion_configuracion/:
     get:
       tags:
@@ -647,8 +647,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionConfiguracion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - notificacion_configuracion
@@ -664,8 +664,8 @@ paths:
       responses:
         "201":
           description: '{int} models.NotificacionConfiguracion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /notificacion_configuracion/{id}:
     get:
       tags:
@@ -683,8 +683,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionConfiguracion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - notificacion_configuracion
@@ -707,8 +707,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionConfiguracion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - notificacion_configuracion
@@ -723,8 +723,26 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /notificacion_configuracion/getConfiguracion/:
+    post:
+      tags:
+      - notificacion_configuracion
+      description: get a configuration
+      operationId: NotificacionConfiguracionController.getConfiguracion
+      parameters:
+      - in: body
+        name: body
+        description: body for ShowConfiguration content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ShowConfiguration'
+      responses:
+        "200":
+          description: '{string} get success!'
         "403":
-          description: id is empty
+          description: profile is empty
   /notificacion_configuracion_perfil/:
     get:
       tags:
@@ -762,8 +780,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionConfiguracionPerfil'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - notificacion_configuracion_perfil
@@ -779,8 +797,8 @@ paths:
       responses:
         "201":
           description: '{int} models.NotificacionConfiguracionPerfil'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /notificacion_configuracion_perfil/{id}:
     get:
       tags:
@@ -798,8 +816,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionConfiguracionPerfil'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - notificacion_configuracion_perfil
@@ -822,8 +840,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionConfiguracionPerfil'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - notificacion_configuracion_perfil
@@ -838,8 +856,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /notificacion_estado/:
     get:
       tags:
@@ -877,8 +895,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionEstado'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - notificacion_estado
@@ -894,8 +912,8 @@ paths:
       responses:
         "201":
           description: '{int} models.NotificacionEstado'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /notificacion_estado/{id}:
     get:
       tags:
@@ -913,8 +931,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionEstado'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - notificacion_estado
@@ -937,8 +955,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionEstado'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - notificacion_estado
@@ -953,8 +971,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /notificacion_estado_usuario/:
     get:
       tags:
@@ -992,8 +1010,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionEstadoUsuario'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - notificacion_estado_usuario
@@ -1009,8 +1027,8 @@ paths:
       responses:
         "201":
           description: '{int} models.NotificacionEstadoUsuario'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /notificacion_estado_usuario/{id}:
     get:
       tags:
@@ -1028,8 +1046,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionEstadoUsuario'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - notificacion_estado_usuario
@@ -1052,8 +1070,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionEstadoUsuario'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - notificacion_estado_usuario
@@ -1068,10 +1086,10 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /notificacion_estado_usuario/changeStateNoView/{usuario}:
-    put:
+    post:
       tags:
       - notificacion_estado_usuario
       description: change state of notifications
@@ -1164,8 +1182,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionTipo'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - notificacion_tipo
@@ -1181,8 +1199,8 @@ paths:
       responses:
         "201":
           description: '{int} models.NotificacionTipo'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /notificacion_tipo/{id}:
     get:
       tags:
@@ -1200,8 +1218,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionTipo'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - notificacion_tipo
@@ -1224,8 +1242,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NotificacionTipo'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - notificacion_tipo
@@ -1240,8 +1258,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /parametro/:
     get:
       tags:
@@ -1279,8 +1297,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Parametro'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - parametro
@@ -1296,8 +1314,8 @@ paths:
       responses:
         "201":
           description: '{int} models.Parametro'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /parametro/{id}:
     get:
       tags:
@@ -1315,8 +1333,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Parametro'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - parametro
@@ -1339,8 +1357,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Parametro'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - parametro
@@ -1355,8 +1373,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /perfil/:
     get:
       tags:
@@ -1394,8 +1412,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Perfil'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - perfil
@@ -1411,8 +1429,8 @@ paths:
       responses:
         "201":
           description: '{int} models.Perfil'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /perfil/{id}:
     get:
       tags:
@@ -1430,8 +1448,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Perfil'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - perfil
@@ -1454,8 +1472,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.Perfil'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - perfil
@@ -1470,8 +1488,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /perfil_x_menu_opcion/:
     get:
       tags:
@@ -1509,8 +1527,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.PerfilXMenuOpcion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - perfil_x_menu_opcion
@@ -1526,8 +1544,8 @@ paths:
       responses:
         "201":
           description: '{int} models.PerfilXMenuOpcion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /perfil_x_menu_opcion/{id}:
     get:
       tags:
@@ -1545,8 +1563,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.PerfilXMenuOpcion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - perfil_x_menu_opcion
@@ -1569,8 +1587,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.PerfilXMenuOpcion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - perfil_x_menu_opcion
@@ -1585,8 +1603,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /perfil_x_menu_opcion/MenusPorAplicacion/{id}:
     get:
       tags:
@@ -1796,6 +1814,18 @@ definitions:
         $ref: '#/definitions/models.MenuOpcion'
       Perfil:
         $ref: '#/definitions/models.Perfil'
+  models.ShowConfiguration:
+    title: ShowConfiguration
+    type: object
+    properties:
+      Aplicacion:
+        type: string
+      EndPoint:
+        type: string
+      MetodoHttp:
+        type: string
+      Tipo:
+        type: string
 tags:
 - name: notificacion_estado_usuario
   description: |
