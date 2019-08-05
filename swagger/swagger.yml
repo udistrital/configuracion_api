@@ -1139,7 +1139,7 @@ paths:
         description: body for NotificacionEstadoUsuario content
         required: true
         schema:
-          $ref: '#/definitions/.NotificacionUsarioMasiva'
+          $ref: '#/definitions/models.NotificacionUsarioMasiva'
       responses:
         "201":
           description: '{int} models.NotificacionEstadoUsuario'
@@ -1625,8 +1625,6 @@ paths:
         "403":
           description: :id is empty
 definitions:
-  .NotificacionUsarioMasiva:
-    type: object
   models.Aplicacion:
     title: Aplicacion
     type: object
@@ -1778,6 +1776,9 @@ definitions:
         format: int64
       Nombre:
         type: string
+  models.NotificacionUsarioMasiva:
+    title: NotificacionUsarioMasiva
+    type: object
   models.Parametro:
     title: Parametro
     type: object
