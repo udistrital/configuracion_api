@@ -1573,6 +1573,33 @@
                 }
             }
         },
+        "/notificacion_estado_usuario/changeStateToView/{id}": {
+            "get": {
+                "tags": [
+                    "notificacion_estado_usuario"
+                ],
+                "description": "create NotificacionEstadoUsuario",
+                "operationId": "NotificacionEstadoUsuarioController.changeStateNoView",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The notification you want to update",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.NotificacionEstadoUsuario"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
         "/notificacion_estado_usuario/getOldNotification/{roles}/{usuario}": {
             "get": {
                 "tags": [
@@ -1620,7 +1647,7 @@
                         "description": "body for NotificacionEstadoUsuario content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.NotificacionUsarioMasiva"
+                            "$ref": "#/definitions/.NotificacionUsarioMasiva"
                         }
                     }
                 ],
@@ -2446,6 +2473,9 @@
         }
     },
     "definitions": {
+        ".NotificacionUsarioMasiva": {
+            "type": "object"
+        },
         "models.Aplicacion": {
             "title": "Aplicacion",
             "type": "object",
@@ -2665,10 +2695,6 @@
                     "type": "string"
                 }
             }
-        },
-        "models.NotificacionUsarioMasiva": {
-            "title": "NotificacionUsarioMasiva",
-            "type": "object"
         },
         "models.Parametro": {
             "title": "Parametro",
