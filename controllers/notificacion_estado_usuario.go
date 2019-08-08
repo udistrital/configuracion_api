@@ -238,8 +238,20 @@ func (c *NotificacionEstadoUsuarioController) PushNotificationUser() {
 // @Param	usuario		path 	string	true		"The user you want to update"
 // @Success 200 {string} get success!
 // @Failure 403 body is empty
-// @router /changeStateNoView/:usuario [put]
+// @router /changeStateNoView/:usuario [post]
 func (c *NotificacionEstadoUsuarioController) ChangeStateNoView() {
 	userStr := c.Ctx.Input.Param(":usuario")
 	c.Data["json"] = notimanager.ChangeStateNoView(userStr)
+}
+
+// ChangeStateToView ...
+// @Title changeStateNoView
+// @Description create NotificacionEstadoUsuario
+// @Param    id        path     int    true        "The notification you want to update"
+// @Success 201 {int} models.NotificacionEstadoUsuario
+// @Failure 400 the request contains incorrect syntax
+// @router /changeStateToView/:id [get]
+func (c *NotificacionEstadoUsuarioController) ChangeStateToView() {
+    idStr := c.Ctx.Input.Param(":id")
+    c.Data["json"] = notimanager.ChangeStateToView(idStr)
 }

@@ -14,7 +14,7 @@ type NotificacionConfiguracion struct {
 	EndPoint                        string                             `orm:"column(end_point)"`
 	MetodoHttp                      *MetodoHttp                        `orm:"column(metodo_http);rel(fk)"`
 	Tipo                            *NotificacionTipo                  `orm:"column(tipo);rel(fk)"`
-	CuerpoNotificacion              string                               `orm:"column(cuerpo_notificacion);type(string)"`
+	CuerpoNotificacion              string                             `orm:"column(cuerpo_notificacion);type(string)"`
 	Aplicacion                      *Aplicacion                        `orm:"column(aplicacion);rel(fk)"`
 	NotificacionConfiguracionPerfil []*NotificacionConfiguracionPerfil `orm:"reverse(many)"`
 }
@@ -51,7 +51,7 @@ func GetNotificacionConfiguracionById(id int) (v *NotificacionConfiguracion, err
 func GetAllNotificacionConfiguracion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(NotificacionConfiguracion))
+	qs := o.QueryTable(new(NotificacionConfiguracion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
