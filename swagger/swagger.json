@@ -67,8 +67,8 @@
                             "$ref": "#/definitions/models.Aplicacion"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -93,8 +93,8 @@
                     "201": {
                         "description": "{int} models.Aplicacion"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -122,8 +122,8 @@
                             "$ref": "#/definitions/models.Aplicacion"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -158,8 +158,8 @@
                             "$ref": "#/definitions/models.Aplicacion"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -182,8 +182,8 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -240,8 +240,8 @@
                             "$ref": "#/definitions/models.MenuOpcion"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -266,8 +266,8 @@
                     "201": {
                         "description": "{int} models.MenuOpcion"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -295,8 +295,8 @@
                             "$ref": "#/definitions/models.MenuOpcion"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -331,8 +331,8 @@
                             "$ref": "#/definitions/models.MenuOpcion"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -355,8 +355,8 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -413,8 +413,8 @@
                             "$ref": "#/definitions/models.MenuOpcionPadre"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -439,8 +439,8 @@
                     "201": {
                         "description": "{int} models.MenuOpcionPadre"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -504,8 +504,8 @@
                             "$ref": "#/definitions/models.MenuOpcionPadre"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -540,8 +540,8 @@
                             "$ref": "#/definitions/models.MenuOpcionPadre"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -564,8 +564,8 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -622,8 +622,8 @@
                             "$ref": "#/definitions/models.MetodoHttp"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -648,8 +648,8 @@
                     "201": {
                         "description": "{int} models.MetodoHttp"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -677,8 +677,8 @@
                             "$ref": "#/definitions/models.MetodoHttp"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -713,8 +713,8 @@
                             "$ref": "#/definitions/models.MetodoHttp"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -737,8 +737,8 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -795,8 +795,8 @@
                             "$ref": "#/definitions/models.Notificacion"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -821,8 +821,8 @@
                     "201": {
                         "description": "{int} models.Notificacion"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -850,8 +850,8 @@
                             "$ref": "#/definitions/models.Notificacion"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -886,8 +886,8 @@
                             "$ref": "#/definitions/models.Notificacion"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -910,8 +910,8 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -968,8 +968,8 @@
                             "$ref": "#/definitions/models.NotificacionConfiguracion"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -994,8 +994,36 @@
                     "201": {
                         "description": "{int} models.NotificacionConfiguracion"
                     },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/notificacion_configuracion/getConfiguracion/": {
+            "post": {
+                "tags": [
+                    "notificacion_configuracion"
+                ],
+                "description": "get a configuration",
+                "operationId": "NotificacionConfiguracionController.getConfiguracion",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ShowConfiguration content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ShowConfiguration"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} get success!"
+                    },
                     "403": {
-                        "description": "body is empty"
+                        "description": "profile is empty"
                     }
                 }
             }
@@ -1023,8 +1051,8 @@
                             "$ref": "#/definitions/models.NotificacionConfiguracion"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1059,8 +1087,8 @@
                             "$ref": "#/definitions/models.NotificacionConfiguracion"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1083,8 +1111,8 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -1141,8 +1169,8 @@
                             "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1167,8 +1195,8 @@
                     "201": {
                         "description": "{int} models.NotificacionConfiguracionPerfil"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -1196,8 +1224,8 @@
                             "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1232,8 +1260,8 @@
                             "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1256,8 +1284,8 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -1314,8 +1342,8 @@
                             "$ref": "#/definitions/models.NotificacionEstado"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1340,8 +1368,8 @@
                     "201": {
                         "description": "{int} models.NotificacionEstado"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -1369,8 +1397,8 @@
                             "$ref": "#/definitions/models.NotificacionEstado"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1405,8 +1433,8 @@
                             "$ref": "#/definitions/models.NotificacionEstado"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1429,8 +1457,295 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/notificacion_estado_usuario/": {
+            "get": {
+                "tags": [
+                    "notificacion_estado_usuario"
+                ],
+                "description": "get NotificacionEstadoUsuario",
+                "operationId": "NotificacionEstadoUsuarioController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "notificacion_estado_usuario"
+                ],
+                "description": "create NotificacionEstadoUsuario",
+                "operationId": "NotificacionEstadoUsuarioController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionEstadoUsuario content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.NotificacionEstadoUsuario"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/notificacion_estado_usuario/changeStateNoView/{usuario}": {
+            "post": {
+                "tags": [
+                    "notificacion_estado_usuario"
+                ],
+                "description": "change state of notifications",
+                "operationId": "NotificacionEstadoUsuarioController.changeStateNoView",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "usuario",
+                        "description": "The user you want to update",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} get success!"
+                    },
                     "403": {
-                        "description": "id is empty"
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion_estado_usuario/changeStateToView/{id}": {
+            "get": {
+                "tags": [
+                    "notificacion_estado_usuario"
+                ],
+                "description": "create NotificacionEstadoUsuario",
+                "operationId": "NotificacionEstadoUsuarioController.changeStateNoView",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The notification you want to update",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.NotificacionEstadoUsuario"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/notificacion_estado_usuario/getOldNotification/{roles}/{usuario}": {
+            "get": {
+                "tags": [
+                    "notificacion_estado_usuario"
+                ],
+                "description": "get all old notification",
+                "operationId": "NotificacionEstadoUsuarioController.getOldNotification",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "roles",
+                        "description": "The profile you want to consult",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "usuario",
+                        "description": "The user you want to consult",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} get success!"
+                    },
+                    "403": {
+                        "description": "profile is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion_estado_usuario/pushNotificationUser": {
+            "post": {
+                "tags": [
+                    "notificacion_estado_usuario"
+                ],
+                "description": "create pushNotificationUser",
+                "operationId": "NotificacionEstadoUsuarioController.pushNotificationUser",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionEstadoUsuario content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/.NotificacionUsarioMasiva"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.NotificacionEstadoUsuario"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/notificacion_estado_usuario/{id}": {
+            "get": {
+                "tags": [
+                    "notificacion_estado_usuario"
+                ],
+                "description": "get NotificacionEstadoUsuario by id",
+                "operationId": "NotificacionEstadoUsuarioController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "notificacion_estado_usuario"
+                ],
+                "description": "update the NotificacionEstadoUsuario",
+                "operationId": "NotificacionEstadoUsuarioController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NotificacionEstadoUsuario content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "notificacion_estado_usuario"
+                ],
+                "description": "delete the NotificacionEstadoUsuario",
+                "operationId": "NotificacionEstadoUsuarioController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -1487,8 +1802,8 @@
                             "$ref": "#/definitions/models.NotificacionTipo"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1513,8 +1828,8 @@
                     "201": {
                         "description": "{int} models.NotificacionTipo"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -1542,8 +1857,8 @@
                             "$ref": "#/definitions/models.NotificacionTipo"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1578,8 +1893,8 @@
                             "$ref": "#/definitions/models.NotificacionTipo"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1602,8 +1917,8 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -1660,8 +1975,8 @@
                             "$ref": "#/definitions/models.Parametro"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1686,8 +2001,8 @@
                     "201": {
                         "description": "{int} models.Parametro"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -1715,8 +2030,8 @@
                             "$ref": "#/definitions/models.Parametro"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1751,8 +2066,8 @@
                             "$ref": "#/definitions/models.Parametro"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1775,8 +2090,8 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -1833,8 +2148,8 @@
                             "$ref": "#/definitions/models.Perfil"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1859,8 +2174,8 @@
                     "201": {
                         "description": "{int} models.Perfil"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -1888,8 +2203,8 @@
                             "$ref": "#/definitions/models.Perfil"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1924,8 +2239,8 @@
                             "$ref": "#/definitions/models.Perfil"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1948,8 +2263,8 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -2006,8 +2321,8 @@
                             "$ref": "#/definitions/models.PerfilXMenuOpcion"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -2032,8 +2347,37 @@
                     "201": {
                         "description": "{int} models.PerfilXMenuOpcion"
                     },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/perfil_x_menu_opcion/MenusPorAplicacion/{id}": {
+            "get": {
+                "tags": [
+                    "perfil_x_menu_opcion"
+                ],
+                "description": "getMenuPorAplicacion",
+                "operationId": "PerfilXMenuOpcionController.MenusPorAplicacion",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "id de la aplicación a la cual pertenecen las opciones",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.PerfilXMenuOpcion"
+                        }
+                    },
                     "403": {
-                        "description": "body is empty"
+                        "description": ":id is empty"
                     }
                 }
             }
@@ -2061,8 +2405,8 @@
                             "$ref": "#/definitions/models.PerfilXMenuOpcion"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -2097,8 +2441,8 @@
                             "$ref": "#/definitions/models.PerfilXMenuOpcion"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -2121,18 +2465,24 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         }
     },
     "definitions": {
+        ".NotificacionUsarioMasiva": {
+            "type": "object"
+        },
         "models.Aplicacion": {
             "title": "Aplicacion",
             "type": "object",
             "properties": {
+                "Alias": {
+                    "type": "string"
+                },
                 "Descripcion": {
                     "type": "string"
                 },
@@ -2141,6 +2491,9 @@
                 },
                 "Estado": {
                     "type": "boolean"
+                },
+                "EstiloIcono": {
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2218,9 +2571,6 @@
                 "CuerpoNotificacion": {
                     "type": "string"
                 },
-                "EstadoNotificacion": {
-                    "$ref": "#/definitions/models.NotificacionEstado"
-                },
                 "FechaCreacion": {
                     "type": "string",
                     "format": "datetime"
@@ -2231,9 +2581,6 @@
                 },
                 "NotificacionConfiguracion": {
                     "$ref": "#/definitions/models.NotificacionConfiguracion"
-                },
-                "Usuario": {
-                    "type": "string"
                 }
             }
         },
@@ -2288,11 +2635,50 @@
             "title": "NotificacionEstado",
             "type": "object",
             "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
                 "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.NotificacionEstadoUsuario": {
+            "title": "NotificacionEstadoUsuario",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "Fecha": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Notificacion": {
+                    "$ref": "#/definitions/models.Notificacion"
+                },
+                "NotificacionEstado": {
+                    "$ref": "#/definitions/models.NotificacionEstado"
+                },
+                "Usuario": {
                     "type": "string"
                 }
             }
@@ -2360,9 +2746,31 @@
                     "$ref": "#/definitions/models.Perfil"
                 }
             }
+        },
+        "models.ShowConfiguration": {
+            "title": "ShowConfiguration",
+            "type": "object",
+            "properties": {
+                "Aplicacion": {
+                    "type": "string"
+                },
+                "EndPoint": {
+                    "type": "string"
+                },
+                "MetodoHttp": {
+                    "type": "string"
+                },
+                "Tipo": {
+                    "type": "string"
+                }
+            }
         }
     },
     "tags": [
+        {
+            "name": "notificacion_estado_usuario",
+            "description": "NotificacionEstadoUsuarioController operations for NotificacionEstadoUsuario\n"
+        },
         {
             "name": "notificacion",
             "description": "NotificacionController operations for Notificacion\n"
@@ -2393,7 +2801,7 @@
         },
         {
             "name": "aplicacion",
-            "description": "AplicacionController oprations for Aplicacion\n"
+            "description": "AplicacionController operations for Aplicacion\n"
         },
         {
             "name": "parametro",

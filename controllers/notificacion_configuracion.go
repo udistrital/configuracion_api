@@ -3,11 +3,14 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/configuracion_api/models"
 	"strconv"
 	"strings"
 
+	"github.com/udistrital/configuracion_api/models"
+
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
+	notimanager "github.com/udistrital/configuracion_api/managers/notificacionManager"
 )
 
 // NotificacionConfiguracionController operations for NotificacionConfiguracion
@@ -29,7 +32,7 @@ func (c *NotificacionConfiguracionController) URLMapping() {
 // @Description create NotificacionConfiguracion
 // @Param	body		body 	models.NotificacionConfiguracion	true		"body for NotificacionConfiguracion content"
 // @Success 201 {int} models.NotificacionConfiguracion
-// @Failure 403 body is empty
+// @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *NotificacionConfiguracionController) Post() {
 	var v models.NotificacionConfiguracion
@@ -38,10 +41,16 @@ func (c *NotificacionConfiguracionController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -51,16 +60,44 @@ func (c *NotificacionConfiguracionController) Post() {
 // @Description get NotificacionConfiguracion by id
 // @Param	id		path 	string	true		"The key for staticblock"
 // @Success 200 {object} models.NotificacionConfiguracion
-// @Failure 403 :id is empty
+// @Failure 404 not found resource
 // @router /:id [get]
 func (c *NotificacionConfiguracionController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetNotificacionConfiguracionById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
 		c.Data["json"] = v
+	}
+	c.ServeJSON()
+}
+
+// GetConfiguracion ...
+// @Title getConfiguracion
+// @Description get a configuration
+// @Param	body		body 	models.ShowConfiguration	true		"body for ShowConfiguration content"
+// @Success 200 {string} get success!
+// @Failure 403 profile is empty
+// @router /getConfiguracion/ [post]
+func (c *NotificacionConfiguracionController) GetConfiguracion() {
+	var v map[string]interface{}
+	// fields: col1,col2,entity.col3
+	beego.Info(c.Ctx.Input.RequestBody)
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+
+		c.Data["json"] = notimanager.GetConfiguracion(v["EndPoint"].(string), v["MetodoHttp"].(string), v["Tipo"].(string), v["Aplicacion"].(string))
+		beego.Info(c.Data["json"])
+	} else {
+		beego.Error(err)
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -75,7 +112,7 @@ func (c *NotificacionConfiguracionController) GetOne() {
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
 // @Success 200 {object} models.NotificacionConfiguracion
-// @Failure 403
+// @Failure 404 not found resource
 // @router / [get]
 func (c *NotificacionConfiguracionController) GetAll() {
 	var fields []string
@@ -121,8 +158,14 @@ func (c *NotificacionConfiguracionController) GetAll() {
 
 	l, err := models.GetAllNotificacionConfiguracion(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -134,7 +177,7 @@ func (c *NotificacionConfiguracionController) GetAll() {
 // @Param	id		path 	string	true		"The id you want to update"
 // @Param	body		body 	models.NotificacionConfiguracion	true		"body for NotificacionConfiguracion content"
 // @Success 200 {object} models.NotificacionConfiguracion
-// @Failure 403 :id is not int
+// @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
 func (c *NotificacionConfiguracionController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
@@ -142,12 +185,18 @@ func (c *NotificacionConfiguracionController) Put() {
 	v := models.NotificacionConfiguracion{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateNotificacionConfiguracionById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -157,15 +206,18 @@ func (c *NotificacionConfiguracionController) Put() {
 // @Description delete the NotificacionConfiguracion
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
-// @Failure 403 id is empty
+// @Failure 404 not found resource
 // @router /:id [delete]
 func (c *NotificacionConfiguracionController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteNotificacionConfiguracion(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }

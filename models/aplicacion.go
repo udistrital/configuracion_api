@@ -10,11 +10,13 @@ import (
 )
 
 type Aplicacion struct {
-	Id           int    `orm:"column(id);pk;auto"`
-	Nombre       string `orm:"column(nombre)"`
-	Descripcion  string `orm:"column(descripcion)"`
-	Dominio      string `orm:"column(dominio)"`
-	Estado 		bool   `orm:"column(estado)"`
+	Id          int    `orm:"column(id);pk;auto"`
+	Nombre      string `orm:"column(nombre)"`
+	Descripcion string `orm:"column(descripcion)"`
+	Dominio     string `orm:"column(dominio)"`
+	Estado      bool   `orm:"column(estado)"`
+	Alias       string `orm:"column(alias);null"`
+	EstiloIcono string `orm:"column(estilo_icono);null"`
 }
 
 func (t *Aplicacion) TableName() string {
@@ -49,12 +51,16 @@ func GetAplicacionById(id int) (v *Aplicacion, err error) {
 func GetAllAplicacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Aplicacion)).RelatedSel();
+	qs := o.QueryTable(new(Aplicacion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
-		qs = qs.Filter(k, v)
+		if strings.Contains(k, "isnull") {
+			qs = qs.Filter(k, (v == "true" || v == "1"))
+		} else {
+			qs = qs.Filter(k, v)
+		}
 	}
 	// order by:
 	var sortFields []string
