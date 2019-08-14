@@ -7,6 +7,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
+	"github.com/udistrital/auditoria"
 	notificacionlib "github.com/udistrital/notificaciones_lib"
 	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
 	"github.com/udistrital/utils_oas/responseformat"
@@ -19,7 +20,7 @@ func init() {
 }
 
 func main() {
-	beego.ErrorHandler("400",nil)
+	beego.ErrorHandler("400", nil)
 	orm.Debug = true
 	beego.BConfig.RecoverFunc = responseformat.GlobalResponseHandler
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
@@ -39,9 +40,8 @@ func main() {
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
 	apistatus.Init()
-	// auditoria.InitMiddleware()
+	auditoria.InitMiddleware()
 	notificacionlib.InitMiddleware()
 	beego.Run()
 
 }
-
