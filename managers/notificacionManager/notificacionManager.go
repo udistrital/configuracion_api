@@ -149,7 +149,8 @@ func PushNotificationUser(N *models.NotificacionUsuarioMasiva) error {
 		_, err = o.Insert(&relation)
 		if err != nil {
 			o.Rollback()
-			panic("Error al insertar las notificaciones 2")
+			beego.Info(err)
+			panic(err)
 		}
 	}
 
