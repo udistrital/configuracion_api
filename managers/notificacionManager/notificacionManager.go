@@ -3,8 +3,8 @@ package notimanager
 import (
 	"fmt"
 	"regexp"
-	"time"
 	"strconv"
+	"time"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -37,40 +37,40 @@ func GetConfiguracion(endpoint, metodohttp, tipo, aplicacion string) []models.No
 	return configuracion
 }
 
-func ChangeStateToView(id string) models.NotificacionEstadoUsuario{
-    o := orm.NewOrm()
-    o.Begin()
-    Integer, _ := strconv.Atoi(id)
-    noti := models.NotificacionEstadoUsuario{Id: Integer}
-    err := o.Read(&noti)
-    notificacion := noti;
-    if err != nil {
-        o.Rollback()
-        panic("Error al actualizar notificacion_estado_usario")
-        }else{
-            noti.Activo = false
-            _, err := o.Update(&noti);
-            if err != nil {
-                o.Rollback()
-                panic("Error al insertar notificacion_estado_usuario")
-        }else{
-            relation := models.NotificacionEstadoUsuario{}
-            relation.Activo = true
-            relation.Fecha = time.Now().Local()
-            relation.Notificacion = &models.Notificacion{Id: noti.Notificacion.Id}
-            relation.NotificacionEstado = &models.NotificacionEstado{Id: 3}
-            relation.Usuario = noti.Usuario
-            _,err := o.Insert(&relation)
-            if err != nil {
-                o.Rollback()
-                panic("Error al insertar notificacion_estado_usuario")
-            }else{
-                o.Commit();
-            }
-        }
-        
-    }
-    return notificacion
+func ChangeStateToView(id string) models.NotificacionEstadoUsuario {
+	o := orm.NewOrm()
+	o.Begin()
+	Integer, _ := strconv.Atoi(id)
+	noti := models.NotificacionEstadoUsuario{Id: Integer}
+	err := o.Read(&noti)
+	notificacion := noti
+	if err != nil {
+		o.Rollback()
+		panic("Error al actualizar notificacion_estado_usario")
+	} else {
+		noti.Activo = false
+		_, err := o.Update(&noti)
+		if err != nil {
+			o.Rollback()
+			panic("Error al insertar notificacion_estado_usuario")
+		} else {
+			relation := models.NotificacionEstadoUsuario{}
+			relation.Activo = true
+			relation.Fecha = time.Now().Local()
+			relation.Notificacion = &models.Notificacion{Id: noti.Notificacion.Id}
+			relation.NotificacionEstado = &models.NotificacionEstado{Id: 3}
+			relation.Usuario = noti.Usuario
+			_, err := o.Insert(&relation)
+			if err != nil {
+				o.Rollback()
+				panic("Error al insertar notificacion_estado_usuario")
+			} else {
+				o.Commit()
+			}
+		}
+
+	}
+	return notificacion
 }
 
 func GetOldNotification(profile string, user string) []models.Notificacion {
@@ -115,12 +115,14 @@ func GetOldNotification(profile string, user string) []models.Notificacion {
 			_, err = o.Insert(&relation)
 			if err != nil {
 				o.Rollback()
+				beego.Info(err)
 				panic("Error al insertar las notificaciones 2")
 			}
 		}
 		if err != nil {
 			o.Rollback()
-			fmt.Println("Error al insertar las notificaciones antiguas")
+			beego.Info(err)
+			panic("Error al insertar las notificaciones antiguas")
 		} else {
 			o.Commit()
 		}
