@@ -116,7 +116,7 @@ func GetOldNotification(profile string, user string) []models.Notificacion {
 			if err != nil {
 				o.Rollback()
 				beego.Info(err)
-				panic("Error al insertar las notificaciones 2")
+				panic(err)
 			}
 		}
 		if err != nil {
