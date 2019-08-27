@@ -69,6 +69,12 @@ func init() {
 			),
 		),
 
+		beego.NSNamespace("/aplicacion_rol",
+			beego.NSInclude(
+				&controllers.AplicacionRolController{},
+			),
+		),
+
 		beego.NSNamespace("/parametro",
 			beego.NSInclude(
 				&controllers.ParametroController{},
