@@ -52,6 +52,15 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:AplicacionRolController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:AplicacionRolController"],
+        beego.ControllerComments{
+            Method: "GetAplicacionByRol",
+            Router: `/aplicacion_rol`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MenuOpcionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MenuOpcionController"],
         beego.ControllerComments{
             Method: "Post",
