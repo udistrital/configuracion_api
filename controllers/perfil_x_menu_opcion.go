@@ -206,14 +206,19 @@ func (c *PerfilXMenuOpcionController) Delete() {
 // @router /MenusPorAplicacion/:id [get]
 func (c *PerfilXMenuOpcionController) MenusPorAplicacion() {
 	//Tomar el valor de la URL
+	var menu []models.Menu
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	fmt.Println(id)
 	//Construcción Json menus
 	l := models.MenusByAplicacion(id)
+	if l == nil {
+		l = menu
+	}
+
 	fmt.Println(l)
 	c.Data["json"] = l
+
 	//Generera el Json con los datos obtenidos
 	c.ServeJSON()
-
 }
