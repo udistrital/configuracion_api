@@ -3,7 +3,6 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -202,22 +201,24 @@ func (c *PerfilXMenuOpcionController) Delete() {
 // @Description getMenuPorAplicacion
 // @Param	id		path 	string	true		"id de la aplicación a la cual pertenecen las opciones"
 // @Success 200 {object} models.PerfilXMenuOpcion
-// @Failure 403 :id is empty
+// @Failure 404 not found resource
 // @router /MenusPorAplicacion/:id [get]
 func (c *PerfilXMenuOpcionController) MenusPorAplicacion() {
 	//Tomar el valor de la URL
-	var menu []models.Menu
+	// var menu []models.Menu
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	fmt.Println(id)
 	//Construcción Json menus
-	l := models.MenusByAplicacion(id)
-	if l == nil {
-		l = menu
-	}
+	l, err := models.MenusByAplicacion(id)
+	if len(l) == 0 {
+		beego.Info("ceroooooo")
 
-	fmt.Println(l)
-	c.Data["json"] = l
+		c.Data["system"] = err
+		c.Data["status"] = "404"
+		c.Abort("404")
+	} else {
+		c.Data["json"] = l
+	}
 
 	//Generera el Json con los datos obtenidos
 	c.ServeJSON()
