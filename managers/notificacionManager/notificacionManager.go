@@ -93,7 +93,7 @@ func GetOldNotification(profile string, user string) []models.Notificacion {
 		select N.id from 
 		` + beego.AppConfig.String("PGschemas") + `.notificacion as N, 
 		` + beego.AppConfig.String("PGschemas") + `.notificacion_estado_usuario as NEU 
-		where N.id = NEU.notificacion and NEU.usuario = '` + user + `') as IDS
+		where N.id = NEU.notificacion and NEU.usuario like '%` + user + `%') as IDS
 		where IDS.id = N.id`).QueryRows(&notificaciones)
 	beego.Info(notificaciones)
 	if err != nil {
@@ -170,7 +170,7 @@ func ChangeStateNoView(user string) []models.NotificacionEstadoUsuario {
 	_, err := o.Raw(
 		`select NEU.* from 
 		` + beego.AppConfig.String("PGschemas") + `.notificacion_estado_usuario as NEU 
-		where NEU.usuario = '` + user + `' and
+		where NEU.usuario like '%` + user + `%' and
 		activo = true and
 		notificacion_estado = 1`).QueryRows(&notificaciones)
 	beego.Info(notificaciones)
