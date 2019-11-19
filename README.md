@@ -1,6 +1,6 @@
 # :bookmark_tabs: Configuración API
 
-API CRUD para la gestión de aplicativos, notificaciones y perfiles de aplicaciones.~
+API CRUD para la gestión de aplicativos, notificaciones y perfiles de aplicaciones.
 
 Este proyecto está escrito en el lenguaje Go, generado mediante el framework [Beego](https://beego.me/).
 
