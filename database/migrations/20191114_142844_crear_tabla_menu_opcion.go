@@ -29,6 +29,7 @@ func (m *CrearTablaMenuOpcion_20191114_142844) Up() {
 	m.SQL("COMMENT ON COLUMN configuracion.menu_opcion.url IS 'Url o ruta del menu';")
 	m.SQL("COMMENT ON COLUMN configuracion.menu_opcion.aplicacion IS 'Llave foranea de la tabla aplicacion';")
 	m.SQL("COMMENT ON COLUMN configuracion.menu_opcion.tipo_opcion IS 'Clasificación de Tipo opción';")
+	m.SQL("COMMENT ON COLUMN configuracion.menu_opcion.icono IS 'Icono asociado a una opción';")
 	m.SQL("COMMENT ON CONSTRAINT PK_MENU_OPCION ON configuracion.menu_opcion IS 'Llave primaria de la tabla menu_opcion';")
 	m.SQL("COMMENT ON CONSTRAINT CHECK_TIPO_OPCION ON configuracion.menu_opcion IS 'Restringe el tipo de opción que se debe tener';")
 }
