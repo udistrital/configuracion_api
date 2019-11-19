@@ -20,7 +20,7 @@ func init() {
 // Run the migrations
 func (m *CrearTablaParametro_20191114_145932) Up() {
 	// use m.SQL("CREATE TABLE ...") to make schema update
-	m.SQL("CREATE TABLE IF NOT EXIST configuracion.parametro ( id serial NOT NULL, nombre character varying(200) NOT NULL, valor text NOT NULL, aplicacion integer NOT NULL, CONSTRAINT PK_PARAMETRO PRIMARY KEY (id), CONSTRAINT FK_PARAMETRO_APP FOREIGN KEY (aplicacion) REFERENCES configuracion.aplicacion (id) );")
+	m.SQL("CREATE TABLE IF NOT EXISTS configuracion.parametro ( id serial NOT NULL, nombre character varying(200) NOT NULL, valor text NOT NULL, aplicacion integer NOT NULL, CONSTRAINT PK_PARAMETRO PRIMARY KEY (id), CONSTRAINT FK_PARAMETRO_APP FOREIGN KEY (aplicacion) REFERENCES configuracion.aplicacion (id) );")
 	m.SQL("ALTER TABLE configuracion.parametro OWNER TO desarrollooas;")
 	m.SQL("COMMENT ON TABLE configuracion.parametro IS 'Tabla que  describe todos los parametros asociados a una aplicacion';")
 	m.SQL("COMMENT ON COLUMN configuracion.parametro.id IS 'Identificador de la tabla parametro';")

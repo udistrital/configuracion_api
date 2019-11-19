@@ -20,7 +20,7 @@ func init() {
 // Run the migrations
 func (m *CrearTablaMenuOpcion_20191114_142844) Up() {
 	// use m.SQL("CREATE TABLE ...") to make schema update
-	m.SQL("CREATE TABLE IF NOT EXIST configuracion.menu_opcion ( id serial NOT NULL, nombre character varying(60) NOT NULL, descripcion character varying(250) NOT NULL, url character varying(250) NOT NULL, layout character varying(60), aplicacion integer NOT NULL, tipo_opcion character varying, icono character varying(100), CONSTRAINT PK_MENU_OPCION PRIMARY KEY (id), CONSTRAINT FK_MENU_OPCION_APP FOREIGN KEY (aplicacion) REFERENCES configuracion.aplicacion (id), CONSTRAINT CHECK_TIPO_OPCION CHECK (tipo_opcion::text = ANY (ARRAY['Menú'::character varying::text, 'Acción'::character varying::text, 'Botón'::character varying::text])) );")
+	m.SQL("CREATE TABLE IF NOT EXISTS configuracion.menu_opcion ( id serial NOT NULL, nombre character varying(60) NOT NULL, descripcion character varying(250) NOT NULL, url character varying(250) NOT NULL, layout character varying(60), aplicacion integer NOT NULL, tipo_opcion character varying, icono character varying(100), CONSTRAINT PK_MENU_OPCION PRIMARY KEY (id), CONSTRAINT FK_MENU_OPCION_APP FOREIGN KEY (aplicacion) REFERENCES configuracion.aplicacion (id), CONSTRAINT CHECK_TIPO_OPCION CHECK (tipo_opcion::text = ANY (ARRAY['Menú'::character varying::text, 'Acción'::character varying::text, 'Botón'::character varying::text])) );")
 	m.SQL("ALTER TABLE configuracion.menu_opcion OWNER TO desarrollooas;")
 	m.SQL("COMMENT ON TABLE configuracion.menu_opcion IS 'Tabla que contiene las diferentes opciones de los menus';")
 	m.SQL("COMMENT ON COLUMN configuracion.menu_opcion.id IS 'Identificador de la tabla menu_opcion';")
