@@ -20,7 +20,7 @@ func init() {
 // Run the migrations
 func (m *CrearTablaMenuOpcionPadre_20191114_143306) Up() {
 	// use m.SQL("CREATE TABLE ...") to make schema update
-	m.SQL("CREATE TABLE IF NOT EXIST configuracion.menu_opcion_padre ( id serial NOT NULL, padre integer NOT NULL, hijo integer, CONSTRAINT PK_MENU_OPCION_PADRE PRIMARY KEY (id), CONSTRAINT UQ_PADRE_HIJO UNIQUE (padre, hijo), CONSTRAINT FK_MENU_OPCION_HIJO_MENU_OPCION FOREIGN KEY (hijo) REFERENCES configuracion.menu_opcion (id), CONSTRAINT FK_MENU_OPCION_PADRE_MENU_OPCION FOREIGN KEY (padre) REFERENCES configuracion.menu_opcion (id) );")
+	m.SQL("CREATE TABLE IF NOT EXISTS configuracion.menu_opcion_padre ( id serial NOT NULL, padre integer NOT NULL, hijo integer, CONSTRAINT PK_MENU_OPCION_PADRE PRIMARY KEY (id), CONSTRAINT UQ_PADRE_HIJO UNIQUE (padre, hijo), CONSTRAINT FK_MENU_OPCION_HIJO_MENU_OPCION FOREIGN KEY (hijo) REFERENCES configuracion.menu_opcion (id), CONSTRAINT FK_MENU_OPCION_PADRE_MENU_OPCION FOREIGN KEY (padre) REFERENCES configuracion.menu_opcion (id) );")
 	m.SQL("ALTER TABLE configuracion.menu_opcion_padre OWNER TO desarrollooas;")
 	m.SQL("COMMENT ON TABLE configuracion.menu_opcion_padre IS 'Tabla que sirve para reemplazar la relacion reflexiva del padre de los menus_opcion.';")
 	m.SQL("COMMENT ON COLUMN configuracion.menu_opcion_padre.id IS 'Identificador de la tabla menu_opcion_padre';")

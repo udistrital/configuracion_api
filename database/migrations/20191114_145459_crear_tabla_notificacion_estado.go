@@ -20,7 +20,7 @@ func init() {
 // Run the migrations
 func (m *CrearTablaNotificacionEstado_20191114_145459) Up() {
 	// use m.SQL("CREATE TABLE ...") to make schema update
-	m.SQL("CREATE TABLE IF NOT EXIST configuracion.notificacion_estado ( id serial NOT NULL, nombre character varying(100), codigo_abreviacion character varying(20), descripcion character varying(250), activo boolean DEFAULT true, numero_orden numeric(5,2), CONSTRAINT PK_notificacion_estado PRIMARY KEY (id) );")
+	m.SQL("CREATE TABLE IF NOT EXISTS configuracion.notificacion_estado ( id serial NOT NULL, nombre character varying(100), codigo_abreviacion character varying(20), descripcion character varying(250), activo boolean DEFAULT true, numero_orden numeric(5,2), CONSTRAINT PK_notificacion_estado PRIMARY KEY (id) );")
 	m.SQL("ALTER TABLE configuracion.notificacion_estado OWNER TO desarrollooas;")
 	m.SQL("COMMENT ON TABLE configuracion.notificacion_estado IS 'Centralización de los estados de las notificaciones de los sistemas';")
 	m.SQL("COMMENT ON COLUMN configuracion.notificacion_estado.id IS 'Identificador único del estado de la notificación';")

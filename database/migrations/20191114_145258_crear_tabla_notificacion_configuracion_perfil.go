@@ -20,7 +20,7 @@ func init() {
 // Run the migrations
 func (m *CrearTablaNotificacionConfiguracionPerfil_20191114_145258) Up() {
 	// use m.SQL("CREATE TABLE ...") to make schema update
-	m.SQL("CREATE TABLE IF NOT EXIST configuracion.notificacion_configuracion_perfil ( id serial NOT NULL, notificacion_configuracion integer NOT NULL, perfil integer NOT NULL, CONSTRAINT pk_notificacion_configuracion_perfil PRIMARY KEY (id), CONSTRAINT fk_notificacion_configuracion_perfil_notificacion_configuracion FOREIGN KEY (notificacion_configuracion) REFERENCES configuracion.notificacion_configuracion (id), CONSTRAINT fk_notificacion_configuracion_perfil_perfil FOREIGN KEY (perfil) REFERENCES configuracion.perfil (id) );")
+	m.SQL("CREATE TABLE IF NOT EXISTS configuracion.notificacion_configuracion_perfil ( id serial NOT NULL, notificacion_configuracion integer NOT NULL, perfil integer NOT NULL, CONSTRAINT pk_notificacion_configuracion_perfil PRIMARY KEY (id), CONSTRAINT fk_notificacion_configuracion_perfil_notificacion_configuracion FOREIGN KEY (notificacion_configuracion) REFERENCES configuracion.notificacion_configuracion (id), CONSTRAINT fk_notificacion_configuracion_perfil_perfil FOREIGN KEY (perfil) REFERENCES configuracion.perfil (id) );")
 	m.SQL("ALTER TABLE configuracion.notificacion_configuracion_perfil OWNER TO desarrollooas;")
 	m.SQL("COMMENT ON TABLE configuracion.notificacion_configuracion_perfil IS 'Tipos de metodo http usados';")
 	m.SQL("COMMENT ON COLUMN configuracion.notificacion_configuracion_perfil.id IS 'Identificador único de la tabla';")
