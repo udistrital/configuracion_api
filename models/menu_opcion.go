@@ -15,6 +15,7 @@ type MenuOpcion struct {
 	Descripcion string      `orm:"column(descripcion)"`
 	Url         string      `orm:"column(url)"`
 	Layout      string      `orm:"column(layout);null"`
+	Icono       string      `orm:"column(icono);null"`
 	Aplicacion  *Aplicacion `orm:"column(aplicacion);rel(fk)"`
 	TipoOpcion  string      `orm:"column(tipo_opcion)"` 
 }
