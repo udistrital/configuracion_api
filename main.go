@@ -8,7 +8,6 @@ import (
 	"github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
 	"github.com/udistrital/auditoria"
-	notificacionlib "github.com/udistrital/notificaciones_lib"
 	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
 	"github.com/udistrital/utils_oas/responseformat"
 )
@@ -41,7 +40,6 @@ func main() {
 	}
 	apistatus.Init()
 	auditoria.InitMiddleware()
-	notificacionlib.InitMiddleware()
 	beego.Run()
 
 }
