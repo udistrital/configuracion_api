@@ -1,4 +1,4 @@
-# :bookmark_tabs: Configuración API
+# :bookmark_tabs:  Configuración API
 
 API CRUD para la gestión de aplicativos, notificaciones y perfiles de aplicaciones.
 
