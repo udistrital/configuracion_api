@@ -76,6 +76,7 @@ steps:
         - latest
     when:
       branch:
+        - test
         - master    
   
   - name: go-awsecs
