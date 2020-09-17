@@ -3,11 +3,12 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/configuracion_api/models"
 	"strconv"
 	"strings"
-	"fmt"
+
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
+	"github.com/udistrital/configuracion_api/models"
 )
 
 // PerfilXMenuOpcionController oprations for PerfilXMenuOpcion
@@ -30,7 +31,7 @@ func (c *PerfilXMenuOpcionController) URLMapping() {
 // @Description create PerfilXMenuOpcion
 // @Param	body		body 	models.PerfilXMenuOpcion	true		"body for PerfilXMenuOpcion content"
 // @Success 201 {int} models.PerfilXMenuOpcion
-// @Failure 403 body is empty
+// @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *PerfilXMenuOpcionController) Post() {
 	var v models.PerfilXMenuOpcion
@@ -39,10 +40,16 @@ func (c *PerfilXMenuOpcionController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -52,14 +59,17 @@ func (c *PerfilXMenuOpcionController) Post() {
 // @Description get PerfilXMenuOpcion by id
 // @Param	id		path 	string	true		"The key for staticblock"
 // @Success 200 {object} models.PerfilXMenuOpcion
-// @Failure 403 :id is empty
+// @Failure 404 not found resource
 // @router /:id [get]
 func (c *PerfilXMenuOpcionController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetPerfilXMenuOpcionById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
 		c.Data["json"] = v
 	}
@@ -76,7 +86,7 @@ func (c *PerfilXMenuOpcionController) GetOne() {
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
 // @Success 200 {object} models.PerfilXMenuOpcion
-// @Failure 403
+// @Failure 404 not found resource
 // @router / [get]
 func (c *PerfilXMenuOpcionController) GetAll() {
 	var fields []string
@@ -122,8 +132,14 @@ func (c *PerfilXMenuOpcionController) GetAll() {
 
 	l, err := models.GetAllPerfilXMenuOpcion(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -135,7 +151,7 @@ func (c *PerfilXMenuOpcionController) GetAll() {
 // @Param	id		path 	string	true		"The id you want to update"
 // @Param	body		body 	models.PerfilXMenuOpcion	true		"body for PerfilXMenuOpcion content"
 // @Success 200 {object} models.PerfilXMenuOpcion
-// @Failure 403 :id is not int
+// @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
 func (c *PerfilXMenuOpcionController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
@@ -143,12 +159,18 @@ func (c *PerfilXMenuOpcionController) Put() {
 	v := models.PerfilXMenuOpcion{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdatePerfilXMenuOpcionById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -158,36 +180,46 @@ func (c *PerfilXMenuOpcionController) Put() {
 // @Description delete the PerfilXMenuOpcion
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
-// @Failure 403 id is empty
+// @Failure 404 not found resource
 // @router /:id [delete]
 func (c *PerfilXMenuOpcionController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeletePerfilXMenuOpcion(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }
 
-//Función para menus por app
+// ArbolMenus ...
+// @Title MenusPorAplicacion
+// @Description getMenuPorAplicacion
+// @Param	id		path 	string	true		"id de la aplicación a la cual pertenecen las opciones"
+// @Success 200 {object} models.PerfilXMenuOpcion
+// @Failure 404 not found resource
+// @router /MenusPorAplicacion/:id [get]
 func (c *PerfilXMenuOpcionController) MenusPorAplicacion() {
-	
 	//Tomar el valor de la URL
+	// var menu []models.Menu
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-
-	fmt.Println("Este es tu id")
-	fmt.Println(id)
 	//Construcción Json menus
-	l := models.MenusByAplicacion(id)
+	l, err := models.MenusByAplicacion(id)
+	if len(l) == 0 {
+		beego.Info("ceroooooo")
 
+		c.Data["system"] = err
+		c.Data["status"] = "404"
+		c.Abort("404")
+	} else {
+		c.Data["json"] = l
+	}
 
-	fmt.Println(l)
-	
-	c.Data["json"] = l
 	//Generera el Json con los datos obtenidos
-	c.ServeJSON()	
-
+	c.ServeJSON()
 }

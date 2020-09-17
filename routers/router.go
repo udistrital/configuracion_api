@@ -16,8 +16,11 @@ import (
 func init() {
 	ns := beego.NewNamespace("/v1",
 
-		//Librería auditoría
-		//"github.com/udistrital/auditoria"
+		beego.NSNamespace("/notificacion_estado_usuario",
+			beego.NSInclude(
+				&controllers.NotificacionEstadoUsuarioController{},
+			),
+		),
 
 		beego.NSNamespace("/notificacion",
 			beego.NSInclude(
@@ -63,6 +66,12 @@ func init() {
 		beego.NSNamespace("/aplicacion",
 			beego.NSInclude(
 				&controllers.AplicacionController{},
+			),
+		),
+
+		beego.NSNamespace("/aplicacion_rol",
+			beego.NSInclude(
+				&controllers.AplicacionRolController{},
 			),
 		),
 

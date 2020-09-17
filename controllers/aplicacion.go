@@ -3,14 +3,15 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/configuracion_api/models"
 	"strconv"
 	"strings"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
+	"github.com/udistrital/configuracion_api/models"
 )
 
-// AplicacionController oprations for Aplicacion
+// AplicacionController operations for Aplicacion
 type AplicacionController struct {
 	beego.Controller
 }
@@ -29,7 +30,7 @@ func (c *AplicacionController) URLMapping() {
 // @Description create Aplicacion
 // @Param	body		body 	models.Aplicacion	true		"body for Aplicacion content"
 // @Success 201 {int} models.Aplicacion
-// @Failure 403 body is empty
+// @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *AplicacionController) Post() {
 	var v models.Aplicacion
@@ -38,10 +39,16 @@ func (c *AplicacionController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -51,14 +58,17 @@ func (c *AplicacionController) Post() {
 // @Description get Aplicacion by id
 // @Param	id		path 	string	true		"The key for staticblock"
 // @Success 200 {object} models.Aplicacion
-// @Failure 403 :id is empty
+// @Failure 404 not found resource
 // @router /:id [get]
 func (c *AplicacionController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetAplicacionById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
 		c.Data["json"] = v
 	}
@@ -75,7 +85,7 @@ func (c *AplicacionController) GetOne() {
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
 // @Success 200 {object} models.Aplicacion
-// @Failure 403
+// @Failure 404 not found resource
 // @router / [get]
 func (c *AplicacionController) GetAll() {
 	var fields []string
@@ -121,8 +131,14 @@ func (c *AplicacionController) GetAll() {
 
 	l, err := models.GetAllAplicacion(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -134,7 +150,7 @@ func (c *AplicacionController) GetAll() {
 // @Param	id		path 	string	true		"The id you want to update"
 // @Param	body		body 	models.Aplicacion	true		"body for Aplicacion content"
 // @Success 200 {object} models.Aplicacion
-// @Failure 403 :id is not int
+// @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
 func (c *AplicacionController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
@@ -142,12 +158,18 @@ func (c *AplicacionController) Put() {
 	v := models.Aplicacion{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateAplicacionById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -157,15 +179,18 @@ func (c *AplicacionController) Put() {
 // @Description delete the Aplicacion
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
-// @Failure 403 id is empty
+// @Failure 404 not found resource
 // @router /:id [delete]
 func (c *AplicacionController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteAplicacion(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }

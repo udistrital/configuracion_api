@@ -3,41 +3,41 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"strconv"
 	"strings"
 
+	"github.com/udistrital/configuracion_api/models"
+
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
-	"github.com/udistrital/configuracion_api/models"
+	notimanager "github.com/udistrital/configuracion_api/managers/notificacionManager"
 )
 
-// MenuOpcionPadreController oprations for MenuOpcionPadre
-type MenuOpcionPadreController struct {
+// NotificacionEstadoUsuarioController operations for NotificacionEstadoUsuario
+type NotificacionEstadoUsuarioController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *MenuOpcionPadreController) URLMapping() {
+func (c *NotificacionEstadoUsuarioController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
 	c.Mapping("Put", c.Put)
 	c.Mapping("Delete", c.Delete)
-	c.Mapping("ArbolMenus", c.ArbolMenus)
 }
 
 // Post ...
 // @Title Post
-// @Description create MenuOpcionPadre
-// @Param	body		body 	models.MenuOpcionPadre	true		"body for MenuOpcionPadre content"
-// @Success 201 {int} models.MenuOpcionPadre
+// @Description create NotificacionEstadoUsuario
+// @Param	body		body 	models.NotificacionEstadoUsuario	true		"body for NotificacionEstadoUsuario content"
+// @Success 201 {int} models.NotificacionEstadoUsuario
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
-func (c *MenuOpcionPadreController) Post() {
-	var v models.MenuOpcionPadre
+func (c *NotificacionEstadoUsuarioController) Post() {
+	var v models.NotificacionEstadoUsuario
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddMenuOpcionPadre(&v); err == nil {
+		if _, err := models.AddNotificacionEstadoUsuario(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -45,7 +45,6 @@ func (c *MenuOpcionPadreController) Post() {
 			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
 			c.Data["system"] = err
 			c.Abort("400")
-			fmt.Println(err)
 		}
 	} else {
 		logs.Error(err)
@@ -58,15 +57,15 @@ func (c *MenuOpcionPadreController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get MenuOpcionPadre by id
+// @Description get NotificacionEstadoUsuario by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.MenuOpcionPadre
+// @Success 200 {object} models.NotificacionEstadoUsuario
 // @Failure 404 not found resource
 // @router /:id [get]
-func (c *MenuOpcionPadreController) GetOne() {
+func (c *NotificacionEstadoUsuarioController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetMenuOpcionPadreById(id)
+	v, err := models.GetNotificacionEstadoUsuarioById(id)
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
@@ -80,17 +79,17 @@ func (c *MenuOpcionPadreController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get MenuOpcionPadre
+// @Description get NotificacionEstadoUsuario
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.MenuOpcionPadre
+// @Success 200 {object} models.NotificacionEstadoUsuario
 // @Failure 404 not found resource
 // @router / [get]
-func (c *MenuOpcionPadreController) GetAll() {
+func (c *NotificacionEstadoUsuarioController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -132,7 +131,7 @@ func (c *MenuOpcionPadreController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllMenuOpcionPadre(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllNotificacionEstadoUsuario(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
@@ -149,18 +148,18 @@ func (c *MenuOpcionPadreController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the MenuOpcionPadre
+// @Description update the NotificacionEstadoUsuario
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.MenuOpcionPadre	true		"body for MenuOpcionPadre content"
-// @Success 200 {object} models.MenuOpcionPadre
+// @Param	body		body 	models.NotificacionEstadoUsuario	true		"body for NotificacionEstadoUsuario content"
+// @Success 200 {object} models.NotificacionEstadoUsuario
 // @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
-func (c *MenuOpcionPadreController) Put() {
+func (c *NotificacionEstadoUsuarioController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.MenuOpcionPadre{Id: id}
+	v := models.NotificacionEstadoUsuario{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateMenuOpcionPadreById(&v); err == nil {
+		if err := models.UpdateNotificacionEstadoUsuarioById(&v); err == nil {
 			c.Data["json"] = v
 		} else {
 			logs.Error(err)
@@ -179,15 +178,15 @@ func (c *MenuOpcionPadreController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the MenuOpcionPadre
+// @Description delete the NotificacionEstadoUsuario
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]
-func (c *MenuOpcionPadreController) Delete() {
+func (c *NotificacionEstadoUsuarioController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteMenuOpcionPadre(id); err == nil {
+	if err := models.DeleteNotificacionEstadoUsuario(id); err == nil {
 		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
 		logs.Error(err)
@@ -198,27 +197,61 @@ func (c *MenuOpcionPadreController) Delete() {
 	c.ServeJSON()
 }
 
-// ArbolMenus ...
-// @Title ArbolMenus
-// @Description Genera árbol de menus de acuerdo a roles y app
-// @Param	roles		path 	string	true		"Los roles a los que se necesita que se desplieguen las opciones"
-// @Param	app		path 	string	true		"Aplicación a la cual pertenecen las opciones"
-// @Success 200 {object} models.MenuOpcionPadre
-// @Failure 403 :roles is empty
-// @Failure 403 :app is empty
-// @router /ArbolMenus/:roles/:app [get]
-func (c *MenuOpcionPadreController) ArbolMenus() {
-	fmt.Println(c.Ctx.Input.Param(":roles"))
-	roles := c.Ctx.Input.Param(":roles")
-	app := c.Ctx.Input.Param(":app")
-	perfilesR := strings.NewReplacer(",", "','")
+// getOldNotification ...
+// @Title getOldNotification
+// @Description get all old notification
+// @Param	roles		path 	string	true		"The profile you want to consult"
+// @Param	usuario		path 	string	true		"The user you want to consult"
+// @Success 200 {string} get success!
+// @Failure 403 profile is empty
+// @router /getOldNotification/:roles/:usuario [get]
+func (c *NotificacionEstadoUsuarioController) GetOldNotification() {
+	rolesStr := c.Ctx.Input.Param(":roles")
+	userStr := c.Ctx.Input.Param(":usuario")
+	c.Data["json"] = notimanager.GetOldNotification(rolesStr, userStr)
+}
 
-	//Construcción Json menus
-	l := models.ConstruirMenuPerfil(perfilesR.Replace(roles), app)
-	fmt.Println("Este es el resultado de la consulta")
-	fmt.Println(l)
+// pushNotificationUser ...
+// @Title pushNotificationUser
+// @Description create pushNotificationUser
+// @Param	body		body 	models.NotificacionUsarioMasiva	true		"body for NotificacionEstadoUsuario content"
+// @Success 201 {int} models.NotificacionEstadoUsuario
+// @Failure 403 body is empty
+// @router /pushNotificationUser [post]
+func (c *NotificacionEstadoUsuarioController) PushNotificationUser() {
+	var v models.NotificacionUsuarioMasiva
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		if err := notimanager.PushNotificationUser(&v); err == nil {
+			c.Ctx.Output.SetStatus(201)
+			c.Data["json"] = &v
+		} else {
+			c.Data["json"] = err.Error()
+		}
+	} else {
+		c.Data["json"] = err.Error()
+	}
+}
 
-	c.Data["json"] = l
-	//Generera el Json con los datos obtenidos
-	c.ServeJSON()
+// changeStateNoView ...
+// @Title changeStateNoView
+// @Description change state of notifications
+// @Param	usuario		path 	string	true		"The user you want to update"
+// @Success 200 {string} get success!
+// @Failure 403 body is empty
+// @router /changeStateNoView/:usuario [post]
+func (c *NotificacionEstadoUsuarioController) ChangeStateNoView() {
+	userStr := c.Ctx.Input.Param(":usuario")
+	c.Data["json"] = notimanager.ChangeStateNoView(userStr)
+}
+
+// ChangeStateToView ...
+// @Title changeStateNoView
+// @Description create NotificacionEstadoUsuario
+// @Param    id        path     int    true        "The notification you want to update"
+// @Success 201 {int} models.NotificacionEstadoUsuario
+// @Failure 400 the request contains incorrect syntax
+// @router /changeStateToView/:id [get]
+func (c *NotificacionEstadoUsuarioController) ChangeStateToView() {
+    idStr := c.Ctx.Input.Param(":id")
+    c.Data["json"] = notimanager.ChangeStateToView(idStr)
 }

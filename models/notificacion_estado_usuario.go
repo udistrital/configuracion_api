@@ -5,52 +5,53 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type NotificacionEstado struct {
-	Id                int     `orm:"column(id);pk;auto"`
-	Nombre            string  `orm:"column(nombre);null"`
-	Activo            bool    `orm:"column(activo)"`
-	Descripcion       string  `orm:"column(descripcion);null"`
-	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
-	NumeroOrden       float64 `orm:"column(numero_orden);null"`
+type NotificacionEstadoUsuario struct {
+	Id                 int                 `orm:"column(id);pk;auto"`
+	Notificacion       *Notificacion       `orm:"column(notificacion);rel(fk)"`
+	NotificacionEstado *NotificacionEstado `orm:"column(notificacion_estado);rel(fk)"`
+	Fecha              time.Time           `orm:"column(fecha);type(timestamp without time zone)"`
+	Usuario            string              `orm:"column(usuario);null"`
+	Activo             bool                `orm:"column(activo);null"`
 }
 
-func (t *NotificacionEstado) TableName() string {
-	return "notificacion_estado"
+func (t *NotificacionEstadoUsuario) TableName() string {
+	return "notificacion_estado_usuario"
 }
 
 func init() {
-	orm.RegisterModel(new(NotificacionEstado))
+	orm.RegisterModel(new(NotificacionEstadoUsuario))
 }
 
-// AddNotificacionEstado insert a new NotificacionEstado into database and returns
+// AddNotificacionEstadoUsuario insert a new NotificacionEstadoUsuario into database and returns
 // last inserted Id on success.
-func AddNotificacionEstado(m *NotificacionEstado) (id int64, err error) {
+func AddNotificacionEstadoUsuario(m *NotificacionEstadoUsuario) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetNotificacionEstadoById retrieves NotificacionEstado by Id. Returns error if
+// GetNotificacionEstadoUsuarioById retrieves NotificacionEstadoUsuario by Id. Returns error if
 // Id doesn't exist
-func GetNotificacionEstadoById(id int) (v *NotificacionEstado, err error) {
+func GetNotificacionEstadoUsuarioById(id int) (v *NotificacionEstadoUsuario, err error) {
 	o := orm.NewOrm()
-	v = &NotificacionEstado{Id: id}
+	v = &NotificacionEstadoUsuario{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllNotificacionEstado retrieves all NotificacionEstado matches certain condition. Returns empty list if
+// GetAllNotificacionEstadoUsuario retrieves all NotificacionEstadoUsuario matches certain condition. Returns empty list if
 // no records exist
-func GetAllNotificacionEstado(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllNotificacionEstadoUsuario(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(NotificacionEstado))
+	qs := o.QueryTable(new(NotificacionEstadoUsuario)).RelatedSel(5)
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -100,7 +101,7 @@ func GetAllNotificacionEstado(query map[string]string, fields []string, sortby [
 		}
 	}
 
-	var l []NotificacionEstado
+	var l []NotificacionEstadoUsuario
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -123,11 +124,11 @@ func GetAllNotificacionEstado(query map[string]string, fields []string, sortby [
 	return nil, err
 }
 
-// UpdateNotificacionEstado updates NotificacionEstado by Id and returns error if
+// UpdateNotificacionEstadoUsuario updates NotificacionEstadoUsuario by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateNotificacionEstadoById(m *NotificacionEstado) (err error) {
+func UpdateNotificacionEstadoUsuarioById(m *NotificacionEstadoUsuario) (err error) {
 	o := orm.NewOrm()
-	v := NotificacionEstado{Id: m.Id}
+	v := NotificacionEstadoUsuario{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -138,15 +139,15 @@ func UpdateNotificacionEstadoById(m *NotificacionEstado) (err error) {
 	return
 }
 
-// DeleteNotificacionEstado deletes NotificacionEstado by Id and returns error if
+// DeleteNotificacionEstadoUsuario deletes NotificacionEstadoUsuario by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteNotificacionEstado(id int) (err error) {
+func DeleteNotificacionEstadoUsuario(id int) (err error) {
 	o := orm.NewOrm()
-	v := NotificacionEstado{Id: id}
+	v := NotificacionEstadoUsuario{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&NotificacionEstado{Id: id}); err == nil {
+		if num, err = o.Delete(&NotificacionEstadoUsuario{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

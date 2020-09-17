@@ -184,7 +184,7 @@ func ConstruirMenuPerfil(perfiles string, app string) (menus []Menu) {
 }
 
 //Función que obtiene los menús padre de acuerdo al Id de la aplicación
-func MenusByAplicacion(app int) (menus []Menu) {
+func MenusByAplicacion(app int) (menus []Menu, outputError map[string]interface{}) {
 	o := orm.NewOrm()
 
 	//Conversión de entero a string
@@ -199,15 +199,23 @@ func MenusByAplicacion(app int) (menus []Menu) {
 				AND padre IS NULL ORDER BY mo.id`).QueryRows(&menusByApp)
 
 	if err == nil {
-		fmt.Println("Menus padre encontrados: ", num)
-		//For para que recorra los Ids en busca de hijos
-		for i := 0; i < len(menusByApp); i++ {
-			//Me verifica que los Id tengan hijos
-			ConstruirSubMenusPerfilApp(&menusByApp[i])
+		if len(menusByApp) == 0 {
+			outputError = map[string]interface{}{"Function": "MenuOpcionPadre:MenusByAplicacion", "Error": "404"}
+			return nil, outputError
+		} else {
+			fmt.Println("Menus padre encontrados: ", num)
+			//For para que recorra los Ids en busca de hijos
+			for i := 0; i < len(menusByApp); i++ {
+				//Me verifica que los Id tengan hijos
+				ConstruirSubMenusPerfilApp(&menusByApp[i])
+			}
+			return menusByApp, nil
 		}
 
+	} else {
+		outputError = map[string]interface{}{"Function": "FuncionalidadMidController:getUserAgora", "Error": "404"}
+		return nil, outputError
 	}
-	return menusByApp
 }
 
 //Función que construye los Submenús
