@@ -126,6 +126,26 @@ paths:
           description: '{string} delete success!'
         "404":
           description: not found resource
+  /aplicacion_rol/aplicacion_rol:
+    post:
+      tags:
+      - aplicacion_rol
+      description: create Aplicacion
+      operationId: AplicacionRolController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Perfil content
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/models.Perfil'
+      responses:
+        "201":
+          description: '{int} []models.Aplicacion'
+        "400":
+          description: the request contains incorrect syntax
   /menu_opcion/:
     get:
       tags:
@@ -1157,7 +1177,7 @@ paths:
         description: body for NotificacionEstadoUsuario content
         required: true
         schema:
-          $ref: '#/definitions/.NotificacionUsarioMasiva'
+          $ref: '#/definitions/models.NotificacionUsarioMasiva'
       responses:
         "201":
           description: '{int} models.NotificacionEstadoUsuario'
@@ -1640,11 +1660,9 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.PerfilXMenuOpcion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
 definitions:
-  .NotificacionUsarioMasiva:
-    type: object
   models.Aplicacion:
     title: Aplicacion
     type: object
@@ -1796,6 +1814,9 @@ definitions:
         format: int64
       Nombre:
         type: string
+  models.NotificacionUsarioMasiva:
+    title: NotificacionUsarioMasiva
+    type: object
   models.Parametro:
     title: Parametro
     type: object
@@ -1871,6 +1892,9 @@ tags:
 - name: aplicacion
   description: |
     AplicacionController operations for Aplicacion
+- name: aplicacion_rol
+  description: |
+    AplicacionRolController operations for Aplicacion
 - name: parametro
   description: |
     ParametroController oprations for Parametro
