@@ -9,7 +9,6 @@ import (
 	_ "github.com/lib/pq"
 	"github.com/udistrital/auditoria"
 	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
-	
 )
 
 func init() {
@@ -21,7 +20,7 @@ func init() {
 func main() {
 	beego.ErrorHandler("400", nil)
 	orm.Debug = true
-	
+
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
 		AllowOrigins: []string{"*"},
 		AllowMethods: []string{"PUT", "PATCH", "GET", "POST", "OPTIONS", "DELETE"},

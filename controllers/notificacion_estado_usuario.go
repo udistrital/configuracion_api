@@ -252,6 +252,6 @@ func (c *NotificacionEstadoUsuarioController) ChangeStateNoView() {
 // @Failure 400 the request contains incorrect syntax
 // @router /changeStateToView/:id [get]
 func (c *NotificacionEstadoUsuarioController) ChangeStateToView() {
-    idStr := c.Ctx.Input.Param(":id")
-    c.Data["json"] = notimanager.ChangeStateToView(idStr)
+	idStr := c.Ctx.Input.Param(":id")
+	c.Data["json"] = notimanager.ChangeStateToView(idStr)
 }
