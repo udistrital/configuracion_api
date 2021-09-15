@@ -10,14 +10,14 @@ import (
 )
 
 type MenuOpcion struct {
-	Id          int         `orm:"column(id);pk;auto"`
-	Nombre      string      `orm:"column(nombre)"`
-	Descripcion string      `orm:"column(descripcion)"`
-	Url         string      `orm:"column(url)"`
-	Layout      string      `orm:"column(layout);null"`
+	Id          int    `orm:"column(id);pk;auto"`
+	Nombre      string `orm:"column(nombre)"`
+	Descripcion string `orm:"column(descripcion)"`
+	Url         string `orm:"column(url)"`
+	Layout      string `orm:"column(layout);null"`
 	/* Icono       string      `orm:"column(icono);null"` */
-	Aplicacion  *Aplicacion `orm:"column(aplicacion);rel(fk)"`
-	TipoOpcion  string      `orm:"column(tipo_opcion)"` 
+	Aplicacion *Aplicacion `orm:"column(aplicacion);rel(fk)"`
+	TipoOpcion string      `orm:"column(tipo_opcion)"`
 }
 
 func (t *MenuOpcion) TableName() string {
@@ -52,7 +52,7 @@ func GetMenuOpcionById(id int) (v *MenuOpcion, err error) {
 func GetAllMenuOpcion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(MenuOpcion)).RelatedSel();
+	qs := o.QueryTable(new(MenuOpcion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
