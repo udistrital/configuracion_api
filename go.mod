@@ -8,5 +8,5 @@ require (
 	github.com/lib/pq v1.10.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/udistrital/auditoria v0.0.0-20200115201815-9680ae9c2515
-	github.com/udistrital/utils_oas v0.0.0-20210916015729-836c0a2c2923
+	github.com/udistrital/utils_oas v0.0.0-20211011160436-7fa8127363aa
 )
