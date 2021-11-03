@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
+	"net/http"
 	"strconv"
 	"strings"
 
@@ -30,11 +31,16 @@ func (c *NotificacionEstadoUsuarioController) URLMapping() {
 // Post ...
 // @Title Post
 // @Description create NotificacionEstadoUsuario
+// @Failure 410 Controlador archivado
 // @Param	body		body 	models.NotificacionEstadoUsuario	true		"body for NotificacionEstadoUsuario content"
 // @Success 201 {int} models.NotificacionEstadoUsuario
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *NotificacionEstadoUsuarioController) Post() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	var v models.NotificacionEstadoUsuario
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models.AddNotificacionEstadoUsuario(&v); err == nil {
@@ -58,11 +64,16 @@ func (c *NotificacionEstadoUsuarioController) Post() {
 // GetOne ...
 // @Title Get One
 // @Description get NotificacionEstadoUsuario by id
+// @Failure 410 Controlador archivado
 // @Param	id		path 	string	true		"The key for staticblock"
 // @Success 200 {object} models.NotificacionEstadoUsuario
 // @Failure 404 not found resource
 // @router /:id [get]
 func (c *NotificacionEstadoUsuarioController) GetOne() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetNotificacionEstadoUsuarioById(id)
@@ -80,16 +91,13 @@ func (c *NotificacionEstadoUsuarioController) GetOne() {
 // GetAll ...
 // @Title Get All
 // @Description get NotificacionEstadoUsuario
-// @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
-// @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
-// @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
-// @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
-// @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
-// @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.NotificacionEstadoUsuario
-// @Failure 404 not found resource
+// @Failure 410 Controlador archivado
 // @router / [get]
 func (c *NotificacionEstadoUsuarioController) GetAll() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	var fields []string
 	var sortby []string
 	var order []string
@@ -149,12 +157,13 @@ func (c *NotificacionEstadoUsuarioController) GetAll() {
 // Put ...
 // @Title Put
 // @Description update the NotificacionEstadoUsuario
-// @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.NotificacionEstadoUsuario	true		"body for NotificacionEstadoUsuario content"
-// @Success 200 {object} models.NotificacionEstadoUsuario
-// @Failure 400 the request contains incorrect syntax
+// @Failure 410 Controlador archivado
 // @router /:id [put]
 func (c *NotificacionEstadoUsuarioController) Put() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v := models.NotificacionEstadoUsuario{Id: id}
@@ -179,11 +188,13 @@ func (c *NotificacionEstadoUsuarioController) Put() {
 // Delete ...
 // @Title Delete
 // @Description delete the NotificacionEstadoUsuario
-// @Param	id		path 	string	true		"The id you want to delete"
-// @Success 200 {string} delete success!
-// @Failure 404 not found resource
+// @Failure 410 Controlador archivado
 // @router /:id [delete]
 func (c *NotificacionEstadoUsuarioController) Delete() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteNotificacionEstadoUsuario(id); err == nil {
@@ -200,12 +211,13 @@ func (c *NotificacionEstadoUsuarioController) Delete() {
 // getOldNotification ...
 // @Title getOldNotification
 // @Description get all old notification
-// @Param	roles		path 	string	true		"The profile you want to consult"
-// @Param	usuario		path 	string	true		"The user you want to consult"
-// @Success 200 {string} get success!
-// @Failure 403 profile is empty
+// @Failure 410 Controlador archivado
 // @router /getOldNotification/:roles/:usuario [get]
 func (c *NotificacionEstadoUsuarioController) GetOldNotification() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	rolesStr := c.Ctx.Input.Param(":roles")
 	userStr := c.Ctx.Input.Param(":usuario")
 	c.Data["json"] = notimanager.GetOldNotification(rolesStr, userStr)
@@ -214,11 +226,13 @@ func (c *NotificacionEstadoUsuarioController) GetOldNotification() {
 // pushNotificationUser ...
 // @Title pushNotificationUser
 // @Description create pushNotificationUser
-// @Param	body		body 	models.NotificacionUsuarioMasiva	true		"body for NotificacionEstadoUsuario content"
-// @Success 201 {int} models.NotificacionEstadoUsuario
-// @Failure 403 body is empty
+// @Failure 410 Controlador archivado
 // @router /pushNotificationUser [post]
 func (c *NotificacionEstadoUsuarioController) PushNotificationUser() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	var v models.NotificacionUsuarioMasiva
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := notimanager.PushNotificationUser(&v); err == nil {
@@ -235,11 +249,13 @@ func (c *NotificacionEstadoUsuarioController) PushNotificationUser() {
 // changeStateNoView ...
 // @Title changeStateNoView
 // @Description change state of notifications
-// @Param	usuario		path 	string	true		"The user you want to update"
-// @Success 200 {string} get success!
-// @Failure 403 body is empty
+// @Failure 410 Controlador archivado
 // @router /changeStateNoView/:usuario [post]
 func (c *NotificacionEstadoUsuarioController) ChangeStateNoView() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	userStr := c.Ctx.Input.Param(":usuario")
 	c.Data["json"] = notimanager.ChangeStateNoView(userStr)
 }
@@ -247,11 +263,13 @@ func (c *NotificacionEstadoUsuarioController) ChangeStateNoView() {
 // ChangeStateToView ...
 // @Title changeStateNoView
 // @Description create NotificacionEstadoUsuario
-// @Param    id        path     int    true        "The notification you want to update"
-// @Success 201 {int} models.NotificacionEstadoUsuario
-// @Failure 400 the request contains incorrect syntax
+// @Failure 410 Controlador archivado
 // @router /changeStateToView/:id [get]
 func (c *NotificacionEstadoUsuarioController) ChangeStateToView() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	idStr := c.Ctx.Input.Param(":id")
 	c.Data["json"] = notimanager.ChangeStateToView(idStr)
 }
