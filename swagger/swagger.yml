@@ -1177,7 +1177,7 @@ paths:
         description: body for NotificacionEstadoUsuario content
         required: true
         schema:
-          $ref: '#/definitions/models.NotificacionUsarioMasiva'
+          $ref: '#/definitions/models.NotificacionUsuarioMasiva'
       responses:
         "201":
           description: '{int} models.NotificacionEstadoUsuario'
@@ -1814,9 +1814,16 @@ definitions:
         format: int64
       Nombre:
         type: string
-  models.NotificacionUsarioMasiva:
-    title: NotificacionUsarioMasiva
+  models.NotificacionUsuarioMasiva:
+    title: NotificacionUsuarioMasiva
     type: object
+    properties:
+      Notificacion:
+        $ref: '#/definitions/models.Notificacion'
+      Usuarios:
+        type: array
+        items:
+          type: string
   models.Parametro:
     title: Parametro
     type: object
@@ -1868,9 +1875,6 @@ tags:
 - name: notificacion_estado_usuario
   description: |
     NotificacionEstadoUsuarioController operations for NotificacionEstadoUsuario
-- name: notificacion
-  description: |
-    NotificacionController operations for Notificacion
 - name: notificacion_configuracion
   description: |
     NotificacionConfiguracionController operations for NotificacionConfiguracion

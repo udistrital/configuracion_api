@@ -1678,7 +1678,7 @@
                         "description": "body for NotificacionEstadoUsuario content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.NotificacionUsarioMasiva"
+                            "$ref": "#/definitions/models.NotificacionUsuarioMasiva"
                         }
                     }
                 ],
@@ -2724,9 +2724,20 @@
                 }
             }
         },
-        "models.NotificacionUsarioMasiva": {
-            "title": "NotificacionUsarioMasiva",
-            "type": "object"
+        "models.NotificacionUsuarioMasiva": {
+            "title": "NotificacionUsuarioMasiva",
+            "type": "object",
+            "properties": {
+                "Notificacion": {
+                    "$ref": "#/definitions/models.Notificacion"
+                },
+                "Usuarios": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
         },
         "models.Parametro": {
             "title": "Parametro",
@@ -2802,10 +2813,6 @@
         {
             "name": "notificacion_estado_usuario",
             "description": "NotificacionEstadoUsuarioController operations for NotificacionEstadoUsuario\n"
-        },
-        {
-            "name": "notificacion",
-            "description": "NotificacionController operations for Notificacion\n"
         },
         {
             "name": "notificacion_configuracion",

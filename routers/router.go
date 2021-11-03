@@ -22,12 +22,6 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/notificacion",
-			beego.NSInclude(
-				&controllers.NotificacionController{},
-			),
-		),
-
 		beego.NSNamespace("/notificacion_configuracion",
 			beego.NSInclude(
 				&controllers.NotificacionConfiguracionController{},

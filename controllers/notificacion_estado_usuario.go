@@ -214,7 +214,7 @@ func (c *NotificacionEstadoUsuarioController) GetOldNotification() {
 // pushNotificationUser ...
 // @Title pushNotificationUser
 // @Description create pushNotificationUser
-// @Param	body		body 	models.NotificacionUsarioMasiva	true		"body for NotificacionEstadoUsuario content"
+// @Param	body		body 	models.NotificacionUsuarioMasiva	true		"body for NotificacionEstadoUsuario content"
 // @Success 201 {int} models.NotificacionEstadoUsuario
 // @Failure 403 body is empty
 // @router /pushNotificationUser [post]
