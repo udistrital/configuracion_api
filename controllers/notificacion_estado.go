@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
+	"net/http"
 	"strconv"
 	"strings"
 
@@ -29,11 +30,13 @@ func (c *NotificacionEstadoController) URLMapping() {
 // Post ...
 // @Title Post
 // @Description create NotificacionEstado
-// @Param	body		body 	models.NotificacionEstado	true		"body for NotificacionEstado content"
-// @Success 201 {int} models.NotificacionEstado
-// @Failure 400 the request contains incorrect syntax
+// @Failure 410 Controlador archivado
 // @router / [post]
 func (c *NotificacionEstadoController) Post() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	var v models.NotificacionEstado
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models.AddNotificacionEstado(&v); err == nil {
@@ -57,11 +60,13 @@ func (c *NotificacionEstadoController) Post() {
 // GetOne ...
 // @Title Get One
 // @Description get NotificacionEstado by id
-// @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.NotificacionEstado
-// @Failure 404 not found resource
+// @Failure 410 Controlador archivado
 // @router /:id [get]
 func (c *NotificacionEstadoController) GetOne() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetNotificacionEstadoById(id)
@@ -79,16 +84,13 @@ func (c *NotificacionEstadoController) GetOne() {
 // GetAll ...
 // @Title Get All
 // @Description get NotificacionEstado
-// @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
-// @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
-// @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
-// @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
-// @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
-// @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.NotificacionEstado
-// @Failure 404 not found resource
+// @Failure 410 Controlador archivado
 // @router / [get]
 func (c *NotificacionEstadoController) GetAll() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	var fields []string
 	var sortby []string
 	var order []string
@@ -148,12 +150,13 @@ func (c *NotificacionEstadoController) GetAll() {
 // Put ...
 // @Title Put
 // @Description update the NotificacionEstado
-// @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.NotificacionEstado	true		"body for NotificacionEstado content"
-// @Success 200 {object} models.NotificacionEstado
-// @Failure 400 the request contains incorrect syntax
+// @Failure 410 Controlador archivado
 // @router /:id [put]
 func (c *NotificacionEstadoController) Put() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v := models.NotificacionEstado{Id: id}
@@ -178,11 +181,13 @@ func (c *NotificacionEstadoController) Put() {
 // Delete ...
 // @Title Delete
 // @Description delete the NotificacionEstado
-// @Param	id		path 	string	true		"The id you want to delete"
-// @Success 200 {string} delete success!
-// @Failure 404 not found resource
+// @Failure 410 Controlador archivado
 // @router /:id [delete]
 func (c *NotificacionEstadoController) Delete() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteNotificacionEstado(id); err == nil {

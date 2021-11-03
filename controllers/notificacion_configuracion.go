@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
+	"net/http"
 	"strconv"
 	"strings"
 
@@ -30,11 +31,13 @@ func (c *NotificacionConfiguracionController) URLMapping() {
 // Post ...
 // @Title Post
 // @Description create NotificacionConfiguracion
-// @Param	body		body 	models.NotificacionConfiguracion	true		"body for NotificacionConfiguracion content"
-// @Success 201 {int} models.NotificacionConfiguracion
-// @Failure 400 the request contains incorrect syntax
+// @Failure 410 Controlador archivado
 // @router / [post]
 func (c *NotificacionConfiguracionController) Post() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	var v models.NotificacionConfiguracion
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models.AddNotificacionConfiguracion(&v); err == nil {
@@ -58,11 +61,13 @@ func (c *NotificacionConfiguracionController) Post() {
 // GetOne ...
 // @Title Get One
 // @Description get NotificacionConfiguracion by id
-// @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.NotificacionConfiguracion
-// @Failure 404 not found resource
+// @Failure 410 Controlador archivado
 // @router /:id [get]
 func (c *NotificacionConfiguracionController) GetOne() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetNotificacionConfiguracionById(id)
@@ -80,11 +85,13 @@ func (c *NotificacionConfiguracionController) GetOne() {
 // GetConfiguracion ...
 // @Title getConfiguracion
 // @Description get a configuration
-// @Param	body		body 	models.ShowConfiguration	true		"body for ShowConfiguration content"
-// @Success 200 {string} get success!
-// @Failure 403 profile is empty
+// @Failure 410 Controlador archivado
 // @router /getConfiguracion/ [post]
 func (c *NotificacionConfiguracionController) GetConfiguracion() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	var v map[string]interface{}
 	// fields: col1,col2,entity.col3
 	beego.Info(c.Ctx.Input.RequestBody)
@@ -105,16 +112,13 @@ func (c *NotificacionConfiguracionController) GetConfiguracion() {
 // GetAll ...
 // @Title Get All
 // @Description get NotificacionConfiguracion
-// @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
-// @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
-// @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
-// @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
-// @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
-// @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.NotificacionConfiguracion
-// @Failure 404 not found resource
+// @Failure 410 Controlador archivado
 // @router / [get]
 func (c *NotificacionConfiguracionController) GetAll() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	var fields []string
 	var sortby []string
 	var order []string
@@ -174,12 +178,13 @@ func (c *NotificacionConfiguracionController) GetAll() {
 // Put ...
 // @Title Put
 // @Description update the NotificacionConfiguracion
-// @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.NotificacionConfiguracion	true		"body for NotificacionConfiguracion content"
-// @Success 200 {object} models.NotificacionConfiguracion
-// @Failure 400 the request contains incorrect syntax
+// @Failure 410 Controlador archivado
 // @router /:id [put]
 func (c *NotificacionConfiguracionController) Put() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v := models.NotificacionConfiguracion{Id: id}
@@ -204,11 +209,13 @@ func (c *NotificacionConfiguracionController) Put() {
 // Delete ...
 // @Title Delete
 // @Description delete the NotificacionConfiguracion
-// @Param	id		path 	string	true		"The id you want to delete"
-// @Success 200 {string} delete success!
-// @Failure 404 not found resource
+// @Failure 410 Controlador archivado
 // @router /:id [delete]
 func (c *NotificacionConfiguracionController) Delete() {
+	c.Ctx.Output.SetStatus(http.StatusGone)
+	c.ServeJSON()
+	return
+
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteNotificacionConfiguracion(id); err == nil {
