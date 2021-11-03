@@ -608,53 +608,9 @@
                 ],
                 "description": "get MetodoHttp",
                 "operationId": "MetodoHttpController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MetodoHttp"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -664,23 +620,9 @@
                 ],
                 "description": "create MetodoHttp",
                 "operationId": "MetodoHttpController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for MetodoHttp content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MetodoHttp"
-                        }
-                    }
-                ],
                 "responses": {
-                    "201": {
-                        "description": "{int} models.MetodoHttp"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -692,24 +634,9 @@
                 ],
                 "description": "get MetodoHttp by id",
                 "operationId": "MetodoHttpController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MetodoHttp"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -719,33 +646,9 @@
                 ],
                 "description": "update the MetodoHttp",
                 "operationId": "MetodoHttpController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for MetodoHttp content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MetodoHttp"
-                        }
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MetodoHttp"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -755,21 +658,9 @@
                 ],
                 "description": "delete the MetodoHttp",
                 "operationId": "MetodoHttpController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -781,53 +672,9 @@
                 ],
                 "description": "get Notificacion",
                 "operationId": "NotificacionController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.Notificacion"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -837,23 +684,9 @@
                 ],
                 "description": "create Notificacion",
                 "operationId": "NotificacionController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Notificacion content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Notificacion"
-                        }
-                    }
-                ],
                 "responses": {
-                    "201": {
-                        "description": "{int} models.Notificacion"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -865,24 +698,9 @@
                 ],
                 "description": "get Notificacion by id",
                 "operationId": "NotificacionController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.Notificacion"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -892,33 +710,9 @@
                 ],
                 "description": "update the Notificacion",
                 "operationId": "NotificacionController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Notificacion content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Notificacion"
-                        }
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.Notificacion"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -928,21 +722,9 @@
                 ],
                 "description": "delete the Notificacion",
                 "operationId": "NotificacionController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -954,53 +736,9 @@
                 ],
                 "description": "get NotificacionConfiguracion",
                 "operationId": "NotificacionConfiguracionController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracion"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1010,23 +748,9 @@
                 ],
                 "description": "create NotificacionConfiguracion",
                 "operationId": "NotificacionConfiguracionController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionConfiguracion content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracion"
-                        }
-                    }
-                ],
                 "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionConfiguracion"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1038,23 +762,9 @@
                 ],
                 "description": "get a configuration",
                 "operationId": "NotificacionConfiguracionController.getConfiguracion",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for ShowConfiguration content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.ShowConfiguration"
-                        }
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "{string} get success!"
-                    },
-                    "403": {
-                        "description": "profile is empty"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1066,24 +776,9 @@
                 ],
                 "description": "get NotificacionConfiguracion by id",
                 "operationId": "NotificacionConfiguracionController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracion"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1093,33 +788,9 @@
                 ],
                 "description": "update the NotificacionConfiguracion",
                 "operationId": "NotificacionConfiguracionController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionConfiguracion content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracion"
-                        }
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracion"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1129,21 +800,9 @@
                 ],
                 "description": "delete the NotificacionConfiguracion",
                 "operationId": "NotificacionConfiguracionController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1155,53 +814,9 @@
                 ],
                 "description": "get NotificacionConfiguracionPerfil",
                 "operationId": "NotificacionConfiguracionPerfilController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1211,23 +826,9 @@
                 ],
                 "description": "create NotificacionConfiguracionPerfil",
                 "operationId": "NotificacionConfiguracionPerfilController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionConfiguracionPerfil content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
-                        }
-                    }
-                ],
                 "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionConfiguracionPerfil"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1239,24 +840,9 @@
                 ],
                 "description": "get NotificacionConfiguracionPerfil by id",
                 "operationId": "NotificacionConfiguracionPerfilController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1266,33 +852,9 @@
                 ],
                 "description": "update the NotificacionConfiguracionPerfil",
                 "operationId": "NotificacionConfiguracionPerfilController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionConfiguracionPerfil content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
-                        }
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1302,21 +864,9 @@
                 ],
                 "description": "delete the NotificacionConfiguracionPerfil",
                 "operationId": "NotificacionConfiguracionPerfilController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1328,53 +878,9 @@
                 ],
                 "description": "get NotificacionEstado",
                 "operationId": "NotificacionEstadoController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstado"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1384,23 +890,9 @@
                 ],
                 "description": "create NotificacionEstado",
                 "operationId": "NotificacionEstadoController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionEstado content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstado"
-                        }
-                    }
-                ],
                 "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionEstado"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1412,24 +904,9 @@
                 ],
                 "description": "get NotificacionEstado by id",
                 "operationId": "NotificacionEstadoController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstado"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1439,33 +916,9 @@
                 ],
                 "description": "update the NotificacionEstado",
                 "operationId": "NotificacionEstadoController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionEstado content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstado"
-                        }
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstado"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1475,21 +928,9 @@
                 ],
                 "description": "delete the NotificacionEstado",
                 "operationId": "NotificacionEstadoController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1501,53 +942,9 @@
                 ],
                 "description": "get NotificacionEstadoUsuario",
                 "operationId": "NotificacionEstadoUsuarioController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1574,6 +971,9 @@
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
+                    },
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1585,21 +985,9 @@
                 ],
                 "description": "change state of notifications",
                 "operationId": "NotificacionEstadoUsuarioController.changeStateNoView",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "usuario",
-                        "description": "The user you want to update",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "{string} get success!"
-                    },
-                    "403": {
-                        "description": "body is empty"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1611,22 +999,9 @@
                 ],
                 "description": "create NotificacionEstadoUsuario",
                 "operationId": "NotificacionEstadoUsuarioController.changeStateNoView",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The notification you want to update",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
                 "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionEstadoUsuario"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1638,28 +1013,9 @@
                 ],
                 "description": "get all old notification",
                 "operationId": "NotificacionEstadoUsuarioController.getOldNotification",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "roles",
-                        "description": "The profile you want to consult",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "usuario",
-                        "description": "The user you want to consult",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "{string} get success!"
-                    },
-                    "403": {
-                        "description": "profile is empty"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1671,23 +1027,9 @@
                 ],
                 "description": "create pushNotificationUser",
                 "operationId": "NotificacionEstadoUsuarioController.pushNotificationUser",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionEstadoUsuario content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionUsuarioMasiva"
-                        }
-                    }
-                ],
                 "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionEstadoUsuario"
-                    },
-                    "403": {
-                        "description": "body is empty"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1717,6 +1059,9 @@
                     },
                     "404": {
                         "description": "not found resource"
+                    },
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1726,33 +1071,9 @@
                 ],
                 "description": "update the NotificacionEstadoUsuario",
                 "operationId": "NotificacionEstadoUsuarioController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionEstadoUsuario content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
-                        }
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1762,21 +1083,9 @@
                 ],
                 "description": "delete the NotificacionEstadoUsuario",
                 "operationId": "NotificacionEstadoUsuarioController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1788,53 +1097,9 @@
                 ],
                 "description": "get NotificacionTipo",
                 "operationId": "NotificacionTipoController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionTipo"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1844,23 +1109,9 @@
                 ],
                 "description": "create NotificacionTipo",
                 "operationId": "NotificacionTipoController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionTipo content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionTipo"
-                        }
-                    }
-                ],
                 "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionTipo"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -1872,24 +1123,9 @@
                 ],
                 "description": "get NotificacionTipo by id",
                 "operationId": "NotificacionTipoController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionTipo"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1899,33 +1135,9 @@
                 ],
                 "description": "update the NotificacionTipo",
                 "operationId": "NotificacionTipoController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionTipo content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionTipo"
-                        }
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionTipo"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             },
@@ -1935,21 +1147,9 @@
                 ],
                 "description": "delete the NotificacionTipo",
                 "operationId": "NotificacionTipoController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
+                    "410": {
+                        "description": "Controlador archivado"
                     }
                 }
             }
@@ -2724,21 +1924,6 @@
                 }
             }
         },
-        "models.NotificacionUsuarioMasiva": {
-            "title": "NotificacionUsuarioMasiva",
-            "type": "object",
-            "properties": {
-                "Notificacion": {
-                    "$ref": "#/definitions/models.Notificacion"
-                },
-                "Usuarios": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            }
-        },
         "models.Parametro": {
             "title": "Parametro",
             "type": "object",
@@ -2787,24 +1972,6 @@
                 },
                 "Perfil": {
                     "$ref": "#/definitions/models.Perfil"
-                }
-            }
-        },
-        "models.ShowConfiguration": {
-            "title": "ShowConfiguration",
-            "type": "object",
-            "properties": {
-                "Aplicacion": {
-                    "type": "string"
-                },
-                "EndPoint": {
-                    "type": "string"
-                },
-                "MetodoHttp": {
-                    "type": "string"
-                },
-                "Tipo": {
-                    "type": "string"
                 }
             }
         }
