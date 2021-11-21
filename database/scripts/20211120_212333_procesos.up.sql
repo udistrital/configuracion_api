@@ -62,3 +62,33 @@ ALTER TABLE configuracion.version_proceso ADD CONSTRAINT fk_version_proceso_proc
 REFERENCES configuracion.proceso (id) MATCH FULL
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 -- ddl-end --
+
+-- object: configuracion.estado_proceso | type: TABLE --
+-- DROP TABLE IF EXISTS configuracion.estado_proceso CASCADE;
+CREATE TABLE configuracion.estado_proceso(
+	id serial NOT NULL,
+	version_proceso_id integer NOT NULL,
+	sigla varchar(10) NOT NULL,
+	nombre varchar(50) NOT NULL,
+	descripcion varchar(300),
+	metadatos jsonb,
+	activo bool NOT NULL DEFAULT true,
+	fecha_creacion timestamptz NOT NULL,
+	fecha_modificacion timestamptz NOT NULL,
+	CONSTRAINT uq_sigla_version_proceso UNIQUE (version_proceso_id,sigla),
+	CONSTRAINT pk_estado_proceso PRIMARY KEY (id)
+);
+-- ddl-end --
+COMMENT ON COLUMN configuracion.estado_proceso.metadatos IS 'Propiedades que tienen sentido fuera de esta API';
+-- ddl-end --
+COMMENT ON CONSTRAINT uq_sigla_version_proceso ON configuracion.estado_proceso  IS 'Estado (mediante su sigla) unico entre la misma version';
+-- ddl-end --
+-- ALTER TABLE configuracion.estado_proceso OWNER TO postgres;
+-- ddl-end --
+
+-- object: fk_estado_proceso_version_proceso | type: CONSTRAINT --
+-- ALTER TABLE configuracion.estado_proceso DROP CONSTRAINT IF EXISTS fk_estado_proceso_version_proceso CASCADE;
+ALTER TABLE configuracion.estado_proceso ADD CONSTRAINT fk_estado_proceso_version_proceso FOREIGN KEY (version_proceso_id)
+REFERENCES configuracion.version_proceso (id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
