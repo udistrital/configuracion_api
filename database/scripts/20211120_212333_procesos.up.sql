@@ -92,3 +92,41 @@ ALTER TABLE configuracion.estado_proceso ADD CONSTRAINT fk_estado_proceso_versio
 REFERENCES configuracion.version_proceso (id) MATCH FULL
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 -- ddl-end --
+
+-- object: configuracion.transicion_proceso | type: TABLE --
+-- DROP TABLE IF EXISTS configuracion.transicion_proceso CASCADE;
+CREATE TABLE configuracion.transicion_proceso(
+	id serial NOT NULL,
+	estado_proceso_id_anterior integer NOT NULL,
+	estado_proceso_id_siguiente integer NOT NULL,
+	sigla varchar(10) NOT NULL,
+	nombre varchar(100) NOT NULL,
+	descripcion varchar(300),
+	metadatos jsonb,
+	activo bool NOT NULL DEFAULT true,
+	fecha_creacion timestamptz NOT NULL,
+	fecha_modificacion timestamptz NOT NULL,
+	CONSTRAINT pk_transicion PRIMARY KEY (id),
+	CONSTRAINT uq_sigla_estados UNIQUE (estado_proceso_id_anterior,estado_proceso_id_siguiente,sigla)
+);
+-- ddl-end --
+COMMENT ON COLUMN configuracion.transicion_proceso.metadatos IS 'Propiedades que tienen sentido fuera de esta API';
+-- ddl-end --
+COMMENT ON CONSTRAINT uq_sigla_estados ON configuracion.transicion_proceso  IS 'Combinacion unica entre la sigla de la transicion y los estados involucrados';
+-- ddl-end --
+-- ALTER TABLE configuracion.transicion_proceso OWNER TO postgres;
+-- ddl-end --
+
+-- object: fk_transicion_proceso_estado_proceso_siguiente | type: CONSTRAINT --
+-- ALTER TABLE configuracion.transicion_proceso DROP CONSTRAINT IF EXISTS fk_transicion_proceso_estado_proceso_siguiente CASCADE;
+ALTER TABLE configuracion.transicion_proceso ADD CONSTRAINT fk_transicion_proceso_estado_proceso_siguiente FOREIGN KEY (estado_proceso_id_siguiente)
+REFERENCES configuracion.estado_proceso (id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fk_transicion_proceso_estado_proceso_anterior | type: CONSTRAINT --
+-- ALTER TABLE configuracion.transicion_proceso DROP CONSTRAINT IF EXISTS fk_transicion_proceso_estado_proceso_anterior CASCADE;
+ALTER TABLE configuracion.transicion_proceso ADD CONSTRAINT fk_transicion_proceso_estado_proceso_anterior FOREIGN KEY (estado_proceso_id_anterior)
+REFERENCES configuracion.estado_proceso (id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
