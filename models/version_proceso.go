@@ -12,7 +12,7 @@ import (
 
 type VersionProceso struct {
 	Id                int64     `orm:"column(id);auto"`
-	ProcesoId         int32     `orm:"column(proceso_id);rel(fk)"`
+	ProcesoId         *Proceso  `orm:"column(proceso_id);rel(fk)"`
 	Version           int16     `orm:"column(version)"`
 	Metadatos         string    `orm:"column(metadatos);type(jsonb);null"`
 	Activo            bool      `orm:"column(activo)"`

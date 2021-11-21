@@ -11,15 +11,15 @@ import (
 )
 
 type EstadoProceso struct {
-	Id                int64     `orm:"column(id);auto"`
-	VersionProcesoId  int       `orm:"column(version_proceso_id);rel(fk)"`
-	Sigla             string    `orm:"column(sigla);size(10)"`
-	Nombre            string    `orm:"column(nombre);size(50)"`
-	Descripcion       string    `orm:"column(descripcion);size(300);null"`
-	Metadatos         string    `orm:"column(metadatos);type(jsonb);null"`
-	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion)"`
+	Id                int64           `orm:"column(id);auto"`
+	VersionProcesoId  *VersionProceso `orm:"column(version_proceso_id);rel(fk)"`
+	Sigla             string          `orm:"column(sigla);size(10)"`
+	Nombre            string          `orm:"column(nombre);size(50)"`
+	Descripcion       string          `orm:"column(descripcion);size(300);null"`
+	Metadatos         string          `orm:"column(metadatos);type(jsonb);null"`
+	Activo            bool            `orm:"column(activo)"`
+	FechaCreacion     time.Time       `orm:"column(fecha_creacion)"`
+	FechaModificacion time.Time       `orm:"column(fecha_modificacion)"`
 }
 
 func init() {

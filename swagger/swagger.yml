@@ -1126,6 +1126,466 @@ paths:
             $ref: '#/definitions/models.PerfilXMenuOpcion'
         "404":
           description: not found resource
+  /proceso/:
+    get:
+      tags:
+      - proceso
+      description: get Proceso
+      operationId: ProcesoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Proceso'
+        "403":
+          description: ""
+    post:
+      tags:
+      - proceso
+      description: create Proceso
+      operationId: ProcesoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Proceso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Proceso'
+      responses:
+        "201":
+          description: '{int} models.Proceso'
+        "403":
+          description: body is empty
+  /proceso/{id}:
+    get:
+      tags:
+      - proceso
+      description: get Proceso by id
+      operationId: ProcesoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Proceso'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - proceso
+      description: update the Proceso
+      operationId: ProcesoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Proceso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Proceso'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Proceso'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - proceso
+      description: delete the Proceso
+      operationId: ProcesoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /proceso_estado/:
+    get:
+      tags:
+      - proceso_estado
+      description: get EstadoProceso
+      operationId: EstadoProcesoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoProceso'
+        "403":
+          description: ""
+    post:
+      tags:
+      - proceso_estado
+      description: create EstadoProceso
+      operationId: EstadoProcesoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for EstadoProceso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.EstadoProceso'
+      responses:
+        "201":
+          description: '{int} models.EstadoProceso'
+        "403":
+          description: body is empty
+  /proceso_estado/{id}:
+    get:
+      tags:
+      - proceso_estado
+      description: get EstadoProceso by id
+      operationId: EstadoProcesoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoProceso'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - proceso_estado
+      description: update the EstadoProceso
+      operationId: EstadoProcesoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for EstadoProceso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.EstadoProceso'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoProceso'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - proceso_estado
+      description: delete the EstadoProceso
+      operationId: EstadoProcesoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /proceso_transicion/:
+    get:
+      tags:
+      - proceso_transicion
+      description: get TransicionProceso
+      operationId: TransicionProcesoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TransicionProceso'
+        "403":
+          description: ""
+    post:
+      tags:
+      - proceso_transicion
+      description: create TransicionProceso
+      operationId: TransicionProcesoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TransicionProceso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TransicionProceso'
+      responses:
+        "201":
+          description: '{int} models.TransicionProceso'
+        "403":
+          description: body is empty
+  /proceso_transicion/{id}:
+    get:
+      tags:
+      - proceso_transicion
+      description: get TransicionProceso by id
+      operationId: TransicionProcesoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TransicionProceso'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - proceso_transicion
+      description: update the TransicionProceso
+      operationId: TransicionProcesoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TransicionProceso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TransicionProceso'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TransicionProceso'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - proceso_transicion
+      description: delete the TransicionProceso
+      operationId: TransicionProcesoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /proceso_version/:
+    get:
+      tags:
+      - proceso_version
+      description: get VersionProceso
+      operationId: VersionProcesoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.VersionProceso'
+        "403":
+          description: ""
+    post:
+      tags:
+      - proceso_version
+      description: create VersionProceso
+      operationId: VersionProcesoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for VersionProceso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.VersionProceso'
+      responses:
+        "201":
+          description: '{int} models.VersionProceso'
+        "403":
+          description: body is empty
+  /proceso_version/{id}:
+    get:
+      tags:
+      - proceso_version
+      description: get VersionProceso by id
+      operationId: VersionProcesoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.VersionProceso'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - proceso_version
+      description: update the VersionProceso
+      operationId: VersionProcesoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for VersionProceso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.VersionProceso'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.VersionProceso'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - proceso_version
+      description: delete the VersionProceso
+      operationId: VersionProcesoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
 definitions:
   models.Aplicacion:
     title: Aplicacion
@@ -1146,6 +1606,31 @@ definitions:
         format: int64
       Nombre:
         type: string
+  models.EstadoProceso:
+    title: EstadoProceso
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Metadatos:
+        type: string
+      Nombre:
+        type: string
+      Sigla:
+        type: string
+      VersionProcesoId:
+        $ref: '#/definitions/models.VersionProceso'
   models.MenuOpcion:
     title: MenuOpcion
     type: object
@@ -1313,6 +1798,80 @@ definitions:
         $ref: '#/definitions/models.MenuOpcion'
       Perfil:
         $ref: '#/definitions/models.Perfil'
+  models.Proceso:
+    title: Proceso
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      AplicacionId:
+        $ref: '#/definitions/models.Aplicacion'
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Metadatos:
+        type: string
+      Nombre:
+        type: string
+      Sigla:
+        type: string
+  models.TransicionProceso:
+    title: TransicionProceso
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Descripcion:
+        type: string
+      EstadoProcesoIdAnterior:
+        $ref: '#/definitions/models.EstadoProceso'
+      EstadoProcesoIdSiguiente:
+        $ref: '#/definitions/models.EstadoProceso'
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Metadatos:
+        type: string
+      Nombre:
+        type: string
+      Sigla:
+        type: string
+  models.VersionProceso:
+    title: VersionProceso
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Metadatos:
+        type: string
+      ProcesoId:
+        $ref: '#/definitions/models.Proceso'
+      Version:
+        type: integer
+        format: int32
 tags:
 - name: notificacion_estado_usuario
   description: |
@@ -1356,3 +1915,15 @@ tags:
 - name: perfil
   description: |
     PerfilController oprations for Perfil
+- name: proceso
+  description: |2
+     ProcesoController operations for Proceso
+- name: proceso_version
+  description: |2
+     VersionProcesoController operations for VersionProceso
+- name: proceso_estado
+  description: |2
+     EstadoProcesoController operations for EstadoProceso
+- name: proceso_transicion
+  description: |2
+     TransicionProcesoController operations for TransicionProceso
