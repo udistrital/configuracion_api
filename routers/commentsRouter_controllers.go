@@ -61,6 +61,51 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:EstadoProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:EstadoProcesoController"],
+        beego.ControllerComments{
+            Method: "Post",
+            Router: "/",
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:EstadoProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:EstadoProcesoController"],
+        beego.ControllerComments{
+            Method: "GetAll",
+            Router: "/",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:EstadoProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:EstadoProcesoController"],
+        beego.ControllerComments{
+            Method: "GetOne",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:EstadoProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:EstadoProcesoController"],
+        beego.ControllerComments{
+            Method: "Put",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"put"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:EstadoProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:EstadoProcesoController"],
+        beego.ControllerComments{
+            Method: "Delete",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MenuOpcionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MenuOpcionController"],
         beego.ControllerComments{
             Method: "Post",
@@ -660,6 +705,141 @@ func init() {
             Method: "MenusPorAplicacion",
             Router: "/MenusPorAplicacion/:id",
             AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:ProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:ProcesoController"],
+        beego.ControllerComments{
+            Method: "Post",
+            Router: "/",
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:ProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:ProcesoController"],
+        beego.ControllerComments{
+            Method: "GetAll",
+            Router: "/",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:ProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:ProcesoController"],
+        beego.ControllerComments{
+            Method: "GetOne",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:ProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:ProcesoController"],
+        beego.ControllerComments{
+            Method: "Put",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"put"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:ProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:ProcesoController"],
+        beego.ControllerComments{
+            Method: "Delete",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:TransicionProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:TransicionProcesoController"],
+        beego.ControllerComments{
+            Method: "Post",
+            Router: "/",
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:TransicionProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:TransicionProcesoController"],
+        beego.ControllerComments{
+            Method: "GetAll",
+            Router: "/",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:TransicionProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:TransicionProcesoController"],
+        beego.ControllerComments{
+            Method: "GetOne",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:TransicionProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:TransicionProcesoController"],
+        beego.ControllerComments{
+            Method: "Put",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"put"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:TransicionProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:TransicionProcesoController"],
+        beego.ControllerComments{
+            Method: "Delete",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:VersionProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:VersionProcesoController"],
+        beego.ControllerComments{
+            Method: "Post",
+            Router: "/",
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:VersionProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:VersionProcesoController"],
+        beego.ControllerComments{
+            Method: "GetAll",
+            Router: "/",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:VersionProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:VersionProcesoController"],
+        beego.ControllerComments{
+            Method: "GetOne",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:VersionProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:VersionProcesoController"],
+        beego.ControllerComments{
+            Method: "Put",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"put"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:VersionProcesoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:VersionProcesoController"],
+        beego.ControllerComments{
+            Method: "Delete",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"delete"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

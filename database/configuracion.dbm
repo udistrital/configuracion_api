@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1-beta" last-position="463,255" last-zoom="1"
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="0,0" last-zoom="0.3"
 	 default-schema="public" default-owner="postgres">
 <role name="test"
       superuser="true"
@@ -52,7 +52,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Tabla que se encarga de almacenar la informacion de cada aplicacion contenida en la base de datos]]></comment>
-	<position x="460" y="861"/>
+	<position x="260" y="960"/>
 	<column name="id" not-null="true" sequence="configuracion.aplicacion_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador unico de la tabla aplicacion]]></comment>
@@ -104,7 +104,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Tabla que contiene las diferentes opciones de los menus]]></comment>
-	<position x="960" y="581"/>
+	<position x="760" y="680"/>
 	<column name="id" not-null="true" sequence="configuracion.menu_opcion_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador de la tabla menu_opcion]]></comment>
@@ -158,7 +158,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Tabla que sirve para reemplazar la relacion reflexiva del padre de los menus_opcion.]]></comment>
-	<position x="1780" y="560"/>
+	<position x="1540" y="700"/>
 	<column name="id" not-null="true" sequence="configuracion.menu_opcion_padre_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador de la tabla menu_opcion_padre]]></comment>
@@ -192,7 +192,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Tipos de metodo http usados]]></comment>
-	<position x="360" y="260"/>
+	<position x="160" y="360"/>
 	<column name="id" not-null="true" sequence="configuracion.metodo_http_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador único de la tabla]]></comment>
@@ -222,7 +222,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Centralización de los tipo de las notificaciones de los sistemas]]></comment>
-	<position x="360" y="440"/>
+	<position x="160" y="540"/>
 	<column name="id" not-null="true" sequence="configuracion.notificacion_tipo_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador único del tipo de la notificación]]></comment>
@@ -248,7 +248,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Configuracion de las notificaciones que seran emitidas]]></comment>
-	<position x="900" y="341"/>
+	<position x="700" y="440"/>
 	<column name="id" not-null="true" sequence="configuracion.notificacion_configuracion_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador único de la configuracion generada]]></comment>
@@ -290,7 +290,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Notificaciones de sistema a usuario centralizadas para todos los sistemas]]></comment>
-	<position x="1540" y="181"/>
+	<position x="1340" y="280"/>
 	<column name="id" not-null="true" sequence="configuracion.notificacion_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador único de la notificación generada]]></comment>
@@ -324,7 +324,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Contiene la informacion de un perfil]]></comment>
-	<position x="1000" y="847"/>
+	<position x="800" y="940"/>
 	<column name="id" not-null="true" sequence="configuracion.perfil_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador de un perfil]]></comment>
@@ -355,7 +355,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Tabla que maneja los menus que le pertenecen a ciertos perfiles]]></comment>
-	<position x="1740" y="840"/>
+	<position x="1540" y="940"/>
 	<column name="id" not-null="true" sequence="configuracion.perfil_x_menu_opcion_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador de la tabla perfil_x_menu_opcion]]></comment>
@@ -390,7 +390,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Tipos de metodo http usados]]></comment>
-	<position x="1720" y="367"/>
+	<position x="1480" y="540"/>
 	<column name="id" not-null="true" sequence="configuracion.notificacion_configuracion_perfil_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador único de la tabla]]></comment>
@@ -420,7 +420,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Centralización de los estados de las notificaciones de los sistemas]]></comment>
-	<position x="940" y="61"/>
+	<position x="740" y="160"/>
 	<column name="id" not-null="true" sequence="configuracion.notificacion_estado_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador único del estado de la notificación]]></comment>
@@ -462,7 +462,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Tabla que relaciona una notificación, un estado y un usuario. Permite así conservar el histórico de la notificación desde que se crea hasta que es leída]]></comment>
-	<position x="2140" y="27"/>
+	<position x="1940" y="120"/>
 	<column name="id" not-null="true" sequence="configuracion.notificacion_estado_usuario_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador único de notificacion_estado_usuario]]></comment>
@@ -504,7 +504,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Tabla que  describe todos los parametros asociados a una aplicacion]]></comment>
-	<position x="980" y="987"/>
+	<position x="780" y="1080"/>
 	<column name="id" not-null="true" sequence="configuracion.parametro_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador de la tabla parametro]]></comment>
@@ -526,6 +526,218 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<comment><![CDATA[Llave primaria del parametro]]></comment>
 	</constraint>
 </table>
+
+<schema name="estados_crud" rect-visible="true" fill-color="#e1e1e1">
+	<role name="postgres"/>
+</schema>
+
+<table name="estado_proceso">
+	<schema name="configuracion"/>
+	<role name="postgres"/>
+	<position x="1640" y="1320"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="version_proceso_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="sigla" not-null="true">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="descripcion">
+		<type name="varchar" length="300"/>
+	</column>
+	<column name="metadatos">
+		<type name="jsonb" length="0"/>
+		<comment><![CDATA[Propiedades que tienen sentido fuera de esta API]]></comment>
+	</column>
+	<column name="activo" not-null="true" default-value="true">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="fecha_creacion" not-null="true">
+		<type name="timestamptz" length="0"/>
+	</column>
+	<column name="fecha_modificacion" not-null="true">
+		<type name="timestamptz" length="0"/>
+	</column>
+	<constraint name="uq_sigla_version_proceso" type="uq-constr" table="configuracion.estado_proceso">
+		<columns names="version_proceso_id,sigla" ref-type="src-columns"/>
+		<comment><![CDATA[Estado (mediante su sigla) unico entre la misma version]]></comment>
+	</constraint>
+	<constraint name="pk_estado_proceso" type="pk-constr" table="configuracion.estado_proceso">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="transicion_proceso">
+	<schema name="configuracion"/>
+	<role name="postgres"/>
+	<position x="2100" y="1120"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="estado_proceso_id_anterior" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="estado_proceso_id_siguiente" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="sigla" not-null="true">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="descripcion">
+		<type name="varchar" length="300"/>
+	</column>
+	<column name="metadatos">
+		<type name="jsonb" length="0"/>
+		<comment><![CDATA[Propiedades que tienen sentido fuera de esta API]]></comment>
+	</column>
+	<column name="activo" not-null="true" default-value="true">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="fecha_creacion" not-null="true">
+		<type name="timestamptz" length="0"/>
+	</column>
+	<column name="fecha_modificacion" not-null="true">
+		<type name="timestamptz" length="0"/>
+	</column>
+	<constraint name="pk_transicion" type="pk-constr" table="configuracion.transicion_proceso">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="uq_sigla_estados" type="uq-constr" table="configuracion.transicion_proceso">
+		<columns names="estado_proceso_id_anterior,estado_proceso_id_siguiente,sigla" ref-type="src-columns"/>
+		<comment><![CDATA[Combinacion unica entre la sigla de la transicion y los estados involucrados]]></comment>
+	</constraint>
+</table>
+
+<table name="proceso">
+	<schema name="configuracion"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Procesos asociados a una aplicacion]]></comment>
+	<position x="760" y="1300"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="aplicacion_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="sigla" not-null="true">
+		<type name="varchar" length="10"/>
+		<comment><![CDATA[Abreviacion del proceso. Una vez creada no deberia modificarse!]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="descripcion">
+		<type name="varchar" length="300"/>
+	</column>
+	<column name="metadatos">
+		<type name="jsonb" length="0"/>
+		<comment><![CDATA[Propiedades que tienen sentido fuera de esta API]]></comment>
+	</column>
+	<column name="activo" not-null="true" default-value="true">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="fecha_creacion" not-null="true">
+		<type name="timestamptz" length="0"/>
+	</column>
+	<column name="fecha_modificacion" not-null="true">
+		<type name="timestamptz" length="0"/>
+	</column>
+	<constraint name="uq_sigla_aplicacion_proceso" type="uq-constr" table="configuracion.proceso">
+		<columns names="aplicacion_id,sigla" ref-type="src-columns"/>
+		<comment><![CDATA[No mas de un mismo proceso (identificado por sigla) por aplicacion]]></comment>
+	</constraint>
+	<constraint name="proceso_pk" type="pk-constr" table="configuracion.proceso">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="version_proceso">
+	<schema name="configuracion"/>
+	<role name="postgres"/>
+	<comment><![CDATA[La ultima/mayor sera de trabajo, las anteriores deberan considerarse finales, de solo lectura]]></comment>
+	<position x="1220" y="1140"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="proceso_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="version" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="metadatos">
+		<type name="jsonb" length="0"/>
+		<comment><![CDATA[Propiedades que tienen sentido fuera de esta API]]></comment>
+	</column>
+	<column name="activo" not-null="true" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="fecha_creacion" not-null="true">
+		<type name="timestamptz" length="0"/>
+	</column>
+	<column name="fecha_modificacion" not-null="true">
+		<type name="timestamptz" length="0"/>
+	</column>
+	<constraint name="uq_version_proceso" type="uq-constr" table="configuracion.version_proceso">
+		<columns names="proceso_id,version" ref-type="src-columns"/>
+		<comment><![CDATA[Version unica por cada proceso]]></comment>
+	</constraint>
+	<constraint name="pk_version_proceso" type="pk-constr" table="configuracion.version_proceso">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<textbox name="NOTAS" font-size="9">
+	<position x="160" y="160"/>
+	<comment><![CDATA[NOTAS
+
+(1) NOTIFICACIONES DEPRECADAS:
+CONSULTA UNICAMENTE POR BASE DE DATOS
+NO ACCESIBLES DESDE LA API]]></comment>
+</textbox>
+
+<textbox name="nota" font-size="9">
+	<position x="960" y="260"/>
+	<comment><![CDATA[(VER NOTA 1)]]></comment>
+</textbox>
+
+<textbox name="nota_cp" font-size="9">
+	<position x="1560" y="340"/>
+	<comment><![CDATA[(VER NOTA 1)]]></comment>
+</textbox>
+
+<textbox name="nota_cp_cp" font-size="9">
+	<position x="2160" y="160"/>
+	<comment><![CDATA[(VER NOTA 1)]]></comment>
+</textbox>
+
+<textbox name="nota_cp_cp1" font-size="9">
+	<position x="1740" y="580"/>
+	<comment><![CDATA[(VER NOTA 1)]]></comment>
+</textbox>
+
+<textbox name="nota_cp1" font-size="9">
+	<position x="900" y="520"/>
+	<comment><![CDATA[(VER NOTA 1)]]></comment>
+</textbox>
+
+<textbox name="nota_cp1_cp" font-size="9">
+	<position x="340" y="340"/>
+	<comment><![CDATA[(VER NOTA 1)]]></comment>
+</textbox>
+
+<textbox name="nota_cp1_cp1" font-size="9">
+	<position x="340" y="520"/>
+	<comment><![CDATA[(VER NOTA 1)]]></comment>
+</textbox>
 
 <constraint name="fk_menu_opcion_app" type="fk-constr" comparison-type="MATCH SIMPLE"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.aplicacion" table="configuracion.menu_opcion">
@@ -617,6 +829,36 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
+<constraint name="fk_estado_proceso_version_proceso" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.version_proceso" table="configuracion.estado_proceso">
+	<columns names="version_proceso_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_transicion_proceso_estado_proceso_anterior" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.estado_proceso" table="configuracion.transicion_proceso">
+	<columns names="estado_proceso_id_anterior" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_transicion_proceso_estado_proceso_siguiente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.estado_proceso" table="configuracion.transicion_proceso">
+	<columns names="estado_proceso_id_siguiente" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_proceso_aplicacion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.aplicacion" table="configuracion.proceso">
+	<columns names="aplicacion_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_version_proceso_proceso" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.proceso" table="configuracion.version_proceso">
+	<columns names="proceso_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
 <relationship name="rel_menu_opcion_aplicacion" type="relfk"
 	 custom-color="#727db4"
 	 src-table="configuracion.menu_opcion"
@@ -699,6 +941,26 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 custom-color="#5928d3"
 	 src-table="configuracion.parametro"
 	 dst-table="configuracion.aplicacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_estado_estado_estado" type="relfk"
+	 src-table="configuracion.transicion_proceso"
+	 dst-table="configuracion.estado_proceso"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_proceso_aplicacion" type="relfk"
+	 src-table="configuracion.proceso"
+	 dst-table="configuracion.aplicacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_version_proceso_proceso" type="relfk"
+	 src-table="configuracion.version_proceso"
+	 dst-table="configuracion.proceso"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_estado_version_proceso" type="relfk"
+	 src-table="configuracion.estado_proceso"
+	 dst-table="configuracion.version_proceso"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>
