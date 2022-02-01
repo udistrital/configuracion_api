@@ -97,6 +97,26 @@ func init() {
 				&controllers.PerfilController{},
 			),
 		),
+		beego.NSNamespace("/proceso",
+			beego.NSInclude(
+				&controllers.ProcesoController{},
+			),
+		),
+		beego.NSNamespace("/proceso_version",
+			beego.NSInclude(
+				&controllers.VersionProcesoController{},
+			),
+		),
+		beego.NSNamespace("/proceso_estado",
+			beego.NSInclude(
+				&controllers.EstadoProcesoController{},
+			),
+		),
+		beego.NSNamespace("/proceso_transicion",
+			beego.NSInclude(
+				&controllers.TransicionProcesoController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
