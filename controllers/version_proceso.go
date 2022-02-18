@@ -3,9 +3,10 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/configuracion_api/models"
 	"strconv"
 	"strings"
+
+	"github.com/udistrital/configuracion_api/models"
 
 	"github.com/astaxie/beego"
 )
@@ -120,6 +121,9 @@ func (c *VersionProcesoController) GetAll() {
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
+		if l == nil {
+			l = []interface{}{}
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
