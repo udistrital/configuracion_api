@@ -72,7 +72,7 @@ func (c *TransicionProcesoController) GetOne() {
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.TransicionProceso
+// @Success 200 {object} []models.TransicionProceso
 // @Failure 403
 // @router / [get]
 func (c *TransicionProcesoController) GetAll() {

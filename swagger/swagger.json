@@ -64,7 +64,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Aplicacion"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Aplicacion"
+                            }
                         }
                     },
                     "404": {
@@ -211,7 +214,13 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} []models.Aplicacion"
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Perfil"
+                            }
+                        }
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -268,7 +277,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.MenuOpcion"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.MenuOpcion"
+                            }
                         }
                     },
                     "404": {
@@ -441,7 +453,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.MenuOpcionPadre"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.MenuOpcionPadre"
+                            }
                         }
                     },
                     "404": {
@@ -503,7 +518,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.MenuOpcionPadre"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Menu"
+                            }
                         }
                     },
                     "403": {
@@ -1203,7 +1221,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Parametro"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Parametro"
+                            }
                         }
                     },
                     "404": {
@@ -1376,7 +1397,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Perfil"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Perfil"
+                            }
                         }
                     },
                     "404": {
@@ -1549,7 +1573,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.PerfilXMenuOpcion"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.PerfilXMenuOpcion"
+                            }
                         }
                     },
                     "404": {
@@ -1604,7 +1631,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.PerfilXMenuOpcion"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Menu"
+                            }
                         }
                     },
                     "404": {
@@ -1751,7 +1781,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Proceso"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Proceso"
+                            }
                         }
                     },
                     "403": {
@@ -1924,7 +1957,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.EstadoProceso"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.EstadoProceso"
+                            }
                         }
                     },
                     "403": {
@@ -2097,7 +2133,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.TransicionProceso"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.TransicionProceso"
+                            }
                         }
                     },
                     "403": {
@@ -2270,7 +2309,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.VersionProceso"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.VersionProceso"
+                            }
                         }
                     },
                     "403": {
@@ -2396,6 +2438,10 @@
         }
     },
     "definitions": {
+        "14219.\u003cnil\u003e.Menu": {
+            "title": "Menu",
+            "type": "object"
+        },
         "models.Aplicacion": {
             "title": "Aplicacion",
             "type": "object",
@@ -2457,6 +2503,28 @@
                 },
                 "VersionProcesoId": {
                     "$ref": "#/definitions/models.VersionProceso"
+                }
+            }
+        },
+        "models.Menu": {
+            "title": "Menu",
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "Opciones": {
+                    "$ref": "#/definitions/14219.\u003cnil\u003e.Menu"
+                },
+                "TipoOpcion": {
+                    "type": "string"
+                },
+                "Url": {
+                    "type": "string"
                 }
             }
         },

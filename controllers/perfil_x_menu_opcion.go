@@ -85,7 +85,7 @@ func (c *PerfilXMenuOpcionController) GetOne() {
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.PerfilXMenuOpcion
+// @Success 200 {object} []models.PerfilXMenuOpcion
 // @Failure 404 not found resource
 // @router / [get]
 func (c *PerfilXMenuOpcionController) GetAll() {
@@ -200,7 +200,7 @@ func (c *PerfilXMenuOpcionController) Delete() {
 // @Title MenusPorAplicacion
 // @Description getMenuPorAplicacion
 // @Param	id		path 	string	true		"id de la aplicación a la cual pertenecen las opciones"
-// @Success 200 {object} models.PerfilXMenuOpcion
+// @Success 200 {object} []models.Menu
 // @Failure 404 not found resource
 // @router /MenusPorAplicacion/:id [get]
 func (c *PerfilXMenuOpcionController) MenusPorAplicacion() {

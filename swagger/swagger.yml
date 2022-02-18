@@ -32,8 +32,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -47,7 +46,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Aplicacion'
+            type: array
+            items:
+              $ref: '#/definitions/models.Aplicacion'
         "404":
           description: not found resource
     post:
@@ -143,7 +144,11 @@ paths:
             $ref: '#/definitions/models.Perfil'
       responses:
         "201":
-          description: '{int} []models.Aplicacion'
+          description: ""
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/models.Perfil'
         "400":
           description: the request contains incorrect syntax
   /menu_opcion/:
@@ -167,8 +172,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -182,7 +186,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MenuOpcion'
+            type: array
+            items:
+              $ref: '#/definitions/models.MenuOpcion'
         "404":
           description: not found resource
     post:
@@ -282,8 +288,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -297,7 +302,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MenuOpcionPadre'
+            type: array
+            items:
+              $ref: '#/definitions/models.MenuOpcionPadre'
         "404":
           description: not found resource
     post:
@@ -397,7 +404,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MenuOpcionPadre'
+            type: array
+            items:
+              $ref: '#/definitions/models.Menu'
         "403":
           description: :app is empty
   /metodo_http/:
@@ -783,8 +792,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -798,7 +806,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Parametro'
+            type: array
+            items:
+              $ref: '#/definitions/models.Parametro'
         "404":
           description: not found resource
     post:
@@ -898,8 +908,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -913,7 +922,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Perfil'
+            type: array
+            items:
+              $ref: '#/definitions/models.Perfil'
         "404":
           description: not found resource
     post:
@@ -1013,8 +1024,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1028,7 +1038,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.PerfilXMenuOpcion'
+            type: array
+            items:
+              $ref: '#/definitions/models.PerfilXMenuOpcion'
         "404":
           description: not found resource
     post:
@@ -1123,7 +1135,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.PerfilXMenuOpcion'
+            type: array
+            items:
+              $ref: '#/definitions/models.Menu'
         "404":
           description: not found resource
   /proceso/:
@@ -1147,8 +1161,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1162,7 +1175,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Proceso'
+            type: array
+            items:
+              $ref: '#/definitions/models.Proceso'
         "403":
           description: ""
     post:
@@ -1262,8 +1277,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1277,7 +1291,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.EstadoProceso'
+            type: array
+            items:
+              $ref: '#/definitions/models.EstadoProceso'
         "403":
           description: ""
     post:
@@ -1377,8 +1393,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1392,7 +1407,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.TransicionProceso'
+            type: array
+            items:
+              $ref: '#/definitions/models.TransicionProceso'
         "403":
           description: ""
     post:
@@ -1492,8 +1509,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1507,7 +1523,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.VersionProceso'
+            type: array
+            items:
+              $ref: '#/definitions/models.VersionProceso'
         "403":
           description: ""
     post:
@@ -1587,6 +1605,9 @@ paths:
         "403":
           description: id is empty
 definitions:
+  14219.<nil>.Menu:
+    title: Menu
+    type: object
   models.Aplicacion:
     title: Aplicacion
     type: object
@@ -1631,6 +1652,21 @@ definitions:
         type: string
       VersionProcesoId:
         $ref: '#/definitions/models.VersionProceso'
+  models.Menu:
+    title: Menu
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      Opciones:
+        $ref: '#/definitions/14219.<nil>.Menu'
+      TipoOpcion:
+        type: string
+      Url:
+        type: string
   models.MenuOpcion:
     title: MenuOpcion
     type: object

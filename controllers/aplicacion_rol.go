@@ -22,7 +22,7 @@ func (c *AplicacionRolController) URLMapping() {
 // @Title Post
 // @Description create Aplicacion
 // @Param	body		body 	[]models.Perfil	true		"body for Perfil content"
-// @Success 201 {int} []models.Aplicacion
+// @Success 201 {object} []models.Perfil
 // @Failure 400 the request contains incorrect syntax
 // @router /aplicacion_rol [post]
 func (c *AplicacionRolController) GetAplicacionByRol() {

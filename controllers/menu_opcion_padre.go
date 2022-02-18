@@ -87,7 +87,7 @@ func (c *MenuOpcionPadreController) GetOne() {
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.MenuOpcionPadre
+// @Success 200 {object} []models.MenuOpcionPadre
 // @Failure 404 not found resource
 // @router / [get]
 func (c *MenuOpcionPadreController) GetAll() {
@@ -203,7 +203,7 @@ func (c *MenuOpcionPadreController) Delete() {
 // @Description Genera árbol de menus de acuerdo a roles y app
 // @Param	roles		path 	string	true		"Los roles a los que se necesita que se desplieguen las opciones"
 // @Param	app		path 	string	true		"Aplicación a la cual pertenecen las opciones"
-// @Success 200 {object} models.MenuOpcionPadre
+// @Success 200 {object} []models.Menu
 // @Failure 403 :roles is empty
 // @Failure 403 :app is empty
 // @router /ArbolMenus/:roles/:app [get]
