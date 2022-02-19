@@ -1294,7 +1294,7 @@ paths:
         "403":
           description: id is empty
 definitions:
-  14219.<nil>.Menu:
+  14271.<nil>.Menu:
     title: Menu
     type: object
   models.Aplicacion:
@@ -1351,7 +1351,7 @@ definitions:
       Nombre:
         type: string
       Opciones:
-        $ref: '#/definitions/14219.<nil>.Menu'
+        $ref: '#/definitions/14271.<nil>.Menu'
       TipoOpcion:
         type: string
       Url:
