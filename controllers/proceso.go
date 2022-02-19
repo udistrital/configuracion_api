@@ -3,11 +3,13 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/configuracion_api/models"
 	"strconv"
 	"strings"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
+
+	"github.com/udistrital/configuracion_api/models"
 )
 
 //  ProcesoController operations for Proceso
@@ -28,7 +30,7 @@ func (c *ProcesoController) URLMapping() {
 // @Title Post
 // @Description create Proceso
 // @Param	body		body 	models.Proceso	true		"body for Proceso content"
-// @Success 201 {int} models.Proceso
+// @Success 201 {object} models.Proceso
 // @Failure 403 body is empty
 // @router / [post]
 func (c *ProcesoController) Post() {
@@ -38,7 +40,9 @@ func (c *ProcesoController) Post() {
 		c.Ctx.Output.SetStatus(201)
 		c.Data["json"] = v
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		c.Data["system"] = err
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }
@@ -46,7 +50,7 @@ func (c *ProcesoController) Post() {
 // GetOne ...
 // @Title Get One
 // @Description get Proceso by id
-// @Param	id		path 	string	true		"The key for staticblock"
+// @Param	id		path 	int	true		"The key for staticblock"
 // @Success 200 {object} models.Proceso
 // @Failure 403 :id is empty
 // @router /:id [get]
@@ -55,7 +59,9 @@ func (c *ProcesoController) GetOne() {
 	id, _ := strconv.ParseInt(idStr, 0, 64)
 	v, err := models.GetProcesoById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
 		c.Data["json"] = v
 	}
@@ -71,7 +77,7 @@ func (c *ProcesoController) GetOne() {
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.Proceso
+// @Success 200 {object} []models.Proceso
 // @Failure 403
 // @router / [get]
 func (c *ProcesoController) GetAll() {
@@ -118,8 +124,13 @@ func (c *ProcesoController) GetAll() {
 
 	l, err := models.GetAllProceso(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = []interface{}{}
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -128,7 +139,7 @@ func (c *ProcesoController) GetAll() {
 // Put ...
 // @Title Put
 // @Description update the Proceso
-// @Param	id		path 	string	true		"The id you want to update"
+// @Param	id		path 	int	true		"The id you want to update"
 // @Param	body		body 	models.Proceso	true		"body for Proceso content"
 // @Success 200 {object} models.Proceso
 // @Failure 403 :id is not int
@@ -137,11 +148,16 @@ func (c *ProcesoController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.ParseInt(idStr, 0, 64)
 	v := models.Proceso{Id: id}
-	json.Unmarshal(c.Ctx.Input.RequestBody, &v)
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err != nil {
+		c.Data["system"] = err
+		c.Abort("400")
+	}
 	if err := models.UpdateProcesoById(&v); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = v
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -149,7 +165,7 @@ func (c *ProcesoController) Put() {
 // Delete ...
 // @Title Delete
 // @Description delete the Proceso
-// @Param	id		path 	string	true		"The id you want to delete"
+// @Param	id		path 	int	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
@@ -157,9 +173,11 @@ func (c *ProcesoController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.ParseInt(idStr, 0, 64)
 	if err := models.DeleteProceso(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		c.Data["system"] = err
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }

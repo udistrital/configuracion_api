@@ -32,8 +32,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -47,7 +46,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Aplicacion'
+            type: array
+            items:
+              $ref: '#/definitions/models.Aplicacion'
         "404":
           description: not found resource
     post:
@@ -64,7 +65,9 @@ paths:
           $ref: '#/definitions/models.Aplicacion'
       responses:
         "201":
-          description: '{int} models.Aplicacion'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Aplicacion'
         "400":
           description: the request contains incorrect syntax
   /aplicacion/{id}:
@@ -78,7 +81,8 @@ paths:
         name: id
         description: The key for staticblock
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -96,7 +100,8 @@ paths:
         name: id
         description: The id you want to update
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: body for Aplicacion content
@@ -120,7 +125,8 @@ paths:
         name: id
         description: The id you want to delete
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: '{string} delete success!'
@@ -143,7 +149,11 @@ paths:
             $ref: '#/definitions/models.Perfil'
       responses:
         "201":
-          description: '{int} []models.Aplicacion'
+          description: ""
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/models.Perfil'
         "400":
           description: the request contains incorrect syntax
   /menu_opcion/:
@@ -167,8 +177,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -182,7 +191,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MenuOpcion'
+            type: array
+            items:
+              $ref: '#/definitions/models.MenuOpcion'
         "404":
           description: not found resource
     post:
@@ -199,7 +210,9 @@ paths:
           $ref: '#/definitions/models.MenuOpcion'
       responses:
         "201":
-          description: '{int} models.MenuOpcion'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MenuOpcion'
         "400":
           description: the request contains incorrect syntax
   /menu_opcion/{id}:
@@ -213,7 +226,8 @@ paths:
         name: id
         description: The key for staticblock
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -231,7 +245,8 @@ paths:
         name: id
         description: The id you want to update
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: body for MenuOpcion content
@@ -255,7 +270,8 @@ paths:
         name: id
         description: The id you want to delete
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: '{string} delete success!'
@@ -282,8 +298,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -297,7 +312,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MenuOpcionPadre'
+            type: array
+            items:
+              $ref: '#/definitions/models.MenuOpcionPadre'
         "404":
           description: not found resource
     post:
@@ -314,7 +331,9 @@ paths:
           $ref: '#/definitions/models.MenuOpcionPadre'
       responses:
         "201":
-          description: '{int} models.MenuOpcionPadre'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MenuOpcionPadre'
         "400":
           description: the request contains incorrect syntax
   /menu_opcion_padre/{id}:
@@ -328,7 +347,8 @@ paths:
         name: id
         description: The key for staticblock
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -346,7 +366,8 @@ paths:
         name: id
         description: The id you want to update
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: body for MenuOpcionPadre content
@@ -370,7 +391,8 @@ paths:
         name: id
         description: The id you want to delete
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: '{string} delete success!'
@@ -397,371 +419,11 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MenuOpcionPadre'
+            type: array
+            items:
+              $ref: '#/definitions/models.Menu'
         "403":
           description: :app is empty
-  /metodo_http/:
-    get:
-      tags:
-      - metodo_http
-      description: get MetodoHttp
-      operationId: MetodoHttpController.Get All
-      responses:
-        "410":
-          description: Controlador archivado
-    post:
-      tags:
-      - metodo_http
-      description: create MetodoHttp
-      operationId: MetodoHttpController.Post
-      responses:
-        "410":
-          description: Controlador archivado
-  /metodo_http/{id}:
-    get:
-      tags:
-      - metodo_http
-      description: get MetodoHttp by id
-      operationId: MetodoHttpController.Get One
-      responses:
-        "410":
-          description: Controlador archivado
-    put:
-      tags:
-      - metodo_http
-      description: update the MetodoHttp
-      operationId: MetodoHttpController.Put
-      responses:
-        "410":
-          description: Controlador archivado
-    delete:
-      tags:
-      - metodo_http
-      description: delete the MetodoHttp
-      operationId: MetodoHttpController.Delete
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion/:
-    get:
-      tags:
-      - notificacion
-      description: get Notificacion
-      operationId: NotificacionController.Get All
-      responses:
-        "410":
-          description: Controlador archivado
-    post:
-      tags:
-      - notificacion
-      description: create Notificacion
-      operationId: NotificacionController.Post
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion/{id}:
-    get:
-      tags:
-      - notificacion
-      description: get Notificacion by id
-      operationId: NotificacionController.Get One
-      responses:
-        "410":
-          description: Controlador archivado
-    put:
-      tags:
-      - notificacion
-      description: update the Notificacion
-      operationId: NotificacionController.Put
-      responses:
-        "410":
-          description: Controlador archivado
-    delete:
-      tags:
-      - notificacion
-      description: delete the Notificacion
-      operationId: NotificacionController.Delete
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_configuracion/:
-    get:
-      tags:
-      - notificacion_configuracion
-      description: get NotificacionConfiguracion
-      operationId: NotificacionConfiguracionController.Get All
-      responses:
-        "410":
-          description: Controlador archivado
-    post:
-      tags:
-      - notificacion_configuracion
-      description: create NotificacionConfiguracion
-      operationId: NotificacionConfiguracionController.Post
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_configuracion/{id}:
-    get:
-      tags:
-      - notificacion_configuracion
-      description: get NotificacionConfiguracion by id
-      operationId: NotificacionConfiguracionController.Get One
-      responses:
-        "410":
-          description: Controlador archivado
-    put:
-      tags:
-      - notificacion_configuracion
-      description: update the NotificacionConfiguracion
-      operationId: NotificacionConfiguracionController.Put
-      responses:
-        "410":
-          description: Controlador archivado
-    delete:
-      tags:
-      - notificacion_configuracion
-      description: delete the NotificacionConfiguracion
-      operationId: NotificacionConfiguracionController.Delete
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_configuracion/getConfiguracion/:
-    post:
-      tags:
-      - notificacion_configuracion
-      description: get a configuration
-      operationId: NotificacionConfiguracionController.getConfiguracion
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_configuracion_perfil/:
-    get:
-      tags:
-      - notificacion_configuracion_perfil
-      description: get NotificacionConfiguracionPerfil
-      operationId: NotificacionConfiguracionPerfilController.Get All
-      responses:
-        "410":
-          description: Controlador archivado
-    post:
-      tags:
-      - notificacion_configuracion_perfil
-      description: create NotificacionConfiguracionPerfil
-      operationId: NotificacionConfiguracionPerfilController.Post
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_configuracion_perfil/{id}:
-    get:
-      tags:
-      - notificacion_configuracion_perfil
-      description: get NotificacionConfiguracionPerfil by id
-      operationId: NotificacionConfiguracionPerfilController.Get One
-      responses:
-        "410":
-          description: Controlador archivado
-    put:
-      tags:
-      - notificacion_configuracion_perfil
-      description: update the NotificacionConfiguracionPerfil
-      operationId: NotificacionConfiguracionPerfilController.Put
-      responses:
-        "410":
-          description: Controlador archivado
-    delete:
-      tags:
-      - notificacion_configuracion_perfil
-      description: delete the NotificacionConfiguracionPerfil
-      operationId: NotificacionConfiguracionPerfilController.Delete
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_estado/:
-    get:
-      tags:
-      - notificacion_estado
-      description: get NotificacionEstado
-      operationId: NotificacionEstadoController.Get All
-      responses:
-        "410":
-          description: Controlador archivado
-    post:
-      tags:
-      - notificacion_estado
-      description: create NotificacionEstado
-      operationId: NotificacionEstadoController.Post
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_estado/{id}:
-    get:
-      tags:
-      - notificacion_estado
-      description: get NotificacionEstado by id
-      operationId: NotificacionEstadoController.Get One
-      responses:
-        "410":
-          description: Controlador archivado
-    put:
-      tags:
-      - notificacion_estado
-      description: update the NotificacionEstado
-      operationId: NotificacionEstadoController.Put
-      responses:
-        "410":
-          description: Controlador archivado
-    delete:
-      tags:
-      - notificacion_estado
-      description: delete the NotificacionEstado
-      operationId: NotificacionEstadoController.Delete
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_estado_usuario/:
-    get:
-      tags:
-      - notificacion_estado_usuario
-      description: get NotificacionEstadoUsuario
-      operationId: NotificacionEstadoUsuarioController.Get All
-      responses:
-        "410":
-          description: Controlador archivado
-    post:
-      tags:
-      - notificacion_estado_usuario
-      description: create NotificacionEstadoUsuario
-      operationId: NotificacionEstadoUsuarioController.Post
-      parameters:
-      - in: body
-        name: body
-        description: body for NotificacionEstadoUsuario content
-        required: true
-        schema:
-          $ref: '#/definitions/models.NotificacionEstadoUsuario'
-      responses:
-        "201":
-          description: '{int} models.NotificacionEstadoUsuario'
-        "400":
-          description: the request contains incorrect syntax
-        "410":
-          description: Controlador archivado
-  /notificacion_estado_usuario/{id}:
-    get:
-      tags:
-      - notificacion_estado_usuario
-      description: get NotificacionEstadoUsuario by id
-      operationId: NotificacionEstadoUsuarioController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: The key for staticblock
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.NotificacionEstadoUsuario'
-        "404":
-          description: not found resource
-        "410":
-          description: Controlador archivado
-    put:
-      tags:
-      - notificacion_estado_usuario
-      description: update the NotificacionEstadoUsuario
-      operationId: NotificacionEstadoUsuarioController.Put
-      responses:
-        "410":
-          description: Controlador archivado
-    delete:
-      tags:
-      - notificacion_estado_usuario
-      description: delete the NotificacionEstadoUsuario
-      operationId: NotificacionEstadoUsuarioController.Delete
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_estado_usuario/changeStateNoView/{usuario}:
-    post:
-      tags:
-      - notificacion_estado_usuario
-      description: change state of notifications
-      operationId: NotificacionEstadoUsuarioController.changeStateNoView
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_estado_usuario/changeStateToView/{id}:
-    get:
-      tags:
-      - notificacion_estado_usuario
-      description: create NotificacionEstadoUsuario
-      operationId: NotificacionEstadoUsuarioController.changeStateNoView
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_estado_usuario/getOldNotification/{roles}/{usuario}:
-    get:
-      tags:
-      - notificacion_estado_usuario
-      description: get all old notification
-      operationId: NotificacionEstadoUsuarioController.getOldNotification
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_estado_usuario/pushNotificationUser:
-    post:
-      tags:
-      - notificacion_estado_usuario
-      description: create pushNotificationUser
-      operationId: NotificacionEstadoUsuarioController.pushNotificationUser
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_tipo/:
-    get:
-      tags:
-      - notificacion_tipo
-      description: get NotificacionTipo
-      operationId: NotificacionTipoController.Get All
-      responses:
-        "410":
-          description: Controlador archivado
-    post:
-      tags:
-      - notificacion_tipo
-      description: create NotificacionTipo
-      operationId: NotificacionTipoController.Post
-      responses:
-        "410":
-          description: Controlador archivado
-  /notificacion_tipo/{id}:
-    get:
-      tags:
-      - notificacion_tipo
-      description: get NotificacionTipo by id
-      operationId: NotificacionTipoController.Get One
-      responses:
-        "410":
-          description: Controlador archivado
-    put:
-      tags:
-      - notificacion_tipo
-      description: update the NotificacionTipo
-      operationId: NotificacionTipoController.Put
-      responses:
-        "410":
-          description: Controlador archivado
-    delete:
-      tags:
-      - notificacion_tipo
-      description: delete the NotificacionTipo
-      operationId: NotificacionTipoController.Delete
-      responses:
-        "410":
-          description: Controlador archivado
   /parametro/:
     get:
       tags:
@@ -783,8 +445,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -798,7 +459,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Parametro'
+            type: array
+            items:
+              $ref: '#/definitions/models.Parametro'
         "404":
           description: not found resource
     post:
@@ -815,7 +478,9 @@ paths:
           $ref: '#/definitions/models.Parametro'
       responses:
         "201":
-          description: '{int} models.Parametro'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Parametro'
         "400":
           description: the request contains incorrect syntax
   /parametro/{id}:
@@ -829,7 +494,8 @@ paths:
         name: id
         description: The key for staticblock
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -847,7 +513,8 @@ paths:
         name: id
         description: The id you want to update
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: body for Parametro content
@@ -871,7 +538,8 @@ paths:
         name: id
         description: The id you want to delete
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: '{string} delete success!'
@@ -898,8 +566,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -913,7 +580,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Perfil'
+            type: array
+            items:
+              $ref: '#/definitions/models.Perfil'
         "404":
           description: not found resource
     post:
@@ -930,7 +599,9 @@ paths:
           $ref: '#/definitions/models.Perfil'
       responses:
         "201":
-          description: '{int} models.Perfil'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Perfil'
         "400":
           description: the request contains incorrect syntax
   /perfil/{id}:
@@ -944,7 +615,8 @@ paths:
         name: id
         description: The key for staticblock
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -962,7 +634,8 @@ paths:
         name: id
         description: The id you want to update
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: body for Perfil content
@@ -986,7 +659,8 @@ paths:
         name: id
         description: The id you want to delete
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: '{string} delete success!'
@@ -1013,8 +687,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1028,7 +701,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.PerfilXMenuOpcion'
+            type: array
+            items:
+              $ref: '#/definitions/models.PerfilXMenuOpcion'
         "404":
           description: not found resource
     post:
@@ -1045,7 +720,9 @@ paths:
           $ref: '#/definitions/models.PerfilXMenuOpcion'
       responses:
         "201":
-          description: '{int} models.PerfilXMenuOpcion'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PerfilXMenuOpcion'
         "400":
           description: the request contains incorrect syntax
   /perfil_x_menu_opcion/{id}:
@@ -1059,7 +736,8 @@ paths:
         name: id
         description: The key for staticblock
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1077,7 +755,8 @@ paths:
         name: id
         description: The id you want to update
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: body for PerfilXMenuOpcion content
@@ -1101,7 +780,8 @@ paths:
         name: id
         description: The id you want to delete
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: '{string} delete success!'
@@ -1118,12 +798,15 @@ paths:
         name: id
         description: id de la aplicación a la cual pertenecen las opciones
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.PerfilXMenuOpcion'
+            type: array
+            items:
+              $ref: '#/definitions/models.Menu'
         "404":
           description: not found resource
   /proceso/:
@@ -1147,8 +830,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1162,7 +844,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Proceso'
+            type: array
+            items:
+              $ref: '#/definitions/models.Proceso'
         "403":
           description: ""
     post:
@@ -1179,7 +863,9 @@ paths:
           $ref: '#/definitions/models.Proceso'
       responses:
         "201":
-          description: '{int} models.Proceso'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Proceso'
         "403":
           description: body is empty
   /proceso/{id}:
@@ -1193,7 +879,8 @@ paths:
         name: id
         description: The key for staticblock
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1211,7 +898,8 @@ paths:
         name: id
         description: The id you want to update
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: body for Proceso content
@@ -1235,7 +923,8 @@ paths:
         name: id
         description: The id you want to delete
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: '{string} delete success!'
@@ -1262,8 +951,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1277,7 +965,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.EstadoProceso'
+            type: array
+            items:
+              $ref: '#/definitions/models.EstadoProceso'
         "403":
           description: ""
     post:
@@ -1294,7 +984,9 @@ paths:
           $ref: '#/definitions/models.EstadoProceso'
       responses:
         "201":
-          description: '{int} models.EstadoProceso'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoProceso'
         "403":
           description: body is empty
   /proceso_estado/{id}:
@@ -1308,7 +1000,8 @@ paths:
         name: id
         description: The key for staticblock
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1326,7 +1019,8 @@ paths:
         name: id
         description: The id you want to update
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: body for EstadoProceso content
@@ -1350,7 +1044,8 @@ paths:
         name: id
         description: The id you want to delete
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: '{string} delete success!'
@@ -1377,8 +1072,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1392,7 +1086,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.TransicionProceso'
+            type: array
+            items:
+              $ref: '#/definitions/models.TransicionProceso'
         "403":
           description: ""
     post:
@@ -1409,7 +1105,9 @@ paths:
           $ref: '#/definitions/models.TransicionProceso'
       responses:
         "201":
-          description: '{int} models.TransicionProceso'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TransicionProceso'
         "403":
           description: body is empty
   /proceso_transicion/{id}:
@@ -1423,7 +1121,8 @@ paths:
         name: id
         description: The key for staticblock
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1441,7 +1140,8 @@ paths:
         name: id
         description: The id you want to update
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: body for TransicionProceso content
@@ -1465,7 +1165,8 @@ paths:
         name: id
         description: The id you want to delete
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: '{string} delete success!'
@@ -1492,8 +1193,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1507,7 +1207,9 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.VersionProceso'
+            type: array
+            items:
+              $ref: '#/definitions/models.VersionProceso'
         "403":
           description: ""
     post:
@@ -1524,7 +1226,9 @@ paths:
           $ref: '#/definitions/models.VersionProceso'
       responses:
         "201":
-          description: '{int} models.VersionProceso'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.VersionProceso'
         "403":
           description: body is empty
   /proceso_version/{id}:
@@ -1538,7 +1242,8 @@ paths:
         name: id
         description: The key for staticblock
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1556,7 +1261,8 @@ paths:
         name: id
         description: The id you want to update
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: body for VersionProceso content
@@ -1580,13 +1286,17 @@ paths:
         name: id
         description: The id you want to delete
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         "200":
           description: '{string} delete success!'
         "403":
           description: id is empty
 definitions:
+  14271.<nil>.Menu:
+    title: Menu
+    type: object
   models.Aplicacion:
     title: Aplicacion
     type: object
@@ -1631,6 +1341,21 @@ definitions:
         type: string
       VersionProcesoId:
         $ref: '#/definitions/models.VersionProceso'
+  models.Menu:
+    title: Menu
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      Opciones:
+        $ref: '#/definitions/14271.<nil>.Menu'
+      TipoOpcion:
+        type: string
+      Url:
+        type: string
   models.MenuOpcion:
     title: MenuOpcion
     type: object
@@ -1661,108 +1386,6 @@ definitions:
         format: int64
       Padre:
         $ref: '#/definitions/models.MenuOpcion'
-  models.MetodoHttp:
-    title: MetodoHttp
-    type: object
-    properties:
-      Descripcion:
-        type: string
-      Id:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-  models.Notificacion:
-    title: Notificacion
-    type: object
-    properties:
-      CuerpoNotificacion:
-        type: string
-      FechaCreacion:
-        type: string
-        format: datetime
-      Id:
-        type: integer
-        format: int64
-      NotificacionConfiguracion:
-        $ref: '#/definitions/models.NotificacionConfiguracion'
-  models.NotificacionConfiguracion:
-    title: NotificacionConfiguracion
-    type: object
-    properties:
-      Aplicacion:
-        $ref: '#/definitions/models.Aplicacion'
-      CuerpoNotificacion:
-        type: string
-      EndPoint:
-        type: string
-      Id:
-        type: integer
-        format: int64
-      MetodoHttp:
-        $ref: '#/definitions/models.MetodoHttp'
-      NotificacionConfiguracionPerfil:
-        type: array
-        items:
-          $ref: '#/definitions/models.NotificacionConfiguracionPerfil'
-      Tipo:
-        $ref: '#/definitions/models.NotificacionTipo'
-  models.NotificacionConfiguracionPerfil:
-    title: NotificacionConfiguracionPerfil
-    type: object
-    properties:
-      Id:
-        type: integer
-        format: int64
-      NotificacionConfiguracion:
-        $ref: '#/definitions/models.NotificacionConfiguracion'
-      Perfil:
-        $ref: '#/definitions/models.Perfil'
-  models.NotificacionEstado:
-    title: NotificacionEstado
-    type: object
-    properties:
-      Activo:
-        type: boolean
-      CodigoAbreviacion:
-        type: string
-      Descripcion:
-        type: string
-      Id:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-      NumeroOrden:
-        type: number
-        format: double
-  models.NotificacionEstadoUsuario:
-    title: NotificacionEstadoUsuario
-    type: object
-    properties:
-      Activo:
-        type: boolean
-      Fecha:
-        type: string
-        format: datetime
-      Id:
-        type: integer
-        format: int64
-      Notificacion:
-        $ref: '#/definitions/models.Notificacion'
-      NotificacionEstado:
-        $ref: '#/definitions/models.NotificacionEstado'
-      Usuario:
-        type: string
-  models.NotificacionTipo:
-    title: NotificacionTipo
-    type: object
-    properties:
-      Id:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
   models.Parametro:
     title: Parametro
     type: object
@@ -1873,18 +1496,6 @@ definitions:
         type: integer
         format: int32
 tags:
-- name: notificacion_estado_usuario
-  description: |
-    NotificacionEstadoUsuarioController operations for NotificacionEstadoUsuario
-- name: notificacion_configuracion
-  description: |
-    NotificacionConfiguracionController operations for NotificacionConfiguracion
-- name: notificacion_configuracion_perfil
-  description: |
-    NotificacionConfiguracionPerfilController operations for NotificacionConfiguracionPerfil
-- name: metodo_http
-  description: |
-    MetodoHttpController operations for MetodoHttp
 - name: perfil_x_menu_opcion
   description: |
     PerfilXMenuOpcionController oprations for PerfilXMenuOpcion
@@ -1903,15 +1514,6 @@ tags:
 - name: parametro
   description: |
     ParametroController oprations for Parametro
-- name: notificacion_tipo
-  description: |
-    NotificacionTipoController operations for NotificacionTipo
-- name: notificacion
-  description: |
-    NotificacionController operations for Notificacion
-- name: notificacion_estado
-  description: |
-    NotificacionEstadoController operations for NotificacionEstado
 - name: perfil
   description: |
     PerfilController oprations for Perfil

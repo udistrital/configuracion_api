@@ -18,8 +18,8 @@ type Proceso struct {
 	Descripcion       string      `orm:"column(descripcion);size(300);null"`
 	Metadatos         string      `orm:"column(metadatos);type(jsonb);null"`
 	Activo            bool        `orm:"column(activo);"`
-	FechaCreacion     time.Time   `orm:"column(fecha_creacion);"`
-	FechaModificacion time.Time   `orm:"column(fecha_modificacion);"`
+	FechaCreacion     time.Time   `orm:"column(fecha_creacion);auto_now_add;type(datetime)"`
+	FechaModificacion time.Time   `orm:"column(fecha_modificacion);auto_now;type(datetime)"`
 }
 
 func init() {

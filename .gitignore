@@ -1,10 +1,22 @@
-lastupdate.tmp
-.vscode/
+# Binarios y Temporales
+*.tmp
+*.log
+*.zip
+*.exe
+*.bak
+*~
 configuracion_api
 main
+
+# IDEs y otros
+.vscode
 .scannerwork/
+
+# Variables de entorno
 *.env
 !.env
+
+# Swagger
 swagger/**
 !swagger/*.yml
 !swagger/*.json

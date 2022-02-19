@@ -8,6 +8,7 @@ import (
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
+
 	"github.com/udistrital/configuracion_api/models"
 )
 
@@ -30,7 +31,7 @@ func (c *PerfilXMenuOpcionController) URLMapping() {
 // @Title Post
 // @Description create PerfilXMenuOpcion
 // @Param	body		body 	models.PerfilXMenuOpcion	true		"body for PerfilXMenuOpcion content"
-// @Success 201 {int} models.PerfilXMenuOpcion
+// @Success 201 {object} models.PerfilXMenuOpcion
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *PerfilXMenuOpcionController) Post() {
@@ -57,7 +58,7 @@ func (c *PerfilXMenuOpcionController) Post() {
 // GetOne ...
 // @Title Get One
 // @Description get PerfilXMenuOpcion by id
-// @Param	id		path 	string	true		"The key for staticblock"
+// @Param	id		path 	int	true		"The key for staticblock"
 // @Success 200 {object} models.PerfilXMenuOpcion
 // @Failure 404 not found resource
 // @router /:id [get]
@@ -85,7 +86,7 @@ func (c *PerfilXMenuOpcionController) GetOne() {
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.PerfilXMenuOpcion
+// @Success 200 {object} []models.PerfilXMenuOpcion
 // @Failure 404 not found resource
 // @router / [get]
 func (c *PerfilXMenuOpcionController) GetAll() {
@@ -138,7 +139,7 @@ func (c *PerfilXMenuOpcionController) GetAll() {
 		c.Abort("404")
 	} else {
 		if l == nil {
-			l = append(l, map[string]interface{}{})
+			l = []interface{}{}
 		}
 		c.Data["json"] = l
 	}
@@ -148,7 +149,7 @@ func (c *PerfilXMenuOpcionController) GetAll() {
 // Put ...
 // @Title Put
 // @Description update the PerfilXMenuOpcion
-// @Param	id		path 	string	true		"The id you want to update"
+// @Param	id		path 	int	true		"The id you want to update"
 // @Param	body		body 	models.PerfilXMenuOpcion	true		"body for PerfilXMenuOpcion content"
 // @Success 200 {object} models.PerfilXMenuOpcion
 // @Failure 400 the request contains incorrect syntax
@@ -178,7 +179,7 @@ func (c *PerfilXMenuOpcionController) Put() {
 // Delete ...
 // @Title Delete
 // @Description delete the PerfilXMenuOpcion
-// @Param	id		path 	string	true		"The id you want to delete"
+// @Param	id		path 	int	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]
@@ -196,11 +197,11 @@ func (c *PerfilXMenuOpcionController) Delete() {
 	c.ServeJSON()
 }
 
-// ArbolMenus ...
+// MenusPorAplicacion ...
 // @Title MenusPorAplicacion
 // @Description getMenuPorAplicacion
-// @Param	id		path 	string	true		"id de la aplicación a la cual pertenecen las opciones"
-// @Success 200 {object} models.PerfilXMenuOpcion
+// @Param	id		path 	int	true		"id de la aplicación a la cual pertenecen las opciones"
+// @Success 200 {object} []models.Menu
 // @Failure 404 not found resource
 // @router /MenusPorAplicacion/:id [get]
 func (c *PerfilXMenuOpcionController) MenusPorAplicacion() {
@@ -210,12 +211,13 @@ func (c *PerfilXMenuOpcionController) MenusPorAplicacion() {
 	id, _ := strconv.Atoi(idStr)
 	//Construcción Json menus
 	l, err := models.MenusByAplicacion(id)
-	if len(l) == 0 {
-		beego.Info("ceroooooo")
-
+	if err != nil {
+		logs.Error(err)
 		c.Data["system"] = err
-		c.Data["status"] = "404"
 		c.Abort("404")
+	}
+	if len(l) == 0 {
+		c.Data["json"] = []interface{}{}
 	} else {
 		c.Data["json"] = l
 	}

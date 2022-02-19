@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1-beta" last-position="0,0" last-zoom="0.3"
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="243,663" last-zoom="1"
 	 default-schema="public" default-owner="postgres">
 <role name="test"
       superuser="true"
@@ -104,7 +104,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Tabla que contiene las diferentes opciones de los menus]]></comment>
-	<position x="760" y="680"/>
+	<position x="780" y="700"/>
 	<column name="id" not-null="true" sequence="configuracion.menu_opcion_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador de la tabla menu_opcion]]></comment>
@@ -158,7 +158,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Tabla que sirve para reemplazar la relacion reflexiva del padre de los menus_opcion.]]></comment>
-	<position x="1540" y="700"/>
+	<position x="1420" y="700"/>
 	<column name="id" not-null="true" sequence="configuracion.menu_opcion_padre_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador de la tabla menu_opcion_padre]]></comment>
@@ -188,130 +188,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="desarrollooas"/>
 </sequence>
 
-<table name="metodo_http">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-	<comment><![CDATA[Tipos de metodo http usados]]></comment>
-	<position x="160" y="360"/>
-	<column name="id" not-null="true" sequence="configuracion.metodo_http_id_seq">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Identificador único de la tabla]]></comment>
-	</column>
-	<column name="nombre" not-null="true">
-		<type name="character varying" length="0"/>
-		<comment><![CDATA[Identificador único de la configuracion generada]]></comment>
-	</column>
-	<column name="descripcion" not-null="true">
-		<type name="character varying" length="0"/>
-		<comment><![CDATA[Identificador único de la configuracion generada]]></comment>
-	</column>
-	<constraint name="pk_metodo_http" type="pk-constr" table="configuracion.metodo_http">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<sequence name="notificacion_tipo_id_seq"
-	 start="1" increment="1"
-	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-</sequence>
-
-<table name="notificacion_tipo">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-	<comment><![CDATA[Centralización de los tipo de las notificaciones de los sistemas]]></comment>
-	<position x="160" y="540"/>
-	<column name="id" not-null="true" sequence="configuracion.notificacion_tipo_id_seq">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Identificador único del tipo de la notificación]]></comment>
-	</column>
-	<column name="nombre">
-		<type name="character varying" length="100"/>
-		<comment><![CDATA[Nombre del tipo de la notificación]]></comment>
-	</column>
-	<constraint name="pk_notificacion_tipo" type="pk-constr" table="configuracion.notificacion_tipo">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<sequence name="notificacion_configuracion_id_seq"
-	 start="1" increment="1"
-	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-</sequence>
-
-<table name="notificacion_configuracion">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-	<comment><![CDATA[Configuracion de las notificaciones que seran emitidas]]></comment>
-	<position x="700" y="440"/>
-	<column name="id" not-null="true" sequence="configuracion.notificacion_configuracion_id_seq">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Identificador único de la configuracion generada]]></comment>
-	</column>
-	<column name="end_point" not-null="true">
-		<type name="character varying" length="0"/>
-		<comment><![CDATA[end_point del api que genera la notificacion]]></comment>
-	</column>
-	<column name="metodo_http" not-null="true">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Metodo http de la peticion que genera la notificación]]></comment>
-	</column>
-	<column name="tipo" not-null="true">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[tipo de notificación]]></comment>
-	</column>
-	<column name="cuerpo_notificacion" not-null="true">
-		<type name="json" length="0"/>
-		<comment><![CDATA[cuerpo de la notificacion (configuracion para mostrar en cliente y plantilla de mensaje)]]></comment>
-	</column>
-	<column name="aplicacion" not-null="true">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Aplicacion que genera la notificacion]]></comment>
-	</column>
-	<constraint name="pk_notificacion_configuracion" type="pk-constr" table="configuracion.notificacion_configuracion">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<sequence name="notificacion_id_seq"
-	 start="1" increment="1"
-	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-</sequence>
-
-<table name="notificacion">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-	<comment><![CDATA[Notificaciones de sistema a usuario centralizadas para todos los sistemas]]></comment>
-	<position x="1340" y="280"/>
-	<column name="id" not-null="true" sequence="configuracion.notificacion_id_seq">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Identificador único de la notificación generada]]></comment>
-	</column>
-	<column name="fecha_creacion" not-null="true" default-value="now()">
-		<type name="timestamp with time zone" length="0" with-timezone="true"/>
-		<comment><![CDATA[Fecha y hora en la que se creó la notificación]]></comment>
-	</column>
-	<column name="cuerpo_notificacion">
-		<type name="json" length="0"/>
-		<comment><![CDATA[Cuerpo de la notificación, será un objeto JSON en el que se almacenará el mensaje, título y otra información relevante]]></comment>
-	</column>
-	<column name="notificacion_configuracion" not-null="true">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Referencia a la configuracion de la notificacion generada]]></comment>
-	</column>
-	<constraint name="pk_notificacion" type="pk-constr" table="configuracion.notificacion">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
 <sequence name="perfil_id_seq"
 	 start="1" increment="1"
 	 min-value="1" max-value="2147483647"
@@ -324,7 +200,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Contiene la informacion de un perfil]]></comment>
-	<position x="800" y="940"/>
+	<position x="780" y="940"/>
 	<column name="id" not-null="true" sequence="configuracion.perfil_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador de un perfil]]></comment>
@@ -355,7 +231,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="configuracion"/>
 	<role name="desarrollooas"/>
 	<comment><![CDATA[Tabla que maneja los menus que le pertenecen a ciertos perfiles]]></comment>
-	<position x="1540" y="940"/>
+	<position x="1420" y="900"/>
 	<column name="id" not-null="true" sequence="configuracion.perfil_x_menu_opcion_id_seq">
 		<type name="integer" length="0"/>
 		<comment><![CDATA[Identificador de la tabla perfil_x_menu_opcion]]></comment>
@@ -375,120 +251,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<constraint name="uq_perfil_x_menu" type="uq-constr" table="configuracion.perfil_x_menu_opcion">
 		<columns names="perfil,opcion" ref-type="src-columns"/>
 		<comment><![CDATA[Restricción que solo deja asociar un registro de menú por perfil, garantiza que no haya replica.]]></comment>
-	</constraint>
-</table>
-
-<sequence name="notificacion_configuracion_perfil_id_seq"
-	 start="1" increment="1"
-	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-</sequence>
-
-<table name="notificacion_configuracion_perfil">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-	<comment><![CDATA[Tipos de metodo http usados]]></comment>
-	<position x="1480" y="540"/>
-	<column name="id" not-null="true" sequence="configuracion.notificacion_configuracion_perfil_id_seq">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Identificador único de la tabla]]></comment>
-	</column>
-	<column name="notificacion_configuracion" not-null="true">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Referencia a la configuracion de la notificacion]]></comment>
-	</column>
-	<column name="perfil" not-null="true">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[referencia al perfil que debe recibir la notificacion]]></comment>
-	</column>
-	<constraint name="pk_notificacion_configuracion_perfil" type="pk-constr" table="configuracion.notificacion_configuracion_perfil">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<sequence name="notificacion_estado_id_seq"
-	 start="1" increment="1"
-	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-</sequence>
-
-<table name="notificacion_estado">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-	<comment><![CDATA[Centralización de los estados de las notificaciones de los sistemas]]></comment>
-	<position x="740" y="160"/>
-	<column name="id" not-null="true" sequence="configuracion.notificacion_estado_id_seq">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Identificador único del estado de la notificación]]></comment>
-	</column>
-	<column name="nombre">
-		<type name="character varying" length="100"/>
-		<comment><![CDATA[Nombre del estado de la notificación]]></comment>
-	</column>
-	<column name="codigo_abreviacion">
-		<type name="character varying" length="20"/>
-		<comment><![CDATA[Código de abreviación del estado de la notificación]]></comment>
-	</column>
-	<column name="descripcion">
-		<type name="character varying" length="250"/>
-		<comment><![CDATA[Descripción del estado de notificación]]></comment>
-	</column>
-	<column name="activo" default-value="true">
-		<type name="boolean" length="0"/>
-		<comment><![CDATA[indicador de si el registro se encuentra en estado activo]]></comment>
-	</column>
-	<column name="numero_orden">
-		<type name="numeric" length="5" precision="2"/>
-		<comment><![CDATA[Orden de los estados de notificación]]></comment>
-	</column>
-	<constraint name="pk_notificacion_estado" type="pk-constr" table="configuracion.notificacion_estado">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<sequence name="notificacion_estado_usuario_id_seq"
-	 start="1" increment="1"
-	 min-value="1" max-value="2147483647"
-	 cache="1" cycle="false">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-</sequence>
-
-<table name="notificacion_estado_usuario">
-	<schema name="configuracion"/>
-	<role name="desarrollooas"/>
-	<comment><![CDATA[Tabla que relaciona una notificación, un estado y un usuario. Permite así conservar el histórico de la notificación desde que se crea hasta que es leída]]></comment>
-	<position x="1940" y="120"/>
-	<column name="id" not-null="true" sequence="configuracion.notificacion_estado_usuario_id_seq">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Identificador único de notificacion_estado_usuario]]></comment>
-	</column>
-	<column name="notificacion" not-null="true">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Id de la notificación registrada]]></comment>
-	</column>
-	<column name="notificacion_estado" not-null="true">
-		<type name="integer" length="0"/>
-		<comment><![CDATA[Estado de la notificación registrada]]></comment>
-	</column>
-	<column name="fecha" not-null="true">
-		<type name="timestamp" length="0"/>
-		<comment><![CDATA[Fecha de la notificación ]]></comment>
-	</column>
-	<column name="usuario">
-		<type name="character varying" length="100"/>
-		<comment><![CDATA[Usuario de WSO2 que interactúa con la notificación registrada]]></comment>
-	</column>
-	<column name="activo" default-value="true">
-		<type name="boolean" length="0"/>
-		<comment><![CDATA[indicador de si el registro se encuentra en estado activo]]></comment>
-	</column>
-	<constraint name="pk_notificacion_estado_usuario" type="pk-constr" table="configuracion.notificacion_estado_usuario">
-		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
@@ -527,14 +289,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<schema name="estados_crud" rect-visible="true" fill-color="#e1e1e1">
-	<role name="postgres"/>
-</schema>
-
 <table name="estado_proceso">
 	<schema name="configuracion"/>
-	<role name="postgres"/>
-	<position x="1640" y="1320"/>
+	<position x="1640" y="1240"/>
 	<column name="id" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
@@ -558,10 +315,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="bool" length="0"/>
 	</column>
 	<column name="fecha_creacion" not-null="true">
-		<type name="timestamptz" length="0"/>
+		<type name="timestamp with time zone" length="0" with-timezone="true"/>
 	</column>
 	<column name="fecha_modificacion" not-null="true">
-		<type name="timestamptz" length="0"/>
+		<type name="timestamp with time zone" length="0" with-timezone="true"/>
 	</column>
 	<constraint name="uq_sigla_version_proceso" type="uq-constr" table="configuracion.estado_proceso">
 		<columns names="version_proceso_id,sigla" ref-type="src-columns"/>
@@ -574,7 +331,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="transicion_proceso">
 	<schema name="configuracion"/>
-	<role name="postgres"/>
 	<position x="2100" y="1120"/>
 	<column name="id" not-null="true">
 		<type name="serial" length="0"/>
@@ -602,10 +358,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="bool" length="0"/>
 	</column>
 	<column name="fecha_creacion" not-null="true">
-		<type name="timestamptz" length="0"/>
+		<type name="timestamp with time zone" length="0" with-timezone="true"/>
 	</column>
 	<column name="fecha_modificacion" not-null="true">
-		<type name="timestamptz" length="0"/>
+		<type name="timestamp with time zone" length="0" with-timezone="true"/>
 	</column>
 	<constraint name="pk_transicion" type="pk-constr" table="configuracion.transicion_proceso">
 		<columns names="id" ref-type="src-columns"/>
@@ -618,9 +374,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="proceso">
 	<schema name="configuracion"/>
-	<role name="postgres"/>
 	<comment><![CDATA[Procesos asociados a una aplicacion]]></comment>
-	<position x="760" y="1300"/>
+	<position x="780" y="1240"/>
 	<column name="id" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
@@ -645,10 +400,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="bool" length="0"/>
 	</column>
 	<column name="fecha_creacion" not-null="true">
-		<type name="timestamptz" length="0"/>
+		<type name="timestamp with time zone" length="0" with-timezone="true"/>
 	</column>
 	<column name="fecha_modificacion" not-null="true">
-		<type name="timestamptz" length="0"/>
+		<type name="timestamp with time zone" length="0" with-timezone="true"/>
 	</column>
 	<constraint name="uq_sigla_aplicacion_proceso" type="uq-constr" table="configuracion.proceso">
 		<columns names="aplicacion_id,sigla" ref-type="src-columns"/>
@@ -661,9 +416,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="version_proceso">
 	<schema name="configuracion"/>
-	<role name="postgres"/>
 	<comment><![CDATA[La ultima/mayor sera de trabajo, las anteriores deberan considerarse finales, de solo lectura]]></comment>
-	<position x="1220" y="1140"/>
+	<position x="1200" y="1100"/>
 	<column name="id" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
@@ -681,10 +435,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="boolean" length="0"/>
 	</column>
 	<column name="fecha_creacion" not-null="true">
-		<type name="timestamptz" length="0"/>
+		<type name="timestamp with time zone" length="0" with-timezone="true"/>
 	</column>
 	<column name="fecha_modificacion" not-null="true">
-		<type name="timestamptz" length="0"/>
+		<type name="timestamp with time zone" length="0" with-timezone="true"/>
 	</column>
 	<constraint name="uq_version_proceso" type="uq-constr" table="configuracion.version_proceso">
 		<columns names="proceso_id,version" ref-type="src-columns"/>
@@ -694,50 +448,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
-
-<textbox name="NOTAS" font-size="9">
-	<position x="160" y="160"/>
-	<comment><![CDATA[NOTAS
-
-(1) NOTIFICACIONES DEPRECADAS:
-CONSULTA UNICAMENTE POR BASE DE DATOS
-NO ACCESIBLES DESDE LA API]]></comment>
-</textbox>
-
-<textbox name="nota" font-size="9">
-	<position x="960" y="260"/>
-	<comment><![CDATA[(VER NOTA 1)]]></comment>
-</textbox>
-
-<textbox name="nota_cp" font-size="9">
-	<position x="1560" y="340"/>
-	<comment><![CDATA[(VER NOTA 1)]]></comment>
-</textbox>
-
-<textbox name="nota_cp_cp" font-size="9">
-	<position x="2160" y="160"/>
-	<comment><![CDATA[(VER NOTA 1)]]></comment>
-</textbox>
-
-<textbox name="nota_cp_cp1" font-size="9">
-	<position x="1740" y="580"/>
-	<comment><![CDATA[(VER NOTA 1)]]></comment>
-</textbox>
-
-<textbox name="nota_cp1" font-size="9">
-	<position x="900" y="520"/>
-	<comment><![CDATA[(VER NOTA 1)]]></comment>
-</textbox>
-
-<textbox name="nota_cp1_cp" font-size="9">
-	<position x="340" y="340"/>
-	<comment><![CDATA[(VER NOTA 1)]]></comment>
-</textbox>
-
-<textbox name="nota_cp1_cp1" font-size="9">
-	<position x="340" y="520"/>
-	<comment><![CDATA[(VER NOTA 1)]]></comment>
-</textbox>
 
 <constraint name="fk_menu_opcion_app" type="fk-constr" comparison-type="MATCH SIMPLE"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.aplicacion" table="configuracion.menu_opcion">
@@ -757,30 +467,6 @@ NO ACCESIBLES DESDE LA API]]></comment>
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
-<constraint name="fk_configuracion_notificacion_metodo_http" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.metodo_http" table="configuracion.notificacion_configuracion">
-	<columns names="metodo_http" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
-<constraint name="fk_notificacion_configuracion_aplicacion" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.aplicacion" table="configuracion.notificacion_configuracion">
-	<columns names="aplicacion" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
-<constraint name="fk_notificacion_configuracion_notificacion_tipo" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.notificacion_tipo" table="configuracion.notificacion_configuracion">
-	<columns names="tipo" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
-<constraint name="fk_notificacion_notificacion_configuracion" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.notificacion_configuracion" table="configuracion.notificacion">
-	<columns names="notificacion_configuracion" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
 <constraint name="fk_perfil_app" type="fk-constr" comparison-type="MATCH SIMPLE"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.aplicacion" table="configuracion.perfil">
 	<columns names="aplicacion" ref-type="src-columns"/>
@@ -796,30 +482,6 @@ NO ACCESIBLES DESDE LA API]]></comment>
 <constraint name="fk_perfil" type="fk-constr" comparison-type="MATCH SIMPLE"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.perfil" table="configuracion.perfil_x_menu_opcion">
 	<columns names="perfil" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
-<constraint name="fk_notificacion_configuracion_perfil_notificacion_configuracion" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.notificacion_configuracion" table="configuracion.notificacion_configuracion_perfil">
-	<columns names="notificacion_configuracion" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
-<constraint name="fk_notificacion_configuracion_perfil_perfil" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.perfil" table="configuracion.notificacion_configuracion_perfil">
-	<columns names="perfil" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
-<constraint name="fk_notificacion_estado_usuario_notificacion" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.notificacion" table="configuracion.notificacion_estado_usuario">
-	<columns names="notificacion" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
-<constraint name="fk_notificacion_estado_usuario_notificacion_estado" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="configuracion.notificacion_estado" table="configuracion.notificacion_estado_usuario">
-	<columns names="notificacion_estado" ref-type="src-columns"/>
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
@@ -871,30 +533,6 @@ NO ACCESIBLES DESDE LA API]]></comment>
 	 dst-table="configuracion.menu_opcion"
 	 src-required="false" dst-required="false"/>
 
-<relationship name="rel_notificacion_configuracion_metodo_http" type="relfk"
-	 custom-color="#402611"
-	 src-table="configuracion.notificacion_configuracion"
-	 dst-table="configuracion.metodo_http"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="rel_notificacion_configuracion_aplicacion" type="relfk"
-	 custom-color="#af0d68"
-	 src-table="configuracion.notificacion_configuracion"
-	 dst-table="configuracion.aplicacion"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="rel_notificacion_configuracion_notificacion_tipo" type="relfk"
-	 custom-color="#559d0e"
-	 src-table="configuracion.notificacion_configuracion"
-	 dst-table="configuracion.notificacion_tipo"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="rel_notificacion_notificacion_configuracion" type="relfk"
-	 custom-color="#9229b1"
-	 src-table="configuracion.notificacion"
-	 dst-table="configuracion.notificacion_configuracion"
-	 src-required="false" dst-required="false"/>
-
 <relationship name="rel_perfil_aplicacion" type="relfk"
 	 custom-color="#8dc984"
 	 src-table="configuracion.perfil"
@@ -911,30 +549,6 @@ NO ACCESIBLES DESDE LA API]]></comment>
 	 custom-color="#25c9ec"
 	 src-table="configuracion.perfil_x_menu_opcion"
 	 dst-table="configuracion.perfil"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="rel_notificacion_configuracion_perfil_notificacion_configuracio" type="relfk"
-	 custom-color="#1bc8be"
-	 src-table="configuracion.notificacion_configuracion_perfil"
-	 dst-table="configuracion.notificacion_configuracion"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="rel_notificacion_configuracion_perfil_perfil" type="relfk"
-	 custom-color="#2334cc"
-	 src-table="configuracion.notificacion_configuracion_perfil"
-	 dst-table="configuracion.perfil"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="rel_notificacion_estado_usuario_notificacion" type="relfk"
-	 custom-color="#a557c5"
-	 src-table="configuracion.notificacion_estado_usuario"
-	 dst-table="configuracion.notificacion"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="rel_notificacion_estado_usuario_notificacion_estado" type="relfk"
-	 custom-color="#ef37c7"
-	 src-table="configuracion.notificacion_estado_usuario"
-	 dst-table="configuracion.notificacion_estado"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="rel_parametro_aplicacion" type="relfk"
