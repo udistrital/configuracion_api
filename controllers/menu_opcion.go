@@ -6,10 +6,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/udistrital/configuracion_api/models"
-
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
+
+	"github.com/udistrital/configuracion_api/models"
 )
 
 // MenuOpcionController oprations for MenuOpcion
@@ -30,7 +30,7 @@ func (c *MenuOpcionController) URLMapping() {
 // @Title Post
 // @Description create MenuOpcion
 // @Param	body		body 	models.MenuOpcion	true		"body for MenuOpcion content"
-// @Success 201 {int} models.MenuOpcion
+// @Success 201 {object} models.MenuOpcion
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *MenuOpcionController) Post() {
@@ -57,7 +57,7 @@ func (c *MenuOpcionController) Post() {
 // GetOne ...
 // @Title Get One
 // @Description get MenuOpcion by id
-// @Param	id		path 	string	true		"The key for staticblock"
+// @Param	id		path 	int	true		"The key for staticblock"
 // @Success 200 {object} models.MenuOpcion
 // @Failure 404 not found resource
 // @router /:id [get]
@@ -138,7 +138,7 @@ func (c *MenuOpcionController) GetAll() {
 		c.Abort("404")
 	} else {
 		if l == nil {
-			l = append(l, map[string]interface{}{})
+			l = []interface{}{}
 		}
 		c.Data["json"] = l
 	}
@@ -148,7 +148,7 @@ func (c *MenuOpcionController) GetAll() {
 // Put ...
 // @Title Put
 // @Description update the MenuOpcion
-// @Param	id		path 	string	true		"The id you want to update"
+// @Param	id		path 	int	true		"The id you want to update"
 // @Param	body		body 	models.MenuOpcion	true		"body for MenuOpcion content"
 // @Success 200 {object} models.MenuOpcion
 // @Failure 400 the request contains incorrect syntax
@@ -178,7 +178,7 @@ func (c *MenuOpcionController) Put() {
 // Delete ...
 // @Title Delete
 // @Description delete the MenuOpcion
-// @Param	id		path 	string	true		"The id you want to delete"
+// @Param	id		path 	int	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]

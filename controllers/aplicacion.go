@@ -29,7 +29,7 @@ func (c *AplicacionController) URLMapping() {
 // @Title Post
 // @Description create Aplicacion
 // @Param	body		body 	models.Aplicacion	true		"body for Aplicacion content"
-// @Success 201 {int} models.Aplicacion
+// @Success 201 {object} models.Aplicacion
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *AplicacionController) Post() {
@@ -56,7 +56,7 @@ func (c *AplicacionController) Post() {
 // GetOne ...
 // @Title Get One
 // @Description get Aplicacion by id
-// @Param	id		path 	string	true		"The key for staticblock"
+// @Param	id		path 	int	true		"The key for staticblock"
 // @Success 200 {object} models.Aplicacion
 // @Failure 404 not found resource
 // @router /:id [get]
@@ -137,7 +137,7 @@ func (c *AplicacionController) GetAll() {
 		c.Abort("404")
 	} else {
 		if l == nil {
-			l = append(l, map[string]interface{}{})
+			l = []interface{}{}
 		}
 		c.Data["json"] = l
 	}
@@ -147,7 +147,7 @@ func (c *AplicacionController) GetAll() {
 // Put ...
 // @Title Put
 // @Description update the Aplicacion
-// @Param	id		path 	string	true		"The id you want to update"
+// @Param	id		path 	int	true		"The id you want to update"
 // @Param	body		body 	models.Aplicacion	true		"body for Aplicacion content"
 // @Success 200 {object} models.Aplicacion
 // @Failure 400 the request contains incorrect syntax
@@ -177,7 +177,7 @@ func (c *AplicacionController) Put() {
 // Delete ...
 // @Title Delete
 // @Description delete the Aplicacion
-// @Param	id		path 	string	true		"The id you want to delete"
+// @Param	id		path 	int	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]
