@@ -1,6 +1,6 @@
 # configuracion_api
 
-API CRUD para la gestión de aplicativos, notificaciones y perfiles de aplicaciones.
+API CRUD para la gestión de aplicativos, procesos y perfiles de aplicaciones.
 
 ## Especificaciones Técnicas
 

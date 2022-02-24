@@ -30,7 +30,7 @@ func (c *PerfilController) URLMapping() {
 // @Title Post
 // @Description create Perfil
 // @Param	body		body 	models.Perfil	true		"body for Perfil content"
-// @Success 201 {int} models.Perfil
+// @Success 201 {object} models.Perfil
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *PerfilController) Post() {
@@ -57,7 +57,7 @@ func (c *PerfilController) Post() {
 // GetOne ...
 // @Title Get One
 // @Description get Perfil by id
-// @Param	id		path 	string	true		"The key for staticblock"
+// @Param	id		path 	int	true		"The key for staticblock"
 // @Success 200 {object} models.Perfil
 // @Failure 404 not found resource
 // @router /:id [get]
@@ -85,7 +85,7 @@ func (c *PerfilController) GetOne() {
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.Perfil
+// @Success 200 {object} []models.Perfil
 // @Failure 404 not found resource
 // @router / [get]
 func (c *PerfilController) GetAll() {
@@ -138,7 +138,7 @@ func (c *PerfilController) GetAll() {
 		c.Abort("404")
 	} else {
 		if l == nil {
-			l = append(l, map[string]interface{}{})
+			l = []interface{}{}
 		}
 		c.Data["json"] = l
 	}
@@ -148,7 +148,7 @@ func (c *PerfilController) GetAll() {
 // Put ...
 // @Title Put
 // @Description update the Perfil
-// @Param	id		path 	string	true		"The id you want to update"
+// @Param	id		path 	int	true		"The id you want to update"
 // @Param	body		body 	models.Perfil	true		"body for Perfil content"
 // @Success 200 {object} models.Perfil
 // @Failure 400 the request contains incorrect syntax
@@ -178,7 +178,7 @@ func (c *PerfilController) Put() {
 // Delete ...
 // @Title Delete
 // @Description delete the Perfil
-// @Param	id		path 	string	true		"The id you want to delete"
+// @Param	id		path 	int	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]

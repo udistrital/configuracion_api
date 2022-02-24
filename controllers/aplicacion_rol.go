@@ -22,7 +22,7 @@ func (c *AplicacionRolController) URLMapping() {
 // @Title Post
 // @Description create Aplicacion
 // @Param	body		body 	[]models.Perfil	true		"body for Perfil content"
-// @Success 201 {int} []models.Aplicacion
+// @Success 201 {object} []models.Perfil
 // @Failure 400 the request contains incorrect syntax
 // @router /aplicacion_rol [post]
 func (c *AplicacionRolController) GetAplicacionByRol() {
@@ -33,9 +33,12 @@ func (c *AplicacionRolController) GetAplicacionByRol() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &roles); err == nil {
 
 		if v, err := models.GetAplicacionByRol(roles); err == nil {
-
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
+			if v == nil {
+				c.Data["json"] = []interface{}{}
+			} else {
+				c.Data["json"] = v
+			}
 		} else {
 			logs.Error(err)
 			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}

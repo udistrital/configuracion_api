@@ -16,29 +16,6 @@ import (
 func init() {
 	ns := beego.NewNamespace("/v1",
 
-		beego.NSNamespace("/notificacion_estado_usuario",
-			beego.NSInclude(
-				&controllers.NotificacionEstadoUsuarioController{},
-			),
-		),
-
-		beego.NSNamespace("/notificacion_configuracion",
-			beego.NSInclude(
-				&controllers.NotificacionConfiguracionController{},
-			),
-		),
-
-		beego.NSNamespace("/notificacion_configuracion_perfil",
-			beego.NSInclude(
-				&controllers.NotificacionConfiguracionPerfilController{},
-			),
-		),
-
-		beego.NSNamespace("/metodo_http",
-			beego.NSInclude(
-				&controllers.MetodoHttpController{},
-			),
-		),
 		beego.NSNamespace("/perfil_x_menu_opcion",
 			beego.NSInclude(
 				&controllers.PerfilXMenuOpcionController{},
@@ -74,24 +51,7 @@ func init() {
 				&controllers.ParametroController{},
 			),
 		),
-		beego.NSNamespace("/notificacion_tipo",
 
-			beego.NSInclude(
-				&controllers.NotificacionTipoController{},
-			),
-		),
-
-		beego.NSNamespace("/notificacion",
-			beego.NSInclude(
-				&controllers.NotificacionController{},
-			),
-		),
-
-		beego.NSNamespace("/notificacion_estado",
-			beego.NSInclude(
-				&controllers.NotificacionEstadoController{},
-			),
-		),
 		beego.NSNamespace("/perfil",
 			beego.NSInclude(
 				&controllers.PerfilController{},

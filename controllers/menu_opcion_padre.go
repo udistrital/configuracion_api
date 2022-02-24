@@ -9,6 +9,7 @@ import (
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
+
 	"github.com/udistrital/configuracion_api/models"
 )
 
@@ -31,7 +32,7 @@ func (c *MenuOpcionPadreController) URLMapping() {
 // @Title Post
 // @Description create MenuOpcionPadre
 // @Param	body		body 	models.MenuOpcionPadre	true		"body for MenuOpcionPadre content"
-// @Success 201 {int} models.MenuOpcionPadre
+// @Success 201 {object} models.MenuOpcionPadre
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *MenuOpcionPadreController) Post() {
@@ -59,7 +60,7 @@ func (c *MenuOpcionPadreController) Post() {
 // GetOne ...
 // @Title Get One
 // @Description get MenuOpcionPadre by id
-// @Param	id		path 	string	true		"The key for staticblock"
+// @Param	id		path 	int	true		"The key for staticblock"
 // @Success 200 {object} models.MenuOpcionPadre
 // @Failure 404 not found resource
 // @router /:id [get]
@@ -87,7 +88,7 @@ func (c *MenuOpcionPadreController) GetOne() {
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.MenuOpcionPadre
+// @Success 200 {object} []models.MenuOpcionPadre
 // @Failure 404 not found resource
 // @router / [get]
 func (c *MenuOpcionPadreController) GetAll() {
@@ -140,7 +141,7 @@ func (c *MenuOpcionPadreController) GetAll() {
 		c.Abort("404")
 	} else {
 		if l == nil {
-			l = append(l, map[string]interface{}{})
+			l = []interface{}{}
 		}
 		c.Data["json"] = l
 	}
@@ -150,7 +151,7 @@ func (c *MenuOpcionPadreController) GetAll() {
 // Put ...
 // @Title Put
 // @Description update the MenuOpcionPadre
-// @Param	id		path 	string	true		"The id you want to update"
+// @Param	id		path 	int	true		"The id you want to update"
 // @Param	body		body 	models.MenuOpcionPadre	true		"body for MenuOpcionPadre content"
 // @Success 200 {object} models.MenuOpcionPadre
 // @Failure 400 the request contains incorrect syntax
@@ -180,7 +181,7 @@ func (c *MenuOpcionPadreController) Put() {
 // Delete ...
 // @Title Delete
 // @Description delete the MenuOpcionPadre
-// @Param	id		path 	string	true		"The id you want to delete"
+// @Param	id		path 	int	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]
@@ -203,12 +204,11 @@ func (c *MenuOpcionPadreController) Delete() {
 // @Description Genera árbol de menus de acuerdo a roles y app
 // @Param	roles		path 	string	true		"Los roles a los que se necesita que se desplieguen las opciones"
 // @Param	app		path 	string	true		"Aplicación a la cual pertenecen las opciones"
-// @Success 200 {object} models.MenuOpcionPadre
+// @Success 200 {object} []models.Menu
 // @Failure 403 :roles is empty
 // @Failure 403 :app is empty
 // @router /ArbolMenus/:roles/:app [get]
 func (c *MenuOpcionPadreController) ArbolMenus() {
-	fmt.Println(c.Ctx.Input.Param(":roles"))
 	roles := c.Ctx.Input.Param(":roles")
 	app := c.Ctx.Input.Param(":app")
 	perfilesR := strings.NewReplacer(",", "','")
@@ -218,7 +218,11 @@ func (c *MenuOpcionPadreController) ArbolMenus() {
 	fmt.Println("Este es el resultado de la consulta")
 	fmt.Println(l)
 
-	c.Data["json"] = l
+	if l == nil {
+		c.Data["json"] = []interface{}{}
+	} else {
+		c.Data["json"] = l
+	}
 	//Generera el Json con los datos obtenidos
 	c.ServeJSON()
 }
