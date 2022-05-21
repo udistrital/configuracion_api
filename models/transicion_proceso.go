@@ -58,7 +58,7 @@ func GetAllTransicionProceso(query map[string]string, fields []string, sortby []
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
-		} else if strings.Contains(k, "__in") {
+		} else if strings.HasSuffix(k, "__in") {
 			arr := strings.Split(v, "|")
 			qs = qs.Filter(k, arr)
 		} else if strings.Contains(k, "__not_in") {
