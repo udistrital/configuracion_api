@@ -50,7 +50,7 @@ steps:
 - name: go_build
   image: golang:1.14
   commands:
-  - go get -t
+  - go get
   - GOOS=linux GOARCH=amd64 go build -o main
   when:
     branch:
@@ -65,12 +65,11 @@ steps:
   commands:
   - go get -t
   - go get github.com/smartystreets/goconvey/convey
-  - go get -u gopkg.in/alecthomas/gometalinter.v1
-  - gometalinter.v1 --install
+  - curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.41.1
   - go get github.com/axw/gocov/...
   - go get github.com/AlekSi/gocov-xml
   - go get -u github.com/jstemmer/go-junit-report
-  - gometalinter.v1 ./... --checkstyle | tee report.xml
+  - golangci-lint run ./... | tee report.xml
   # - gocov test ./... | gocov-xml > coverage.xml
   # - go test -v ./... | go-junit-report > test.xml
   when:
@@ -109,7 +108,7 @@ steps:
       from_secret: PG_MIGRATION_DBNAME
   commands:
   - go get -t
-  - go get -u github.com/beego/bee
+  - GO111MODULE=on go get -u github.com/beego/bee
   - bee migrate -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
   when:
     branch:
@@ -130,7 +129,7 @@ steps:
       from_secret: PG_MIGRATION_DBNAME
   commands:
   - go get -t
-  - go get -u github.com/beego/bee
+  - GO111MODULE=on go get -u github.com/beego/bee
   - bee migrate rollback -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
   when:
     branch:
@@ -190,6 +189,7 @@ steps:
     - push
 
 - name: notify_telegram
+  failure: ignore
   image: appleboy/drone-telegram
   settings:
     token:

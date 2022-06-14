@@ -9,7 +9,6 @@ import (
 	_ "github.com/lib/pq"
 	"github.com/udistrital/auditoria"
 	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
-	"github.com/udistrital/utils_oas/responseformat"
 )
 
 func init() {
@@ -21,7 +20,7 @@ func init() {
 func main() {
 	beego.ErrorHandler("400", nil)
 	orm.Debug = true
-	beego.BConfig.RecoverFunc = responseformat.GlobalResponseHandler
+
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
 		AllowOrigins: []string{"*"},
 		AllowMethods: []string{"PUT", "PATCH", "GET", "POST", "OPTIONS", "DELETE"},
@@ -38,7 +37,7 @@ func main() {
 		beego.BConfig.WebConfig.DirectoryIndex = true
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
-	apistatus.Init()
+	apistatus.InitWithHandler(statusCheck)
 	auditoria.InitMiddleware()
 	beego.Run()
 }

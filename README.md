@@ -1,16 +1,18 @@
 # configuracion_api
 
-API CRUD para la gestión de aplicativos, notificaciones y perfiles de aplicaciones.
+API CRUD para la gestión de aplicativos, procesos y perfiles de aplicaciones.
 
 ## Especificaciones Técnicas
 
 ### Tecnologías Implementadas y Versiones
-* [Golang](https://github.com/udistrital/introduccion_oas/blob/master/instalacion_de_herramientas/golang.md)
-* [BeeGo](https://github.com/udistrital/introduccion_oas/blob/master/instalacion_de_herramientas/beego.md)
-* [Docker](https://docs.docker.com/engine/install/ubuntu/)
-* [Docker Compose](https://docs.docker.com/compose/)
+
+- [Golang](https://github.com/udistrital/introduccion_oas/blob/master/instalacion_de_herramientas/golang.md)
+- [BeeGo](https://github.com/udistrital/introduccion_oas/blob/master/instalacion_de_herramientas/beego.md)
+- [Docker](https://docs.docker.com/engine/install/ubuntu/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 ### Variables de Entorno
+
 ```shell
 CONFIGURACION_API_HTTP_PORT=[Descripción]
 CONFIGURACION_API_DB_USER=[Descripción]
@@ -20,10 +22,10 @@ CONFIGURACION_API_DB_NAME=[Descripción]
 CONFIGURACION_API_DB_SCHEMA=[Descripción]
 ```
 
-**NOTA:** Las variables se pueden ver en el fichero conf/app.conf y están identificadas con CONFIGURACION_API_...
-
+**NOTA:** Las variables se pueden ver en el fichero conf/app.conf y están identificadas con CONFIGURACION*API*...
 
 ### Ejecución del Proyecto
+
 ```shell
 #1. Obtener el repositorio con Go
 go get github.com/udistrital/configuracion_api
@@ -37,13 +39,16 @@ git pull origin develop && git checkout develop
 # 4. alimentar todas las variables de entorno que utiliza el proyecto.
 CONFIGURACION_API__PORT=8080 CONFIGURACION_API__DB_HOST=127.0.0.1:27017 CONFIGURACION_API_SOME_VARIABLE=some_value bee run
 ```
+
 ### Ejecución Dockerfile
+
 ```shell
 docker build --tag=configuracion_api . --no-cache
 docker run -p 80:80 configuracion_api
 ```
 
 ### Ejecución docker-compose
+
 ```shell
 #1. Clonar el repositorio
 git clone -b develop https://github.com/udistrital/configuracion_api
@@ -68,18 +73,20 @@ docker ps
 ### Ejecución Pruebas
 
 Pruebas unitarias
+
 ```shell
 # Not Data
 ```
+
 ## Estado CI
 
 | Develop | Relese 0.0.1 | Master |
 | -- | -- | -- |
-| [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/configuracion_api/status.svg?ref=refs/heads/develop)](https://hubci.portaloas.udistrital.edu.co/udistrital/configuracion_api) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/configuracion_api/status.svg?ref=refs/heads/release/0.0.1)](https://hubci.portaloas.udistrital.edu.co/udistrital/configuracion_api) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/configuracion_api/status.svg)](https://hubci.portaloas.udistrital.edu.co/udistrital/configuracion_api) |
+| [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/configuracion_api/status.svg?ref=refs/heads/develop)](https://hubci.portaloas.udistrital.edu.co/udistrital/configuracion_api) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/configuracion_api/status.svg?ref=refs/heads/release/0.0.1)](https://hubci.portaloas.udistrital.edu.co/udistrital/configuracion_api) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/configuracion_api/status.svg?ref=refs/heads/master)](https://hubci.portaloas.udistrital.edu.co/udistrital/configuracion_api) |
 
 ## Modelo de Datos
-[Modelo de Datos Configuración API](https://github.com/udistrital/configuracion_api/blob/dev/sql/configuracion_schema_v2.png)
 
+[SVG](database/configuracion.svg) - [PGModeler](database/configuracion.dbm)
 
 ## Licencia
 

@@ -5,55 +5,62 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type NotificacionConfiguracionPerfil struct {
-	Id                        int                        `orm:"column(id);pk;auto"`
-	NotificacionConfiguracion *NotificacionConfiguracion `orm:"column(notificacion_configuracion);rel(fk)"`
-	Perfil                    *Perfil                    `orm:"column(perfil);rel(fk)"`
-}
-
-func (t *NotificacionConfiguracionPerfil) TableName() string {
-	return "notificacion_configuracion_perfil"
+type TransicionProceso struct {
+	Id                       int64          `orm:"column(id);auto"`
+	EstadoProcesoIdAnterior  *EstadoProceso `orm:"column(estado_proceso_id_anterior);rel(fk)"`
+	EstadoProcesoIdSiguiente *EstadoProceso `orm:"column(estado_proceso_id_siguiente);rel(fk)"`
+	Sigla                    string         `orm:"column(sigla);size(10)"`
+	Nombre                   string         `orm:"column(nombre);size(100)"`
+	Descripcion              string         `orm:"column(descripcion);size(300);null"`
+	Metadatos                string         `orm:"column(metadatos);type(jsonb);null"`
+	Activo                   bool           `orm:"column(activo)"`
+	FechaCreacion            time.Time      `orm:"column(fecha_creacion);auto_now_add;type(datetime)"`
+	FechaModificacion        time.Time      `orm:"column(fecha_modificacion);auto_now;type(datetime)"`
 }
 
 func init() {
-	orm.RegisterModel(new(NotificacionConfiguracionPerfil))
+	orm.RegisterModel(new(TransicionProceso))
 }
 
-// AddNotificacionConfiguracionPerfil insert a new NotificacionConfiguracionPerfil into database and returns
+// AddTransicionProceso insert a new TransicionProceso into database and returns
 // last inserted Id on success.
-func AddNotificacionConfiguracionPerfil(m *NotificacionConfiguracionPerfil) (id int64, err error) {
+func AddTransicionProceso(m *TransicionProceso) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetNotificacionConfiguracionPerfilById retrieves NotificacionConfiguracionPerfil by Id. Returns error if
+// GetTransicionProcesoById retrieves TransicionProceso by Id. Returns error if
 // Id doesn't exist
-func GetNotificacionConfiguracionPerfilById(id int) (v *NotificacionConfiguracionPerfil, err error) {
+func GetTransicionProcesoById(id int64) (v *TransicionProceso, err error) {
 	o := orm.NewOrm()
-	v = &NotificacionConfiguracionPerfil{Id: id}
-	if err = o.Read(v); err == nil {
+	v = &TransicionProceso{Id: id}
+	if err = o.QueryTable(new(TransicionProceso)).Filter("Id", id).RelatedSel().One(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllNotificacionConfiguracionPerfil retrieves all NotificacionConfiguracionPerfil matches certain condition. Returns empty list if
+// GetAllTransicionProceso retrieves all TransicionProceso matches certain condition. Returns empty list if
 // no records exist
-func GetAllNotificacionConfiguracionPerfil(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllTransicionProceso(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(NotificacionConfiguracionPerfil))
+	qs := o.QueryTable(new(TransicionProceso))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
+		} else if strings.HasSuffix(k, "__in") {
+			arr := strings.Split(v, "|")
+			qs = qs.Filter(k, arr)
 		} else {
 			qs = qs.Filter(k, v)
 		}
@@ -97,8 +104,8 @@ func GetAllNotificacionConfiguracionPerfil(query map[string]string, fields []str
 		}
 	}
 
-	var l []NotificacionConfiguracionPerfil
-	qs = qs.OrderBy(sortFields...).RelatedSel(5)
+	var l []TransicionProceso
+	qs = qs.OrderBy(sortFields...).RelatedSel()
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
 			for _, v := range l {
@@ -120,11 +127,11 @@ func GetAllNotificacionConfiguracionPerfil(query map[string]string, fields []str
 	return nil, err
 }
 
-// UpdateNotificacionConfiguracionPerfil updates NotificacionConfiguracionPerfil by Id and returns error if
+// UpdateTransicionProceso updates TransicionProceso by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateNotificacionConfiguracionPerfilById(m *NotificacionConfiguracionPerfil) (err error) {
+func UpdateTransicionProcesoById(m *TransicionProceso) (err error) {
 	o := orm.NewOrm()
-	v := NotificacionConfiguracionPerfil{Id: m.Id}
+	v := TransicionProceso{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -135,15 +142,15 @@ func UpdateNotificacionConfiguracionPerfilById(m *NotificacionConfiguracionPerfi
 	return
 }
 
-// DeleteNotificacionConfiguracionPerfil deletes NotificacionConfiguracionPerfil by Id and returns error if
+// DeleteTransicionProceso deletes TransicionProceso by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteNotificacionConfiguracionPerfil(id int) (err error) {
+func DeleteTransicionProceso(id int64) (err error) {
 	o := orm.NewOrm()
-	v := NotificacionConfiguracionPerfil{Id: id}
+	v := TransicionProceso{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&NotificacionConfiguracionPerfil{Id: id}); err == nil {
+		if num, err = o.Delete(&TransicionProceso{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

@@ -64,7 +64,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Aplicacion"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Aplicacion"
+                            }
                         }
                     },
                     "404": {
@@ -91,7 +94,10 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.Aplicacion"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Aplicacion"
+                        }
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -112,7 +118,8 @@
                         "name": "id",
                         "description": "The key for staticblock",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -139,7 +146,8 @@
                         "name": "id",
                         "description": "The id you want to update",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     },
                     {
                         "in": "body",
@@ -175,7 +183,8 @@
                         "name": "id",
                         "description": "The id you want to delete",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -184,6 +193,43 @@
                     },
                     "404": {
                         "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/aplicacion_rol/aplicacion_rol": {
+            "post": {
+                "tags": [
+                    "aplicacion_rol"
+                ],
+                "description": "create Aplicacion",
+                "operationId": "AplicacionRolController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Perfil content",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Perfil"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Perfil"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -237,7 +283,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.MenuOpcion"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.MenuOpcion"
+                            }
                         }
                     },
                     "404": {
@@ -264,7 +313,10 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.MenuOpcion"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MenuOpcion"
+                        }
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -285,7 +337,8 @@
                         "name": "id",
                         "description": "The key for staticblock",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -312,7 +365,8 @@
                         "name": "id",
                         "description": "The id you want to update",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     },
                     {
                         "in": "body",
@@ -348,7 +402,8 @@
                         "name": "id",
                         "description": "The id you want to delete",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -410,7 +465,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.MenuOpcionPadre"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.MenuOpcionPadre"
+                            }
                         }
                     },
                     "404": {
@@ -437,7 +495,10 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.MenuOpcionPadre"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MenuOpcionPadre"
+                        }
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -472,7 +533,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.MenuOpcionPadre"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Menu"
+                            }
                         }
                     },
                     "403": {
@@ -494,7 +558,8 @@
                         "name": "id",
                         "description": "The key for staticblock",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -521,7 +586,8 @@
                         "name": "id",
                         "description": "The id you want to update",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     },
                     {
                         "in": "body",
@@ -557,1360 +623,8 @@
                         "name": "id",
                         "description": "The id you want to delete",
                         "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            }
-        },
-        "/metodo_http/": {
-            "get": {
-                "tags": [
-                    "metodo_http"
-                ],
-                "description": "get MetodoHttp",
-                "operationId": "MetodoHttpController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MetodoHttp"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "metodo_http"
-                ],
-                "description": "create MetodoHttp",
-                "operationId": "MetodoHttpController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for MetodoHttp content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MetodoHttp"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.MetodoHttp"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            }
-        },
-        "/metodo_http/{id}": {
-            "get": {
-                "tags": [
-                    "metodo_http"
-                ],
-                "description": "get MetodoHttp by id",
-                "operationId": "MetodoHttpController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MetodoHttp"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "metodo_http"
-                ],
-                "description": "update the MetodoHttp",
-                "operationId": "MetodoHttpController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for MetodoHttp content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MetodoHttp"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MetodoHttp"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "metodo_http"
-                ],
-                "description": "delete the MetodoHttp",
-                "operationId": "MetodoHttpController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            }
-        },
-        "/notificacion/": {
-            "get": {
-                "tags": [
-                    "notificacion"
-                ],
-                "description": "get Notificacion",
-                "operationId": "NotificacionController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.Notificacion"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "notificacion"
-                ],
-                "description": "create Notificacion",
-                "operationId": "NotificacionController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Notificacion content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Notificacion"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.Notificacion"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            }
-        },
-        "/notificacion/{id}": {
-            "get": {
-                "tags": [
-                    "notificacion"
-                ],
-                "description": "get Notificacion by id",
-                "operationId": "NotificacionController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.Notificacion"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "notificacion"
-                ],
-                "description": "update the Notificacion",
-                "operationId": "NotificacionController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Notificacion content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Notificacion"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.Notificacion"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "notificacion"
-                ],
-                "description": "delete the Notificacion",
-                "operationId": "NotificacionController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            }
-        },
-        "/notificacion_configuracion/": {
-            "get": {
-                "tags": [
-                    "notificacion_configuracion"
-                ],
-                "description": "get NotificacionConfiguracion",
-                "operationId": "NotificacionConfiguracionController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracion"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "notificacion_configuracion"
-                ],
-                "description": "create NotificacionConfiguracion",
-                "operationId": "NotificacionConfiguracionController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionConfiguracion content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracion"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionConfiguracion"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            }
-        },
-        "/notificacion_configuracion/getConfiguracion/": {
-            "post": {
-                "tags": [
-                    "notificacion_configuracion"
-                ],
-                "description": "get a configuration",
-                "operationId": "NotificacionConfiguracionController.getConfiguracion",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for ShowConfiguration content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.ShowConfiguration"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} get success!"
-                    },
-                    "403": {
-                        "description": "profile is empty"
-                    }
-                }
-            }
-        },
-        "/notificacion_configuracion/{id}": {
-            "get": {
-                "tags": [
-                    "notificacion_configuracion"
-                ],
-                "description": "get NotificacionConfiguracion by id",
-                "operationId": "NotificacionConfiguracionController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracion"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "notificacion_configuracion"
-                ],
-                "description": "update the NotificacionConfiguracion",
-                "operationId": "NotificacionConfiguracionController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionConfiguracion content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracion"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracion"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "notificacion_configuracion"
-                ],
-                "description": "delete the NotificacionConfiguracion",
-                "operationId": "NotificacionConfiguracionController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            }
-        },
-        "/notificacion_configuracion_perfil/": {
-            "get": {
-                "tags": [
-                    "notificacion_configuracion_perfil"
-                ],
-                "description": "get NotificacionConfiguracionPerfil",
-                "operationId": "NotificacionConfiguracionPerfilController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "notificacion_configuracion_perfil"
-                ],
-                "description": "create NotificacionConfiguracionPerfil",
-                "operationId": "NotificacionConfiguracionPerfilController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionConfiguracionPerfil content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionConfiguracionPerfil"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            }
-        },
-        "/notificacion_configuracion_perfil/{id}": {
-            "get": {
-                "tags": [
-                    "notificacion_configuracion_perfil"
-                ],
-                "description": "get NotificacionConfiguracionPerfil by id",
-                "operationId": "NotificacionConfiguracionPerfilController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "notificacion_configuracion_perfil"
-                ],
-                "description": "update the NotificacionConfiguracionPerfil",
-                "operationId": "NotificacionConfiguracionPerfilController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionConfiguracionPerfil content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "notificacion_configuracion_perfil"
-                ],
-                "description": "delete the NotificacionConfiguracionPerfil",
-                "operationId": "NotificacionConfiguracionPerfilController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            }
-        },
-        "/notificacion_estado/": {
-            "get": {
-                "tags": [
-                    "notificacion_estado"
-                ],
-                "description": "get NotificacionEstado",
-                "operationId": "NotificacionEstadoController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstado"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "notificacion_estado"
-                ],
-                "description": "create NotificacionEstado",
-                "operationId": "NotificacionEstadoController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionEstado content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstado"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionEstado"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            }
-        },
-        "/notificacion_estado/{id}": {
-            "get": {
-                "tags": [
-                    "notificacion_estado"
-                ],
-                "description": "get NotificacionEstado by id",
-                "operationId": "NotificacionEstadoController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstado"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "notificacion_estado"
-                ],
-                "description": "update the NotificacionEstado",
-                "operationId": "NotificacionEstadoController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionEstado content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstado"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstado"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "notificacion_estado"
-                ],
-                "description": "delete the NotificacionEstado",
-                "operationId": "NotificacionEstadoController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            }
-        },
-        "/notificacion_estado_usuario/": {
-            "get": {
-                "tags": [
-                    "notificacion_estado_usuario"
-                ],
-                "description": "get NotificacionEstadoUsuario",
-                "operationId": "NotificacionEstadoUsuarioController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "notificacion_estado_usuario"
-                ],
-                "description": "create NotificacionEstadoUsuario",
-                "operationId": "NotificacionEstadoUsuarioController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionEstadoUsuario content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionEstadoUsuario"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            }
-        },
-        "/notificacion_estado_usuario/changeStateNoView/{usuario}": {
-            "post": {
-                "tags": [
-                    "notificacion_estado_usuario"
-                ],
-                "description": "change state of notifications",
-                "operationId": "NotificacionEstadoUsuarioController.changeStateNoView",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "usuario",
-                        "description": "The user you want to update",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} get success!"
-                    },
-                    "403": {
-                        "description": "body is empty"
-                    }
-                }
-            }
-        },
-        "/notificacion_estado_usuario/changeStateToView/{id}": {
-            "get": {
-                "tags": [
-                    "notificacion_estado_usuario"
-                ],
-                "description": "create NotificacionEstadoUsuario",
-                "operationId": "NotificacionEstadoUsuarioController.changeStateNoView",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The notification you want to update",
-                        "required": true,
                         "type": "integer",
                         "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionEstadoUsuario"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            }
-        },
-        "/notificacion_estado_usuario/getOldNotification/{roles}/{usuario}": {
-            "get": {
-                "tags": [
-                    "notificacion_estado_usuario"
-                ],
-                "description": "get all old notification",
-                "operationId": "NotificacionEstadoUsuarioController.getOldNotification",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "roles",
-                        "description": "The profile you want to consult",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "usuario",
-                        "description": "The user you want to consult",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} get success!"
-                    },
-                    "403": {
-                        "description": "profile is empty"
-                    }
-                }
-            }
-        },
-        "/notificacion_estado_usuario/pushNotificationUser": {
-            "post": {
-                "tags": [
-                    "notificacion_estado_usuario"
-                ],
-                "description": "create pushNotificationUser",
-                "operationId": "NotificacionEstadoUsuarioController.pushNotificationUser",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionEstadoUsuario content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/.NotificacionUsarioMasiva"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionEstadoUsuario"
-                    },
-                    "403": {
-                        "description": "body is empty"
-                    }
-                }
-            }
-        },
-        "/notificacion_estado_usuario/{id}": {
-            "get": {
-                "tags": [
-                    "notificacion_estado_usuario"
-                ],
-                "description": "get NotificacionEstadoUsuario by id",
-                "operationId": "NotificacionEstadoUsuarioController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "notificacion_estado_usuario"
-                ],
-                "description": "update the NotificacionEstadoUsuario",
-                "operationId": "NotificacionEstadoUsuarioController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionEstadoUsuario content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionEstadoUsuario"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "notificacion_estado_usuario"
-                ],
-                "description": "delete the NotificacionEstadoUsuario",
-                "operationId": "NotificacionEstadoUsuarioController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            }
-        },
-        "/notificacion_tipo/": {
-            "get": {
-                "tags": [
-                    "notificacion_tipo"
-                ],
-                "description": "get NotificacionTipo",
-                "operationId": "NotificacionTipoController.Get All",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "fields",
-                        "description": "Fields returned. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "sortby",
-                        "description": "Sorted-by fields. e.g. col1,col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order",
-                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "limit",
-                        "description": "Limit the size of result set. Must be an integer",
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "offset",
-                        "description": "Start position of result set. Must be an integer",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionTipo"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "notificacion_tipo"
-                ],
-                "description": "create NotificacionTipo",
-                "operationId": "NotificacionTipoController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionTipo content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionTipo"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.NotificacionTipo"
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            }
-        },
-        "/notificacion_tipo/{id}": {
-            "get": {
-                "tags": [
-                    "notificacion_tipo"
-                ],
-                "description": "get NotificacionTipo by id",
-                "operationId": "NotificacionTipoController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The key for staticblock",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionTipo"
-                        }
-                    },
-                    "404": {
-                        "description": "not found resource"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "notificacion_tipo"
-                ],
-                "description": "update the NotificacionTipo",
-                "operationId": "NotificacionTipoController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for NotificacionTipo content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionTipo"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.NotificacionTipo"
-                        }
-                    },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "notificacion_tipo"
-                ],
-                "description": "delete the NotificacionTipo",
-                "operationId": "NotificacionTipoController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1972,7 +686,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Parametro"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Parametro"
+                            }
                         }
                     },
                     "404": {
@@ -1999,7 +716,10 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.Parametro"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Parametro"
+                        }
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -2020,7 +740,8 @@
                         "name": "id",
                         "description": "The key for staticblock",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -2047,7 +768,8 @@
                         "name": "id",
                         "description": "The id you want to update",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     },
                     {
                         "in": "body",
@@ -2083,7 +805,8 @@
                         "name": "id",
                         "description": "The id you want to delete",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -2145,7 +868,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Perfil"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Perfil"
+                            }
                         }
                     },
                     "404": {
@@ -2172,7 +898,10 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.Perfil"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Perfil"
+                        }
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -2193,7 +922,8 @@
                         "name": "id",
                         "description": "The key for staticblock",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -2220,7 +950,8 @@
                         "name": "id",
                         "description": "The id you want to update",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     },
                     {
                         "in": "body",
@@ -2256,7 +987,8 @@
                         "name": "id",
                         "description": "The id you want to delete",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -2318,7 +1050,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.PerfilXMenuOpcion"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.PerfilXMenuOpcion"
+                            }
                         }
                     },
                     "404": {
@@ -2345,7 +1080,10 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.PerfilXMenuOpcion"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.PerfilXMenuOpcion"
+                        }
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -2366,18 +1104,22 @@
                         "name": "id",
                         "description": "id de la aplicación a la cual pertenecen las opciones",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.PerfilXMenuOpcion"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Menu"
+                            }
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -2395,7 +1137,8 @@
                         "name": "id",
                         "description": "The key for staticblock",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -2422,7 +1165,8 @@
                         "name": "id",
                         "description": "The id you want to update",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     },
                     {
                         "in": "body",
@@ -2458,7 +1202,8 @@
                         "name": "id",
                         "description": "The id you want to delete",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -2470,10 +1215,739 @@
                     }
                 }
             }
+        },
+        "/proceso/": {
+            "get": {
+                "tags": [
+                    "proceso"
+                ],
+                "description": "get Proceso",
+                "operationId": "ProcesoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Proceso"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "proceso"
+                ],
+                "description": "create Proceso",
+                "operationId": "ProcesoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Proceso content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Proceso"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Proceso"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/proceso/{id}": {
+            "get": {
+                "tags": [
+                    "proceso"
+                ],
+                "description": "get Proceso by id",
+                "operationId": "ProcesoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Proceso"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "proceso"
+                ],
+                "description": "update the Proceso",
+                "operationId": "ProcesoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Proceso content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Proceso"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Proceso"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "proceso"
+                ],
+                "description": "delete the Proceso",
+                "operationId": "ProcesoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/proceso_estado/": {
+            "get": {
+                "tags": [
+                    "proceso_estado"
+                ],
+                "description": "get EstadoProceso",
+                "operationId": "EstadoProcesoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.EstadoProceso"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "proceso_estado"
+                ],
+                "description": "create EstadoProceso",
+                "operationId": "EstadoProcesoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for EstadoProceso content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.EstadoProceso"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EstadoProceso"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/proceso_estado/{id}": {
+            "get": {
+                "tags": [
+                    "proceso_estado"
+                ],
+                "description": "get EstadoProceso by id",
+                "operationId": "EstadoProcesoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EstadoProceso"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "proceso_estado"
+                ],
+                "description": "update the EstadoProceso",
+                "operationId": "EstadoProcesoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for EstadoProceso content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.EstadoProceso"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EstadoProceso"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "proceso_estado"
+                ],
+                "description": "delete the EstadoProceso",
+                "operationId": "EstadoProcesoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/proceso_transicion/": {
+            "get": {
+                "tags": [
+                    "proceso_transicion"
+                ],
+                "description": "get TransicionProceso",
+                "operationId": "TransicionProcesoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.TransicionProceso"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "proceso_transicion"
+                ],
+                "description": "create TransicionProceso",
+                "operationId": "TransicionProcesoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TransicionProceso content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TransicionProceso"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TransicionProceso"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/proceso_transicion/{id}": {
+            "get": {
+                "tags": [
+                    "proceso_transicion"
+                ],
+                "description": "get TransicionProceso by id",
+                "operationId": "TransicionProcesoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TransicionProceso"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "proceso_transicion"
+                ],
+                "description": "update the TransicionProceso",
+                "operationId": "TransicionProcesoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TransicionProceso content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TransicionProceso"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TransicionProceso"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "proceso_transicion"
+                ],
+                "description": "delete the TransicionProceso",
+                "operationId": "TransicionProcesoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/proceso_version/": {
+            "get": {
+                "tags": [
+                    "proceso_version"
+                ],
+                "description": "get VersionProceso",
+                "operationId": "VersionProcesoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.VersionProceso"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "proceso_version"
+                ],
+                "description": "create VersionProceso",
+                "operationId": "VersionProcesoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for VersionProceso content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.VersionProceso"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.VersionProceso"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/proceso_version/{id}": {
+            "get": {
+                "tags": [
+                    "proceso_version"
+                ],
+                "description": "get VersionProceso by id",
+                "operationId": "VersionProcesoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.VersionProceso"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "proceso_version"
+                ],
+                "description": "update the VersionProceso",
+                "operationId": "VersionProcesoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for VersionProceso content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.VersionProceso"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.VersionProceso"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "proceso_version"
+                ],
+                "description": "delete the VersionProceso",
+                "operationId": "VersionProcesoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
         }
     },
     "definitions": {
-        ".NotificacionUsarioMasiva": {
+        "14271.\u003cnil\u003e.Menu": {
+            "title": "Menu",
             "type": "object"
         },
         "models.Aplicacion": {
@@ -2500,6 +1974,64 @@
                     "format": "int64"
                 },
                 "Nombre": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.EstadoProceso": {
+            "title": "EstadoProceso",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Metadatos": {
+                    "type": "string"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "Sigla": {
+                    "type": "string"
+                },
+                "VersionProcesoId": {
+                    "$ref": "#/definitions/models.VersionProceso"
+                }
+            }
+        },
+        "models.Menu": {
+            "title": "Menu",
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "Opciones": {
+                    "$ref": "#/definitions/14271.\u003cnil\u003e.Menu"
+                },
+                "TipoOpcion": {
+                    "type": "string"
+                },
+                "Url": {
                     "type": "string"
                 }
             }
@@ -2545,154 +2077,6 @@
                 },
                 "Padre": {
                     "$ref": "#/definitions/models.MenuOpcion"
-                }
-            }
-        },
-        "models.MetodoHttp": {
-            "title": "MetodoHttp",
-            "type": "object",
-            "properties": {
-                "Descripcion": {
-                    "type": "string"
-                },
-                "Id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "Nombre": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.Notificacion": {
-            "title": "Notificacion",
-            "type": "object",
-            "properties": {
-                "CuerpoNotificacion": {
-                    "type": "string"
-                },
-                "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
-                },
-                "Id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "NotificacionConfiguracion": {
-                    "$ref": "#/definitions/models.NotificacionConfiguracion"
-                }
-            }
-        },
-        "models.NotificacionConfiguracion": {
-            "title": "NotificacionConfiguracion",
-            "type": "object",
-            "properties": {
-                "Aplicacion": {
-                    "$ref": "#/definitions/models.Aplicacion"
-                },
-                "CuerpoNotificacion": {
-                    "type": "string"
-                },
-                "EndPoint": {
-                    "type": "string"
-                },
-                "Id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "MetodoHttp": {
-                    "$ref": "#/definitions/models.MetodoHttp"
-                },
-                "NotificacionConfiguracionPerfil": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/models.NotificacionConfiguracionPerfil"
-                    }
-                },
-                "Tipo": {
-                    "$ref": "#/definitions/models.NotificacionTipo"
-                }
-            }
-        },
-        "models.NotificacionConfiguracionPerfil": {
-            "title": "NotificacionConfiguracionPerfil",
-            "type": "object",
-            "properties": {
-                "Id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "NotificacionConfiguracion": {
-                    "$ref": "#/definitions/models.NotificacionConfiguracion"
-                },
-                "Perfil": {
-                    "$ref": "#/definitions/models.Perfil"
-                }
-            }
-        },
-        "models.NotificacionEstado": {
-            "title": "NotificacionEstado",
-            "type": "object",
-            "properties": {
-                "Activo": {
-                    "type": "boolean"
-                },
-                "CodigoAbreviacion": {
-                    "type": "string"
-                },
-                "Descripcion": {
-                    "type": "string"
-                },
-                "Id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "Nombre": {
-                    "type": "string"
-                },
-                "NumeroOrden": {
-                    "type": "number",
-                    "format": "double"
-                }
-            }
-        },
-        "models.NotificacionEstadoUsuario": {
-            "title": "NotificacionEstadoUsuario",
-            "type": "object",
-            "properties": {
-                "Activo": {
-                    "type": "boolean"
-                },
-                "Fecha": {
-                    "type": "string",
-                    "format": "datetime"
-                },
-                "Id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "Notificacion": {
-                    "$ref": "#/definitions/models.Notificacion"
-                },
-                "NotificacionEstado": {
-                    "$ref": "#/definitions/models.NotificacionEstado"
-                },
-                "Usuario": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.NotificacionTipo": {
-            "title": "NotificacionTipo",
-            "type": "object",
-            "properties": {
-                "Id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "Nombre": {
-                    "type": "string"
                 }
             }
         },
@@ -2747,46 +2131,114 @@
                 }
             }
         },
-        "models.ShowConfiguration": {
-            "title": "ShowConfiguration",
+        "models.Proceso": {
+            "title": "Proceso",
             "type": "object",
             "properties": {
-                "Aplicacion": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "AplicacionId": {
+                    "$ref": "#/definitions/models.Aplicacion"
+                },
+                "Descripcion": {
                     "type": "string"
                 },
-                "EndPoint": {
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Metadatos": {
                     "type": "string"
                 },
-                "MetodoHttp": {
+                "Nombre": {
                     "type": "string"
                 },
-                "Tipo": {
+                "Sigla": {
                     "type": "string"
+                }
+            }
+        },
+        "models.TransicionProceso": {
+            "title": "TransicionProceso",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "EstadoProcesoIdAnterior": {
+                    "$ref": "#/definitions/models.EstadoProceso"
+                },
+                "EstadoProcesoIdSiguiente": {
+                    "$ref": "#/definitions/models.EstadoProceso"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Metadatos": {
+                    "type": "string"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "Sigla": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.VersionProceso": {
+            "title": "VersionProceso",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Metadatos": {
+                    "type": "string"
+                },
+                "ProcesoId": {
+                    "$ref": "#/definitions/models.Proceso"
+                },
+                "Version": {
+                    "type": "integer",
+                    "format": "int32"
                 }
             }
         }
     },
     "tags": [
-        {
-            "name": "notificacion_estado_usuario",
-            "description": "NotificacionEstadoUsuarioController operations for NotificacionEstadoUsuario\n"
-        },
-        {
-            "name": "notificacion",
-            "description": "NotificacionController operations for Notificacion\n"
-        },
-        {
-            "name": "notificacion_configuracion",
-            "description": "NotificacionConfiguracionController operations for NotificacionConfiguracion\n"
-        },
-        {
-            "name": "notificacion_configuracion_perfil",
-            "description": "NotificacionConfiguracionPerfilController operations for NotificacionConfiguracionPerfil\n"
-        },
-        {
-            "name": "metodo_http",
-            "description": "MetodoHttpController operations for MetodoHttp\n"
-        },
         {
             "name": "perfil_x_menu_opcion",
             "description": "PerfilXMenuOpcionController oprations for PerfilXMenuOpcion\n"
@@ -2804,24 +2256,32 @@
             "description": "AplicacionController operations for Aplicacion\n"
         },
         {
+            "name": "aplicacion_rol",
+            "description": "AplicacionRolController operations for Aplicacion\n"
+        },
+        {
             "name": "parametro",
             "description": "ParametroController oprations for Parametro\n"
         },
         {
-            "name": "notificacion_tipo",
-            "description": "NotificacionTipoController operations for NotificacionTipo\n"
-        },
-        {
-            "name": "notificacion",
-            "description": "NotificacionController operations for Notificacion\n"
-        },
-        {
-            "name": "notificacion_estado",
-            "description": "NotificacionEstadoController operations for NotificacionEstado\n"
-        },
-        {
             "name": "perfil",
             "description": "PerfilController oprations for Perfil\n"
+        },
+        {
+            "name": "proceso",
+            "description": " ProcesoController operations for Proceso\n"
+        },
+        {
+            "name": "proceso_version",
+            "description": " VersionProcesoController operations for VersionProceso\n"
+        },
+        {
+            "name": "proceso_estado",
+            "description": " EstadoProcesoController operations for EstadoProceso\n"
+        },
+        {
+            "name": "proceso_transicion",
+            "description": " TransicionProcesoController operations for TransicionProceso\n"
         }
     ]
 }

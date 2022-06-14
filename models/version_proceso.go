@@ -10,54 +10,54 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type NotificacionEstadoUsuario struct {
-	Id                 int                 `orm:"column(id);pk;auto"`
-	Notificacion       *Notificacion       `orm:"column(notificacion);rel(fk)"`
-	NotificacionEstado *NotificacionEstado `orm:"column(notificacion_estado);rel(fk)"`
-	Fecha              time.Time           `orm:"column(fecha);type(timestamp without time zone)"`
-	Usuario            string              `orm:"column(usuario);null"`
-	Activo             bool                `orm:"column(activo);null"`
-}
-
-func (t *NotificacionEstadoUsuario) TableName() string {
-	return "notificacion_estado_usuario"
+type VersionProceso struct {
+	Id                int64     `orm:"column(id);auto"`
+	ProcesoId         *Proceso  `orm:"column(proceso_id);rel(fk)"`
+	Version           int16     `orm:"column(version)"`
+	Metadatos         string    `orm:"column(metadatos);type(jsonb);null"`
+	Activo            bool      `orm:"column(activo)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);auto_now_add;type(datetime)"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);auto_now;type(datetime)"`
 }
 
 func init() {
-	orm.RegisterModel(new(NotificacionEstadoUsuario))
+	orm.RegisterModel(new(VersionProceso))
 }
 
-// AddNotificacionEstadoUsuario insert a new NotificacionEstadoUsuario into database and returns
+// AddVersionProceso insert a new VersionProceso into database and returns
 // last inserted Id on success.
-func AddNotificacionEstadoUsuario(m *NotificacionEstadoUsuario) (id int64, err error) {
+func AddVersionProceso(m *VersionProceso) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetNotificacionEstadoUsuarioById retrieves NotificacionEstadoUsuario by Id. Returns error if
+// GetVersionProcesoById retrieves VersionProceso by Id. Returns error if
 // Id doesn't exist
-func GetNotificacionEstadoUsuarioById(id int) (v *NotificacionEstadoUsuario, err error) {
+func GetVersionProcesoById(id int64) (v *VersionProceso, err error) {
 	o := orm.NewOrm()
-	v = &NotificacionEstadoUsuario{Id: id}
-	if err = o.Read(v); err == nil {
+	v = &VersionProceso{Id: id}
+	if err = o.QueryTable(new(VersionProceso)).Filter("Id", id).RelatedSel().One(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllNotificacionEstadoUsuario retrieves all NotificacionEstadoUsuario matches certain condition. Returns empty list if
+// GetAllVersionProceso retrieves all VersionProceso matches certain condition. Returns empty list if
 // no records exist
-func GetAllNotificacionEstadoUsuario(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllVersionProceso(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(NotificacionEstadoUsuario)).RelatedSel(5)
+	qs := o.QueryTable(new(VersionProceso))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
+		} else if strings.HasSuffix(k, "__in") {
+			arr := strings.Split(v, "|")
+			qs = qs.Filter(k, arr)
 		} else {
 			qs = qs.Filter(k, v)
 		}
@@ -101,8 +101,8 @@ func GetAllNotificacionEstadoUsuario(query map[string]string, fields []string, s
 		}
 	}
 
-	var l []NotificacionEstadoUsuario
-	qs = qs.OrderBy(sortFields...)
+	var l []VersionProceso
+	qs = qs.OrderBy(sortFields...).RelatedSel()
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
 			for _, v := range l {
@@ -124,11 +124,11 @@ func GetAllNotificacionEstadoUsuario(query map[string]string, fields []string, s
 	return nil, err
 }
 
-// UpdateNotificacionEstadoUsuario updates NotificacionEstadoUsuario by Id and returns error if
+// UpdateVersionProceso updates VersionProceso by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateNotificacionEstadoUsuarioById(m *NotificacionEstadoUsuario) (err error) {
+func UpdateVersionProcesoById(m *VersionProceso) (err error) {
 	o := orm.NewOrm()
-	v := NotificacionEstadoUsuario{Id: m.Id}
+	v := VersionProceso{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -139,15 +139,15 @@ func UpdateNotificacionEstadoUsuarioById(m *NotificacionEstadoUsuario) (err erro
 	return
 }
 
-// DeleteNotificacionEstadoUsuario deletes NotificacionEstadoUsuario by Id and returns error if
+// DeleteVersionProceso deletes VersionProceso by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteNotificacionEstadoUsuario(id int) (err error) {
+func DeleteVersionProceso(id int64) (err error) {
 	o := orm.NewOrm()
-	v := NotificacionEstadoUsuario{Id: id}
+	v := VersionProceso{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&NotificacionEstadoUsuario{Id: id}); err == nil {
+		if num, err = o.Delete(&VersionProceso{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
