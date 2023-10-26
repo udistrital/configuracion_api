@@ -226,3 +226,34 @@ func (c *MenuOpcionPadreController) ArbolMenus() {
 	//Generera el Json con los datos obtenidos
 	c.ServeJSON()
 }
+
+// ArbolMenuRoles
+// @Title ArbolMenuRoles
+// @Description Genera árbol de permisos concedidos a una lista de roles en una apliación determinada. Los parámetros se pasan como parámetros de tipo query y no path
+// @Param	app		query	string	true	"Aplicación de la que se consulta el menú"
+// @Param	roles	query	string	true	"Lista de roles a los que se desea consultar el menú"
+// @Success 200 {object} []models.Menu
+// @Failure 400 roles is empty
+// @Failure 400 app is empty
+// @router /menu_roles [get]
+func (c *MenuOpcionPadreController) ArbolMenuRoles() {
+	roles := c.GetString("roles")
+	app := c.GetString("app")
+
+	if app == "" || roles == "" {
+		err := "Debe especificar una aplicación y por lo menos un rol"
+		logs.Error(err)
+		c.Data["system"] = err
+		c.Abort("401")
+	}
+
+	perfilesR := strings.NewReplacer(",", "','")
+	l := models.ConstruirMenuPerfil(perfilesR.Replace(roles), app)
+	if l == nil {
+		c.Data["json"] = []interface{}{}
+	} else {
+		c.Data["json"] = l
+	}
+
+	c.ServeJSON()
+}
