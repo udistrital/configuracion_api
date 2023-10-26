@@ -545,6 +545,45 @@
                 }
             }
         },
+        "/menu_opcion_padre/menu_roles": {
+            "get": {
+                "tags": [
+                    "menu_opcion_padre"
+                ],
+                "description": "Genera árbol de permisos concedidos a una lista de roles en una apliación determinada. Los parámetros se pasan como parámetros de tipo query y no path",
+                "operationId": "MenuOpcionPadreController.ArbolMenuRoles",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "app",
+                        "description": "Aplicación de la que se consulta el menú",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "roles",
+                        "description": "Lista de roles a los que se desea consultar el menú",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Menu"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "app is empty"
+                    }
+                }
+            }
+        },
         "/menu_opcion_padre/{id}": {
             "get": {
                 "tags": [
