@@ -9,22 +9,26 @@ import (
 	_ "github.com/lib/pq"
 	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
 	"github.com/udistrital/utils_oas/auditoria"
+	"github.com/udistrital/utils_oas/customerror"
 )
 
-func init() {
+func main() {
 	orm.RegisterDataBase("default", "postgres", "postgres://"+beego.AppConfig.String("PGuser")+":"+
 		beego.AppConfig.String("PGpass")+"@"+
 		beego.AppConfig.String("PGurls")+"/"+
 		beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+
 		beego.AppConfig.String("PGschemas"))
-}
 
-func main() {
-	beego.ErrorHandler("400", nil)
-	orm.Debug = true
+	AllowedOrigins := []string{"*.udistrital.edu.co"}
+	if beego.BConfig.RunMode == "dev" {
+		AllowedOrigins = []string{"*"}
+		orm.Debug = true
+		beego.BConfig.WebConfig.DirectoryIndex = true
+		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
+	}
 
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
-		AllowOrigins: []string{"*"},
+		AllowOrigins: AllowedOrigins,
 		AllowMethods: []string{"PUT", "PATCH", "GET", "POST", "OPTIONS", "DELETE"},
 		AllowHeaders: []string{"Origin", "x-requested-with",
 			"content-type",
@@ -35,11 +39,14 @@ func main() {
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 	}))
+
 	if beego.BConfig.RunMode == "dev" {
 		beego.BConfig.WebConfig.DirectoryIndex = true
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
-	apistatus.InitWithHandler(statusCheck)
+
+	apistatus.Init()
 	auditoria.InitMiddleware()
+	beego.ErrorController(&customerror.CustomErrorController{})
 	beego.Run()
 }
