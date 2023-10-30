@@ -190,15 +190,16 @@ steps:
        release/*)
          AMBIENTE=test
          CLUSTER=test
+         MYCONTAINER=$${AWS_CONTAINER}/${DRONE_REPO##udistrital/}:release
          ;;
        master)
          AMBIENTE=prod
          CLUSTER=oas
+         MYCONTAINER=$${AWS_CONTAINER}/${DRONE_REPO##udistrital/}:latest
          ;;
     esac
   - AWS_REGION=us-east-1
   - SERVICE=${DRONE_REPO##udistrital/}_$AMBIENTE
-  - MYCONTAINER=oas0/${DRONE_REPO##udistrital/}:${DRONE_COMMIT:0:7}
   - container_name=${DRONE_REPO##udistrital/}
   - apt-get update
   - apt-get install unzip
