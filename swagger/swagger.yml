@@ -424,7 +424,7 @@ paths:
               $ref: '#/definitions/models.Menu'
         "403":
           description: :app is empty
-  /menu_opcion_padre/menu_roles:
+  /menu_opcion_padre/permisos_roles:
     get:
       tags:
       - menu_opcion_padre

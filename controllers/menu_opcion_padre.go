@@ -235,7 +235,7 @@ func (c *MenuOpcionPadreController) ArbolMenus() {
 // @Success 200 {object} []models.Menu
 // @Failure 400 roles is empty
 // @Failure 400 app is empty
-// @router /menu_roles [get]
+// @router /permisos_roles [get]
 func (c *MenuOpcionPadreController) ArbolMenuRoles() {
 	roles := c.GetString("roles")
 	app := c.GetString("app")
