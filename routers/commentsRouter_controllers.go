@@ -208,7 +208,7 @@ func init() {
     beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MenuOpcionPadreController"] = append(beego.GlobalControllerRouter["github.com/udistrital/configuracion_api/controllers:MenuOpcionPadreController"],
         beego.ControllerComments{
             Method: "ArbolMenuRoles",
-            Router: "/menu_roles",
+            Router: "/permisos_roles",
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
