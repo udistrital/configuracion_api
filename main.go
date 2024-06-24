@@ -12,6 +12,7 @@ import (
 	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
 	"github.com/udistrital/utils_oas/auditoria"
 	"github.com/udistrital/utils_oas/customerror"
+	"github.com/udistrital/utils_oas/xray"
 )
 
 func main() {
@@ -48,6 +49,7 @@ func main() {
 	}
 
 	apistatus.Init()
+	xray.InitXRay()
 	auditoria.InitMiddleware()
 	beego.ErrorController(&customerror.CustomErrorController{})
 	beego.Run()
