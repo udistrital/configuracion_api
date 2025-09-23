@@ -48,6 +48,7 @@ func main() {
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
 
+	xray.InitXRay()
 	apistatus.Init()
 	xray.InitXRay()
 	auditoria.InitMiddleware()
