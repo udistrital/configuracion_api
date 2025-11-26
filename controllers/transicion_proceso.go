@@ -12,7 +12,7 @@ import (
 	"github.com/udistrital/configuracion_api/models"
 )
 
-//  TransicionProcesoController operations for TransicionProceso
+// TransicionProcesoController operations for TransicionProceso
 type TransicionProcesoController struct {
 	beego.Controller
 }

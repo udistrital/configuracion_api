@@ -12,7 +12,7 @@ import (
 	"github.com/udistrital/configuracion_api/models"
 )
 
-//  EstadoProcesoController operations for EstadoProceso
+// EstadoProcesoController operations for EstadoProceso
 type EstadoProcesoController struct {
 	beego.Controller
 }

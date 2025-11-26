@@ -20,6 +20,3 @@ main
 swagger/**
 !swagger/*.yml
 !swagger/*.json
-
-go.mod
-go.sum

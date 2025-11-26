@@ -1,11 +1,11 @@
 module github.com/udistrital/configuracion_api
 
-go 1.24
+go 1.24.2
 
 require (
 	github.com/astaxie/beego v1.12.3
 	github.com/lib/pq v1.10.9
-	github.com/udistrital/utils_oas v0.0.0-20250917065514-c74562ac40b4
+	github.com/udistrital/utils_oas v0.0.1
 )
 
 require (

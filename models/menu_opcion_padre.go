@@ -16,7 +16,7 @@ type MenuOpcionPadre struct {
 	Hijo  *MenuOpcion `orm:"column(hijo);rel(fk)"`
 }
 
-//Estructura para construir los menus
+// Estructura para construir los menus
 type Menu struct {
 	Id         int
 	Nombre     string
@@ -163,7 +163,7 @@ func DeleteMenuOpcionPadre(id int) (err error) {
 	return
 }
 
-//Función que construye los menús
+// Función que construye los menús
 func ConstruirMenuPerfil(perfiles string, app string) (menus []Menu) {
 	o := orm.NewOrm()
 	//Arreglo
@@ -190,7 +190,7 @@ func ConstruirMenuPerfil(perfiles string, app string) (menus []Menu) {
 	return menusByPerfil
 }
 
-//Función que obtiene los menús padre de acuerdo al Id de la aplicación
+// Función que obtiene los menús padre de acuerdo al Id de la aplicación
 func MenusByAplicacion(app int) (menus []Menu, outputError map[string]interface{}) {
 	o := orm.NewOrm()
 
@@ -225,7 +225,7 @@ func MenusByAplicacion(app int) (menus []Menu, outputError map[string]interface{
 	}
 }
 
-//Función que construye los Submenús
+// Función que construye los Submenús
 func ConstruirSubMenusPerfil(Padre *Menu, perfiles string) (menus []Menu) {
 	o := orm.NewOrm()
 	//Conversión de entero a string
@@ -261,7 +261,7 @@ func ConstruirSubMenusPerfil(Padre *Menu, perfiles string) (menus []Menu) {
 	return subMenusByPerfil
 }
 
-//Función que construye los Submenús
+// Función que construye los Submenús
 func ConstruirSubMenusPerfilApp(Padre *Menu) (menus []Menu) {
 	o := orm.NewOrm()
 	//Conversión de entero a string
