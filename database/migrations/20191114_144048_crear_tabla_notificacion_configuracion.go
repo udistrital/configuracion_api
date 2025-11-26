@@ -28,7 +28,7 @@ func (m *CrearTablaNotificacionConfiguracion_20191114_144048) Up() {
 	m.SQL("COMMENT ON COLUMN configuracion.notificacion_configuracion.metodo_http IS 'Metodo http de la peticion que genera la notificación';")
 	m.SQL("COMMENT ON COLUMN configuracion.notificacion_configuracion.tipo IS 'tipo de notificación';")
 	m.SQL("COMMENT ON COLUMN configuracion.notificacion_configuracion.cuerpo_notificacion IS 'cuerpo de la notificacion (configuracion para mostrar en cliente y plantilla de mensaje)';")
-	m.SQL("COMMENT ON COLUMN configuracion.notificacion_configuracion.aplicacion IS 'Aplicacion que genera la notificacion';")	
+	m.SQL("COMMENT ON COLUMN configuracion.notificacion_configuracion.aplicacion IS 'Aplicacion que genera la notificacion';")
 }
 
 // Reverse the migrations
