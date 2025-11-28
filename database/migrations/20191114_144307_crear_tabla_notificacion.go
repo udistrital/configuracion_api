@@ -26,7 +26,7 @@ func (m *CrearTablaNotificacion_20191114_144307) Up() {
 	m.SQL("COMMENT ON COLUMN configuracion.notificacion.id IS 'Identificador único de la notificación generada';")
 	m.SQL("COMMENT ON COLUMN configuracion.notificacion.fecha_creacion IS 'Fecha y hora en la que se creó la notificación';")
 	m.SQL("COMMENT ON COLUMN configuracion.notificacion.cuerpo_notificacion IS 'Cuerpo de la notificación, será un objeto JSON en el que se almacenará el mensaje, título y otra información relevante';")
-	m.SQL("COMMENT ON COLUMN configuracion.notificacion.notificacion_configuracion IS 'Referencia a la configuracion de la notificacion generada';")	
+	m.SQL("COMMENT ON COLUMN configuracion.notificacion.notificacion_configuracion IS 'Referencia a la configuracion de la notificacion generada';")
 }
 
 // Reverse the migrations

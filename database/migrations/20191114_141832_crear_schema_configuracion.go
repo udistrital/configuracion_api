@@ -28,5 +28,5 @@ func (m *CrearSchemaConfiguracion_20191114_141832) Up() {
 // Reverse the migrations
 func (m *CrearSchemaConfiguracion_20191114_141832) Down() {
 	// use m.SQL("DROP TABLE ...") to reverse schema update
-	m.SQL("DROP SCHEMA IF EXISTS configuracion");
+	m.SQL("DROP SCHEMA IF EXISTS configuracion")
 }

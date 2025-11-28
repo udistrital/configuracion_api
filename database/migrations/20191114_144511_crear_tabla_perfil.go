@@ -27,7 +27,7 @@ func (m *CrearTablaPerfil_20191114_144511) Up() {
 	m.SQL("COMMENT ON COLUMN configuracion.perfil.nombre IS 'Nombre del perfil';")
 	m.SQL("COMMENT ON COLUMN configuracion.perfil.aplicacion IS 'Contiene el id de la aplicacion asociada al perfil';")
 	m.SQL("COMMENT ON CONSTRAINT PK_PERFIL ON configuracion.perfil IS 'llave primaria de la tabla perfil';")
-	
+
 }
 
 // Reverse the migrations

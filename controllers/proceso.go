@@ -12,7 +12,7 @@ import (
 	"github.com/udistrital/configuracion_api/models"
 )
 
-//  ProcesoController operations for Proceso
+// ProcesoController operations for Proceso
 type ProcesoController struct {
 	beego.Controller
 }
