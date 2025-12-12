@@ -2308,19 +2308,19 @@
         },
         {
             "name": "proceso",
-            "description": " ProcesoController operations for Proceso\n"
+            "description": "ProcesoController operations for Proceso\n"
         },
         {
             "name": "proceso_version",
-            "description": " VersionProcesoController operations for VersionProceso\n"
+            "description": "VersionProcesoController operations for VersionProceso\n"
         },
         {
             "name": "proceso_estado",
-            "description": " EstadoProcesoController operations for EstadoProceso\n"
+            "description": "EstadoProcesoController operations for EstadoProceso\n"
         },
         {
             "name": "proceso_transicion",
-            "description": " TransicionProcesoController operations for TransicionProceso\n"
+            "description": "TransicionProcesoController operations for TransicionProceso\n"
         }
     ]
 }

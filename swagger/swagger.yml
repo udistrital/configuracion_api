@@ -1544,14 +1544,14 @@ tags:
   description: |
     PerfilController oprations for Perfil
 - name: proceso
-  description: |2
-     ProcesoController operations for Proceso
+  description: |
+    ProcesoController operations for Proceso
 - name: proceso_version
-  description: |2
-     VersionProcesoController operations for VersionProceso
+  description: |
+    VersionProcesoController operations for VersionProceso
 - name: proceso_estado
-  description: |2
-     EstadoProcesoController operations for EstadoProceso
+  description: |
+    EstadoProcesoController operations for EstadoProceso
 - name: proceso_transicion
-  description: |2
-     TransicionProcesoController operations for TransicionProceso
+  description: |
+    TransicionProcesoController operations for TransicionProceso
