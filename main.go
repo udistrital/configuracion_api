@@ -12,7 +12,6 @@ import (
 	_ "github.com/lib/pq"
 	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
 	"github.com/udistrital/utils_oas/auditoria"
-	"github.com/udistrital/utils_oas/customerror"
 	"github.com/udistrital/utils_oas/database"
 	"github.com/udistrital/utils_oas/security"
 	"github.com/udistrital/utils_oas/xray"
@@ -63,9 +62,7 @@ func main() {
 		logs.Error("error configurando AWS XRay: %v", err)
 	}
 	apistatus.Init()
-	xray.InitXRay()
 	auditoria.InitMiddleware()
-	beego.ErrorController(&customerror.CustomErrorController{})
 	security.SetSecurityHeaders()
 	beego.Run()
 }
