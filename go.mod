@@ -32,12 +32,12 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.68.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.3 // indirect
-	golang.org/x/crypto v0.45.0 // indirect
-	golang.org/x/net v0.47.0 // indirect
-	golang.org/x/sys v0.38.0 // indirect
-	golang.org/x/text v0.31.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251124214823-79d6a2a48846 // indirect
-	google.golang.org/grpc v1.77.0 // indirect
+	golang.org/x/crypto v0.46.0 // indirect
+	golang.org/x/net v0.48.0 // indirect
+	golang.org/x/sys v0.39.0 // indirect
+	golang.org/x/text v0.32.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217 // indirect
+	google.golang.org/grpc v1.79.3 // indirect
 	google.golang.org/protobuf v1.36.10 // indirect
 	gopkg.in/go-playground/validator.v9 v9.31.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
